@@ -1,5 +1,5 @@
 {
-  "name": "vite-admin",
+  "name": "vite-native-admin",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
