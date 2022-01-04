@@ -1,4 +1,4 @@
-<!--顶部布局-->
+<!--全屏布局-->
 <template>
     <div class="layout-full-screen">
         <div class="layout-menu">

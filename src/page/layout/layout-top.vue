@@ -1,4 +1,4 @@
-<!--顶部布局-->
+<!--房间布局-->
 <template>
     <div class="layout-top">
         <div class="layout-header">

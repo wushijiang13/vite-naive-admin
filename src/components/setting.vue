@@ -22,7 +22,6 @@
                                 :key="layout.key"
                         >
                             <n-radio-button
-
                                     :key="layout.key"
                                     :value="layout.key">
                                 {{ layout.label }}
@@ -41,14 +40,14 @@
     import layoutTop from '@/page/layout/layout-top.vue'
     import layoutConventional from '@/page/layout/layout-conventional.vue'
     import layoutFullScreen from '@/page/layout/layout-full-screen.vue'
-
+    import layoutSandwich from '@/page/layout/layout-sandwich.vue'
+    import layoutDrag from '@/page/layout/layout-drag.vue'
     import {Settings} from '@vicons/ionicons5';
-    import {reactive, ref, watch, defineEmits, defineProps} from 'vue'
+    import {reactive, ref, watch, defineEmits, defineProps, onMounted} from 'vue'
 
     defineProps(['modelValue'])
     const emits = defineEmits(['update:modelValue'])
 
-    let selectLayout = ref("");
     const layoutList = {
         "teambition": {
             label: "TB布局",
@@ -69,8 +68,20 @@
             label: "全屏布局",
             key: "layoutFullScreen",
             value: layoutFullScreen
-        }
+        },
+        "layoutSandwich": {
+            label: "三明治布局",
+            key: "layoutSandwich",
+            value: layoutSandwich
+        },
     };
+
+    let selectLayout = ref(layoutList.teambition.key);
+
+    onMounted(()=>{
+        console.log(selectLayout);
+        emits('update:modelValue', layoutList[selectLayout.value]);
+    })
 
     watch(
         () => selectLayout.value,

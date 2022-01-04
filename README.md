@@ -3,5 +3,9 @@
 > 基于naive-ui风格的后台模板
 
 现在支持的功能是：  
-<input type='checkbox' disabled checked>多布局切换</input>
+*  <input type='checkbox' disabled checked>多布局切换</input>
+
+待实现功能：  
+* 拖拽排序  vuedraggable   
+* 主题切换  var css
 
