@@ -41,7 +41,6 @@
     import layoutConventional from '@/page/layout/layout-conventional.vue'
     import layoutFullScreen from '@/page/layout/layout-full-screen.vue'
     import layoutSandwich from '@/page/layout/layout-sandwich.vue'
-    import layoutDrag from '@/page/layout/layout-drag.vue'
     import {Settings} from '@vicons/ionicons5';
     import {reactive, ref, watch, defineEmits, defineProps, onMounted} from 'vue'
 
