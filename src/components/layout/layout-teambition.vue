@@ -39,7 +39,6 @@
     .layout-main{
         display: inline-flex;
         flex: 1;
-        background-color: #f8f8f8;
         flex-direction: column;
     }
     .layout-header{
@@ -47,7 +46,6 @@
         height: 60px;
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
         display: inline-flex;
-        background-color: #fff;
     }
     .laout-content{
         padding: 20px;

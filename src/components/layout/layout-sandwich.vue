@@ -1,18 +1,16 @@
-<!--常规布局-->
+<!--三明治布局-->
 <template>
-    <div class="layout-conventional">
+    <div class="layout-sandwich">
         <div class="layout-header">
-
         </div>
         <div class="layout-main">
-            <div class="layout-navigation">
-                <n-menu
-                        :options="menuOptions"
-                        :default-expanded-keys="defaultExpandedKeys"
-                />
-            </div>
             <div class="laout-content">
                 <router-view/>
+            </div>
+        </div>
+        <div class="layout-bottom">
+            <div class="layout-navigation">
+                <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
             </div>
         </div>
     </div>
@@ -30,10 +28,18 @@
     function renderIcon (icon) {
         return () => h(NIcon, null, { default: () => h(icon) })
     }
-
     const menuOptions = [
         {
-            label: '且听风吟',
+            label: () =>
+                h(
+                    'a',
+                    {
+                        href: 'https://baike.baidu.com/item/%E4%B8%94%E5%90%AC%E9%A3%8E%E5%90%9F',
+                        target: '_blank',
+                        rel: 'noopenner noreferrer'
+                    },
+                    '且听风吟'
+                ),
             key: 'hear-the-wind-sing',
             icon: renderIcon(BookIcon)
         },
@@ -41,6 +47,7 @@
             label: '1973年的弹珠玩具',
             key: 'pinball-1973',
             icon: renderIcon(BookIcon),
+            disabled: true,
             children: [
                 {
                     label: '鼠',
@@ -52,6 +59,7 @@
             label: '寻羊冒险记',
             key: 'a-wild-sheep-chase',
             icon: renderIcon(BookIcon),
+            disabled: true
         },
         {
             label: '舞，舞，舞',
@@ -103,37 +111,36 @@
             ]
         }
     ]
-
-    const  defaultExpandedKeys = ['dance-dance-dance', 'food']
 </script>
 
 <style scoped>
-    .layout-inherit-flex-box{
-        display: flex;
-    }
-
-    .layout-conventional{
+    .layout-sandwich{
         display: flex;
         flex-direction: column;
     }
     .layout-header{
-        width: 100vw;
-        height: 80px;
+        height: 100px;
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
     }
     .layout-main{
-        background-color: #f8f8f8;
+        height: calc(100vh - 176px);
+        overflow: auto;
         margin-top: 3px;
-        width: 100vw;
-        display: flex;
-    }
-    .layout-navigation{
-        box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
-        height: calc(100vh - 126px);
     }
     .laout-content{
         padding: 20px;
         width: 90%;
         margin: 0px auto;
+    }
+    .layout-bottom{
+        height: 70px;
+        box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
+    }
+    .layout-navigation{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

@@ -1,24 +1,49 @@
-<!--三明治布局-->
+<!--常规布局-->
 <template>
-    <div class="layout-sandwich">
+    <div class="layout-conventional">
         <div class="layout-header">
+
         </div>
         <div class="layout-main">
-            <div class="laout-content">
-                <router-view/>
-            </div>
-        </div>
-        <div class="layout-bottom">
             <div class="layout-navigation">
-                <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
+                <n-layout has-sider>
+                    <n-layout-sider
+                            bordered
+                            collapse-mode="width"
+                            :collapsed-width="64"
+                            :width="240"
+                            :collapsed="collapsed"
+                            show-trigger
+                            @collapse="collapsed = true"
+                            @expand="collapsed = false"
+                    >
+                    <n-menu
+                            :collapsed="collapsed"
+                            :options="menuOptions"
+                            :default-expanded-keys="defaultExpandedKeys"
+                            :collapsed-width="64"
+                            :collapsed-icon-size="22"
+                            :render-icon="renderMenuIcon"
+                            :expand-icon="expandIcon"
+                    />
+                </n-layout-sider>
+                    <n-layout>
+                        <div class="laout-content">
+                            <router-view/>
+                        </div>
+                    </n-layout>
+                </n-layout>
             </div>
+
+
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { h } from 'vue'
+    import { h , ref } from 'vue'
     import { NIcon } from 'naive-ui'
+    import { BookmarkOutline, CaretDownOutline } from '@vicons/ionicons5'
     import {
         BookOutline as BookIcon,
         PersonOutline as PersonIcon,
@@ -28,18 +53,10 @@
     function renderIcon (icon) {
         return () => h(NIcon, null, { default: () => h(icon) })
     }
+
     const menuOptions = [
         {
-            label: () =>
-                h(
-                    'a',
-                    {
-                        href: 'https://baike.baidu.com/item/%E4%B8%94%E5%90%AC%E9%A3%8E%E5%90%9F',
-                        target: '_blank',
-                        rel: 'noopenner noreferrer'
-                    },
-                    '且听风吟'
-                ),
+            label: '且听风吟',
             key: 'hear-the-wind-sing',
             icon: renderIcon(BookIcon)
         },
@@ -47,7 +64,6 @@
             label: '1973年的弹珠玩具',
             key: 'pinball-1973',
             icon: renderIcon(BookIcon),
-            disabled: true,
             children: [
                 {
                     label: '鼠',
@@ -59,7 +75,6 @@
             label: '寻羊冒险记',
             key: 'a-wild-sheep-chase',
             icon: renderIcon(BookIcon),
-            disabled: true
         },
         {
             label: '舞，舞，舞',
@@ -111,39 +126,34 @@
             ]
         }
     ]
+    let collapsed = ref(true);
+
+    const  defaultExpandedKeys = ['dance-dance-dance', 'food']
 </script>
 
 <style scoped>
-    .layout-sandwich{
+    .layout-inherit-flex-box{
+        display: flex;
+    }
+
+    .layout-conventional{
         display: flex;
         flex-direction: column;
     }
     .layout-header{
-        width: 100vw;
-        height: 100px;
+        height: 80px;
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
     }
     .layout-main{
-        background-color: #f8f8f8;
-        height: calc(100vh - 176px);
         margin-top: 3px;
-        width: 100vw;
+    }
+    .layout-navigation{
+        box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
+        padding-left: 5px;
     }
     .laout-content{
         padding: 20px;
         width: 90%;
         margin: 0px auto;
-    }
-    .layout-bottom{
-        width: 100vw;
-        height: 70px;
-        box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
-    }
-    .layout-navigation{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 </style>

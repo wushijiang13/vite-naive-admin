@@ -4,8 +4,13 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    Setting: typeof import('./src/components/setting.vue')['default']
+    Layout: typeof import('./src/components/layout/index.vue')['default']
+    LayoutConventional: typeof import('./src/components/layout/layout-conventional.vue')['default']
+    LayoutFullScreen: typeof import('./src/components/layout/layout-full-screen.vue')['default']
+    LayoutSandwich: typeof import('./src/components/layout/layout-sandwich.vue')['default']
+    LayoutTeambition: typeof import('./src/components/layout/layout-teambition.vue')['default']
+    LayoutTop: typeof import('./src/components/layout/layout-top.vue')['default']
+    Setting: typeof import('./src/components/setting/setting.vue')['default']
   }
 }
 

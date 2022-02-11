@@ -125,7 +125,6 @@
         flex-direction: column;
     }
     .layout-main{
-        background-color: #f8f8f8;
         width: 100vw;
         height: 100vh;
         display: flex;
