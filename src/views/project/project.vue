@@ -1,11 +1,17 @@
 <template>
     <div class="project">
+        <div class="project-operate">
+          <n-button
+              v-preventReClick
+              @click="clickTest">
+            查询
+          </n-button>
+        </div>
         <n-data-table
                 :data="data"
                 :columns="columns"
                 :single-line="false"
                 :pagination="pagination"
-                :max-height="450"
         />
     </div>
 </template>
@@ -13,6 +19,7 @@
 <script setup lang="ts">
     import {ref} from 'vue';
     const checkedRowKeysRef = ref([])
+
     function createCols () {
         return [
             {
@@ -91,5 +98,8 @@
 
 <style scoped>
 .project{
+}
+.project-operate{
+  margin-bottom: 20px;
 }
 </style>

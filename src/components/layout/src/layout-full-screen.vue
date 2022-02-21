@@ -13,8 +13,7 @@
                 <div>
                     <n-menu
                             :options="menuOptions"
-                            :default-expanded-keys="defaultExpandedKeys"
-                    />
+                            :default-expanded-keys="defaultExpandedKeys"/>
                 </div>
             </n-popover>
         </div>

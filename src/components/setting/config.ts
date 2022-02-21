@@ -7,18 +7,6 @@ import layoutConventional from '@/components/layout/layout-conventional.vue'
 import layoutFullScreen from '@/components/layout/layout-full-screen.vue'
 import layoutSandwich from '@/components/layout/layout-sandwich.vue'
 
-export interface layoutClass {
-    label:string,
-    key:string,
-    value: any
-}
-
-export interface themeConfigClass{
-    layoutValue: layoutClass,
-    themeColorValue: string,
-}
-
-
 export const layoutList = {
     "conventional": {
         label: "常规布局",

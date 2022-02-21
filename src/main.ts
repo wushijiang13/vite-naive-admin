@@ -1,7 +1,20 @@
+// @ts-ignore
 import {app}  from "@/config/vue/app";
-import {naive} from '@/config/ui/index.ts'
-import {routerObject} from '@/config/router/router.ts'
+// @ts-ignore
+//加载指令
+import '@/config/directive'
+//加载全局配置
+import '@/config/global/permissions'
+// @ts-ignore
+import {naive} from '@/config/ui/index'
+// @ts-ignore
+import {router} from '@/config/router/router'
+// @ts-ignore
+import store from '@/config/store/index'
+
+console.log(import.meta.env.VITE_API_HOST);
 
 app.use(naive)
-    .use(routerObject)
-    .mount('#app')
+   .use(router)
+   .use(store)
+   .mount('#app')

@@ -5,12 +5,13 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Layout: typeof import('./src/components/layout/index.vue')['default']
-    LayoutConventional: typeof import('./src/components/layout/layout-conventional.vue')['default']
-    LayoutFullScreen: typeof import('./src/components/layout/layout-full-screen.vue')['default']
-    LayoutSandwich: typeof import('./src/components/layout/layout-sandwich.vue')['default']
-    LayoutTeambition: typeof import('./src/components/layout/layout-teambition.vue')['default']
-    LayoutTop: typeof import('./src/components/layout/layout-top.vue')['default']
+    LayoutConventional: typeof import('./src/components/layout/src/layout-conventional.vue')['default']
+    LayoutFullScreen: typeof import('./src/components/layout/src/layout-full-screen.vue')['default']
+    LayoutSandwich: typeof import('./src/components/layout/src/layout-sandwich.vue')['default']
+    LayoutTeambition: typeof import('./src/components/layout/src/layout-teambition.vue')['default']
+    LayoutTop: typeof import('./src/components/layout/src/layout-top.vue')['default']
     Setting: typeof import('./src/components/setting/setting.vue')['default']
+    Src: typeof import('./src/components/cascade-tree/src/index.vue')['default']
   }
 }
 

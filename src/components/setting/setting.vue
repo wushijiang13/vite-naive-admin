@@ -41,7 +41,7 @@
 <script setup lang="ts">
     import {Settings} from '@vicons/ionicons5';
     import {reactive, ref, watch, PropType, defineEmits, defineProps} from 'vue'
-    import { setLocalData} from '@utils/utils'
+    import { setLocalData} from '@utils'
     import { layoutList, themeConfigClass } from './config'
 
 

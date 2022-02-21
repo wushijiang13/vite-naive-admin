@@ -8,19 +8,29 @@ const routers:Array<RouteRecordRaw>=[
         component:layout,
         children: [
             {
-                path:'/',
-                component:() => import('@/page/overivew/overivew.vue'),
+                path:'/overivew',
+                // @ts-ignore
+                //这里两个用于路由守卫 权限判断使用
+                meta:{
+                    code:'overivew',
+                    overivew:'@/views/overivew/overivew.vue',
+                },
+                component:() => import('@/views/overivew/overivew.vue'),
             },
             {
                 path:'/project',
-                component:() =>import('@/page/project/project.vue'),
+                component:() =>import('@/views/project/project.vue'),
             },
+            {
+                path:'/screen',
+                component:() =>import('@/views/screen/screen.vue')
+            }
         ]
     },
     {
         path:'/login',
         name:'login',
-        component:() => import('@/page/login/login.vue')
+        component:() => import('@/views/login/login.vue')
     },
 ]
 
