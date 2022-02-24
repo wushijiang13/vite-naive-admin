@@ -14,6 +14,7 @@ const routers:Array<RouteRecordRaw>=[
                 meta:{
                     code:'overivew',
                     overivew:'@/views/overivew/overivew.vue',
+                    
                 },
                 component:() => import('@/views/overivew/overivew.vue'),
             },

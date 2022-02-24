@@ -1,35 +1,37 @@
 <!--TB布局-->
 <template>
     <div class="layout-teambition">
-      <div class="layout-navigation">
-          <div class="logo">
-            运营支撑平台
+      <n-config-provider class="layout-config-provider-box" :locale="zhCN" :date-locale="dateZhCN">
+        <div class="layout-navigation">
+            <div class="logo">
+              运营支撑平台
+            </div>
+            <div>
+              <n-menu
+                  :options="menuOption"
+                  :default-value="menuValue"
+                  :default-expanded-keys="['projectsAndScree','system']"
+                  @update:value="menuAction"
+              />
+            </div>
           </div>
-          <div>
-            <n-menu
-                :options="menuOption"
-                :default-value="menuValue"
-                :default-expanded-keys="['projectsAndScree','system']"
-                @update:value="menuAction"
-            />
-          </div>
-        </div>
-      <div class="layout-main">
-            <div class="layout-inherit-flex-box">
-                <div class="layout-header">
-                  <div class="bread-crumb">
-                    <n-breadcrumb separator=">">
-                      <n-breadcrumb-item v-for="item in bread">
-                        {{item.label}}
-                      </n-breadcrumb-item>
-                    </n-breadcrumb>
+        <div class="layout-main">
+              <div class="layout-inherit-flex-box">
+                  <div class="layout-header">
+                    <div class="bread-crumb">
+                      <n-breadcrumb separator=">">
+                        <n-breadcrumb-item v-for="item in bread">
+                          {{item.label}}
+                        </n-breadcrumb-item>
+                      </n-breadcrumb>
+                    </div>
                   </div>
-                </div>
-            </div>
-            <div class="laout-content">
-                <router-view/>
-            </div>
-        </div>
+              </div>
+              <div class="laout-content">
+                  <router-view/>
+              </div>
+          </div>
+      </n-config-provider>
     </div>
 </template>
 
@@ -37,6 +39,7 @@
   import {menuOption,menuOptions} from '../config/layout.config';
   import {ref} from 'vue';
   import { useRouter } from "vue-router";
+  import { zhCN, dateZhCN } from 'naive-ui'
 
   let bread = ref([]);
   let menuValue = ref("overviews");
@@ -63,6 +66,10 @@
 </script>
 
 <style scoped>
+    .layout-config-provider-box{
+      width: 100vw;
+      display: flex;
+    }
     .layout-inherit-flex-box{
       display: flex;
     }

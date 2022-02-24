@@ -12,6 +12,7 @@ declare module 'vue' {
     LayoutTop: typeof import('./src/components/layout/src/layout-top.vue')['default']
     Setting: typeof import('./src/components/setting/setting.vue')['default']
     Src: typeof import('./src/components/cascade-tree/src/index.vue')['default']
+    Table: typeof import('./src/components/table/index.vue')['default']
   }
 }
 
