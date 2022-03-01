@@ -2,35 +2,38 @@
   <div>
     <div class="table-header">
       <div class="table-btn">
+        <n-input v-if="moduleColOptions.search.isShow && moduleColOptions.search.code"
+                 round :placeholder="moduleColOptions.search.placeholder"
+                 v-model:value="moduleColOptions.search.value"
+                 @focus="searchInputFocus"
+                 @blur="searchSubmit"
+                 @keydown.enter="searchSubmit">
+          <template #suffix>
+            <n-icon :component="Search" />
+          </template>
+        </n-input>
           <slot name="table-btn"></slot>
       </div>
       <div class="table-select">
         <div class="table-select-slot">
-          <slot name="table-select-slot">
-
-          </slot>
+          <slot name="table-select-slot"></slot>
         </div>
         <!--  等到写完的时候再加 用于是否展示原有筛选功能  v-if="isReserveFilter"-->
         <div class="table-select-box">
           <!--  等到写完的时候再加 用于外部判断权限  v-if="$permissions(downCode) && 是否需要这个功能"-->
-          <n-button v-if="moduleColOptions.down.isShow && moduleColOptions.down.code" size="large" @click="moduleClick('down')" strong secondary circle>
+            <n-button class="btn" v-if="moduleColOptions.down.isShow && moduleColOptions.down.code" size="large" @click="moduleClick('down')" strong secondary circle>
+              <template #icon>
+                <n-icon><Download/></n-icon>
+              </template>
+            </n-button>
+            <n-button class="btn" v-if="moduleColOptions.filter.isShow && moduleColOptions.filter.code" @click="openDrawer('filter')"  size="large" strong secondary circle>
+              <template #icon>
+                <n-icon><FilterOutlined/></n-icon>
+              </template>
+            </n-button>
+            <n-button class="btn" v-if="moduleColOptions.custom.isShow && moduleColOptions.custom.code" @click="openDrawer('custom')" size="large" strong secondary circle>
             <template #icon>
-              <n-icon><Download/></n-icon>
-            </template>
-          </n-button>
-          <n-button v-if="moduleColOptions.refresh.isShow && moduleColOptions.refresh.code"  @click="moduleClick('refresh')" size="large" strong secondary circle>
-            <template #icon>
-              <n-icon><RefreshOutline/></n-icon>
-            </template>
-          </n-button>
-          <n-button v-if="moduleColOptions.filter.isShow && moduleColOptions.filter.code" @click="openDrawer('filter')"  size="large" strong secondary circle>
-            <template #icon>
-              <n-icon><FilterSharp/></n-icon>
-            </template>
-          </n-button>
-          <n-button v-if="moduleColOptions.custom.isShow && moduleColOptions.custom.code" @click="openDrawer('custom')" size="large" strong secondary circle>
-            <template #icon>
-              <n-icon><ListSharp/></n-icon>
+              <n-icon><TextColumnTwoLeft24Filled/></n-icon>
             </template>
           </n-button>
         </div>
@@ -72,25 +75,62 @@
         </n-button>
       </n-space>
     </div>
-    <div>
-      <n-data-table v-bind="tableOption"/>
+    <div class="table-box">
+      <n-data-table
+          v-bind="tableOption"
+          v-model:checked-row-keys="tableOption.checkedRowKeys"
+      />
+      <div class="table-bottom" :class="isFixedBottom ? 'table-fixed-bottom':'table-normal-bottom'">
+          <n-pagination
+              v-bind="paginationOption"
+              v-model:page="paginationOption.page"
+              v-model:page-size="paginationOption.pageSize">
+            <template #suffix="{  itemCount }">
+              共计 {{  itemCount }} 条
+            </template>
+          </n-pagination>
+          <n-button
+              class="btn"
+              v-if="moduleColOptions.add.isShow && moduleColOptions.add.code"
+              @click="moduleClick('add')"
+              size="large" strong secondary circle>
+            <template #icon>
+              <n-icon><Add24Filled/></n-icon>
+            </template>
+          </n-button>
+        </div>
+      <div v-show="isFixedBottom" class="table-bottom-placeholder"/>
     </div>
     <!--  抽屉  -->
     <n-drawer
         v-model:show="drawerOption.active"
         :width="400"
         :close-on-esc="false"
-        :mask-closable="false"
-    >
+        :mask-closable="false">
       <n-drawer-content :title="drawerOption.title">
           <template v-slot:header="msg">
             <div class="drawer-header-box">
-              <span>{{drawerOption.title}}</span>
               <div>
-                <n-button @click="drawerOperate(false,drawerOption.status)">
+              {{drawerOption.title}}
+              <n-button
+                  v-show="drawerOption.status == 'custom'"
+                  @click="drawerOperate(drawerOption.status+'ClickReset')"
+                  text
+                  size="large"
+                  strong
+                  secondary
+                  circle
+                  style="vertical-align: text-top;">
+                <template #icon>
+                  <n-icon><ArrowReset24Filled/></n-icon>
+                </template>
+              </n-button>
+              </div>
+              <div>
+                <n-button @click="drawerOperate(drawerOption.status+'ClickCancel')">
                   {{drawerOption.cancel}}
                 </n-button>
-                <n-button @click="drawerOperate(true,drawerOption.status)" style="margin-left: 10px" type="primary">
+                <n-button @click="drawerOperate(drawerOption.status+'ClickOK')" style="margin-left: 10px" type="primary">
                   {{drawerOption.confirm}}
                 </n-button>
               </div>
@@ -140,12 +180,17 @@
 </template>
 
 <script setup lang="ts">
-  import { Download,FilterSharp,RefreshOutline,ListSharp} from '@vicons/ionicons5'
-  import { ref,reactive,defineEmits,defineProps,watch,onMounted,PropType} from 'vue'
-  const { config } = defineProps(['config']);
-  const { moduleColOptions , selectOptions , tableOption } = config;
-  const emits =  defineEmits(['customClickOk','customClickCancel',
-    'filterClickOK','filterClickCancel','searchTagChange','searchClearClick','searchTagClose'])
+  import { Search } from '@vicons/ionicons5'
+  import { TextColumnTwoLeft24Filled, Add24Filled,ArrowReset24Filled} from '@vicons/fluent'
+  import { FilterOutlined } from '@vicons/antd'
+  import { Download } from '@vicons/tabler'
+  import { useConfig } from './config/config'
+  import { ref,reactive,defineEmits,defineProps,watch,onMounted} from 'vue'
+  const  { config } = defineProps(['config']);
+  const  { moduleColOptions,selectOptions,tableOption,paginationOption } = useConfig(config);
+  const emits =  defineEmits(['customClickOk','customClickCancel','customClickReset',
+    'filterClickOK','filterClickCancel','searchTagChange','searchClearClick','searchTagClose',
+    'searchInputChange','addClick','downClick'])
   import _ from "lodash";
 
   let drawerOption = reactive({
@@ -163,7 +208,7 @@
   let columnsOperateData = ref(tableOption.columns); //当前table columns 的操作数据
   let columnsSource = _.cloneDeep(tableOption.columns); //当前table columns 的源数据
   let inputCompared =ref("");// 用于筛选input 判断值是否有变化 判断用
-
+  let isFixedBottom = ref(false);//table底部是否固钉 为了避免少计算 下面用== 而不是用取反 这里true 代表 不固定 false 代表固钉
   /**
    * 根据传入状态不同 显示不同内容抽屉
    * @param status
@@ -173,7 +218,7 @@
       drawerOption.title = '自定义列';
       drawerOption.status="custom";
       drawerOption.confirm="应用";
-      drawerOption.cancel="重置";
+      drawerOption.cancel="返回";
     }else{
       drawerOption.title = '筛选条件';
       drawerOption.status="filter";
@@ -184,18 +229,12 @@
   }
   /**
    * 抽屉按钮发生点击，emits 对应函数并且执行组件内部回显逻辑
-   * @param operateStatus
-   * @param status
+   * @param status 是 操作状态和是否拼接而成
    */
-  const drawerOperate = (operateStatus,status) =>{
+  const drawerOperate = (status) =>{
     drawerOption.active=false;
-    let triggerName:string;
     let options;
-        triggerName= operateStatus && status == 'custom' ?  "customClickOk"
-      : !operateStatus && status == 'custom' ? 'customClickCancel'
-      : operateStatus && status == 'filter' ? 'filterClickOK'
-      : 'filterClickCancel';
-    switch (triggerName) {
+    switch (status) {
       case 'filterClickOK' :{
         generateSearchTag();
         options = selectOptions;
@@ -212,11 +251,15 @@
       }
       case 'customClickCancel' :{
         options = tableOption.columns;
+        break;
+      }
+      case 'customClickReset' :{
+        options = tableOption.columns;
         customColumReset();
         break;
       }
     }
-    emits(triggerName,options);
+    emits(status,options);
   }
 
   /**
@@ -247,16 +290,30 @@
     //   return item;
     // })
     //生成自定义列需要展示的
-    customAction.value =[];
-    customList.value = columnsOperateData.value.filter(item =>{
-      return item.hasOwnProperty("fixed")
-    })
-    tableOption.columns = columnsOperateData.value.filter(item=>{
-      if (item.hasOwnProperty("fixed")) {
-        if (item.fixed) customAction.value.push(item.key);
-        return item.fixed;
-      }
-      return true;
+    //只有设置了自定义列模块展示才执行此代码
+    if(moduleColOptions.custom.isShow){
+      customAction.value =[];
+      customList.value = columnsOperateData.value.filter(item =>{
+        return item.hasOwnProperty("fixed")
+      })
+      tableOption.columns = columnsOperateData.value.filter(item=>{
+        if (item.hasOwnProperty("fixed")) {
+          if (item.fixed) customAction.value.push(item.key);
+          return item.fixed;
+        }
+        return true;
+      })
+    }
+    tableOption["maxHeight"] = document.documentElement.clientHeight - 300;
+    let tableBottom=document.querySelector('.table-bottom')
+    document.addEventListener("scroll",()=>{
+      // 后续改成根据是否存在滚动条去进行显示效果
+      // if (document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight)) {
+      //   isFixedBottom.value = true;
+      // } else {
+      //   isFixedBottom.value = false;
+      // }
+      isFixedBottom.value  = tableBottom.offsetTop != tableBottom.offsetTop-document.documentElement.scrollTop;
     })
   }
   /**
@@ -342,25 +399,44 @@
    */
   const moduleClick = (status:string)=>{
     let  emitsName:string;
-    emitsName = status == 'down' ? 'downClick' : 'refreshClick'
+    emitsName = status == 'add' ? 'addClick' : 'downClick';
     emits(emitsName);
   }
 
+  /**
+   * 自定义列点击全选逻辑
+   * @param checked
+   */
   const checkAllChange = (checked)=>{
     let allCustom =  customList.value.map(item =>{return item.key})
-    console.log(checked);
     isSelectHalf.value = false;
     isSelectAll.value = checked;
     customAction.value = checked ? allCustom : [];
+  }
+  /**
+   *  搜索查询获取焦点时触发
+   */
+  const searchInputFocus = ()=>{
+    inputCompared.value = moduleColOptions.search.value;
+  }
+  /**
+   *  搜索查询获取焦点时触发
+   */
+  const searchSubmit = ()=>{
+    if (!_.isEqual(inputCompared.value, moduleColOptions.search.value)) {
+      inputCompared.value = moduleColOptions.search.value;
+      emits('searchInputChange',moduleColOptions.search.value,selectOptions);
+    }
+  }
+
+  window.onresize = () =>{
+    tableOption["maxHeight"] = document.documentElement.clientHeight - 260;
   }
 
   watch(
   () => customAction.value,
       val => {
-        console.log(val);
-        console.log(customList);
         isSelectHalf.value = !!val.length && val.length < customList.value.length;
-
         isSelectAll.value = val.length === customList.value.length;
       },
   )
@@ -379,10 +455,16 @@
   align-content: center;
   padding: 10px 0px;
 }
-.table-btn,.table-select,.table-select-slot,.table-select-box{
-  display: inline-block;
+.btn{
+
+  background-color: #fff;
 }
-.table-select  .n-button,.table-select-slot .n-button{
+.table-btn,.table-select,.table-select-slot,.table-select-box{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-select  .n-button,.table-select-slot .n-button,.table-select  .n-input{
   margin-left: 10px;
 }
 .drawer-header-box{
@@ -397,6 +479,29 @@
 }
 .select-all-checkbox{
   margin-bottom: 10px;
+}
+.table-normal-bottom{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.table-fixed-bottom{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  position: fixed;
+  width: calc(100vw - 260px);
+  bottom: 0px;
+  z-index: 9;
+}
+.table-bottom-placeholder{
+  height: 60px;
+}
+table-bottom-placeholder{
+  height: 80px;
 }
 .tag-box{
   display: flex;
@@ -429,5 +534,8 @@
 }
 .tag-box .n-base-selection .n-base-suffix .n-base-suffix__arrow , .tag-box .n-date-picker .n-date-picker-icon{
   color: #4798ef;
+}
+.table-box .n-data-table__pagination{
+  display: none;
 }
 </style>

@@ -95,6 +95,7 @@
     }
     .laout-content{
       padding: 20px;
+      padding-bottom: 0px;
     }
     .logo{
       font-size: 20px;

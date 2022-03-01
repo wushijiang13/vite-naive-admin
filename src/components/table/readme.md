@@ -13,19 +13,22 @@
 
 |  参数名   | 类型  |  默认值   |  说明  |
 |  ----  | ----  |  ----  | ----  |
-| down  | object()=> {isShow:true,code:"down"}  | 无  | 必传,用于控制下载模块是否显示 |
-| refresh  | object()=> {isShow:true,code:"refresh"} | 无  | 必传,用于控制刷新模块是否显示 |
-| filter  | object()=> {isShow:true,code:"filter"} | 无  | 必传,用于控制筛选模块是否显示 |  
-| custom  | object()=> {isShow:true,code:"custom"} | 无  | 必传,用于控制自定义列模块是否显示 |  
+| down  | object()=> {isShow:true,code:"down"}  | {isShow:false,code:""}  | 选填,用于控制下载模块是否显示 |
+| refresh  | object()=> {isShow:true,code:"refresh"} |{isShow:false,code:""}  | 选填,用于控制刷新模块是否显示 |
+| filter  | object()=> {isShow:true,code:"filter"} | {isShow:false,code:""}  | 选填,用于控制筛选模块是否显示 |  
+| custom  | object()=> {isShow:true,code:"custom"} | {isShow:false,code:""}  | 选填,用于控制自定义列模块是否显示 |  
+| search  | object()=> {isShow:true,code:"custom",placeholder:'',value:'} | {isShow:false,code:"",placeholder:'',value:''}  | 选填,用于控制搜索模块是否显示 |  
 
 ## moduleColOptions childrenOption 功能模块内部配置
 
 |  参数名   | 类型  |  默认值   |  说明  |
 |  ----  | ----  |  ----  | ----  |
-| isShow  | boolean  | 无  | 必传,用于控制模块是否显示 |
-| code  | string | 无  | 必传,用于判断当前用户权限是否包含此模块 |
+| isShow  | boolean  | false  | 选填,用于控制模块是否显示 |
+| code  | string | '' | 选填,用于判断当前用户权限是否包含此模块 |
+| placeholder  | string | '' | 选填,只有搜索模块需要用到此值，其他模块不需要穿此值 |
+| value  | string | '' | 选填,只有搜索模块需要用到此值，其他模块不需要穿此值 |
 
-## selectOptions array 筛选配置
+## selectOptions array 筛选配置 整个值可以不填，但是如果设置了 筛选模块展示此值为必填
 
 |  参数名   | 类型  |  默认值   |  说明  |
 |  ----  | ----  |  ----  | ----  |
@@ -76,7 +79,9 @@
     const refreshClick = () => {
       console.log("点击刷新");
     }
-    
+    const searchInputChange = (value,selectOptions) => {
+      console.log("搜索后执行",value,selectOptions);
+    }
 ```
 ## 思路
 该组件 内部不加入任何请求方法的执行，将二次封装的组件只做展示
@@ -85,5 +90,7 @@
 
 如果使用插槽时，同时方法也会在外面，保证 请求函数 一直在父组件可以调用
 
+另外 由于分页需要独立使用，并且进行封装所以，需要传入tableOption > pagination
+和 paginationOption 都需要传入相同配置分页, 才生效,组件内部会隐藏table 自带的分页,使用自己封装的分页
 
-现在属于 权限判断还没加
+现在属于 权限判断还没加，分页和新增和批量操作都悬浮在底下。

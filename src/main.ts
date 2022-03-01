@@ -11,6 +11,7 @@ import {naive} from '@/config/ui/index'
 import {router} from '@/config/router/router'
 // @ts-ignore
 import store from '@/config/store/index'
+import '@/config/css/theme.css'
 
 console.log(import.meta.env.VITE_API_HOST);
 

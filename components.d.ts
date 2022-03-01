@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BulkOperations: typeof import('./src/components/bulk-operations/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     LayoutConventional: typeof import('./src/components/layout/src/layout-conventional.vue')['default']
     LayoutFullScreen: typeof import('./src/components/layout/src/layout-full-screen.vue')['default']

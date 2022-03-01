@@ -10,7 +10,9 @@
         @refreshClick="refreshClick"
         @searchTagChange="searchTagChange"
         @searchClearClick="searchClearClick"
-        @searchTagClose="searchTagClose">
+        @searchTagClose="searchTagClose"
+        @searchInputChange="searchInputChange"
+      >
         <template v-slot:table-btn="{msg}">
           <div>
             左侧插槽
@@ -22,11 +24,18 @@
           </div>
         </template>
       </wTable>
+      <bulkOperations
+          :data="blukData"
+          :options="blukModuleOption"
+          @deleteClickOk="deleteClickOk"
+          @closeClick="closeClick"
+      />
     </div>
 </template>
 
 <script setup lang="ts">
     import wTable from '@/components/table/index.vue'
+    import bulkOperations from '@/components/bulk-operations/index.vue'
     import {reactive, ref, h } from 'vue';
     import { NSwitch } from 'naive-ui'
     const checkedRowKeysRef = ref([])
@@ -98,24 +107,32 @@
     }
     function createData () {
       return Array.apply(null, { length: 50 }).map((_, i) => {
-
         return {
           key: i,
           name: `name_${i}`,
-          physicsAttack: `physicsAttack_${i}`,
+          physicsAttack: `哈哈哈${i}`,
           magicAttack: `magicAttack_${i}`,
           defend: `defend_${i}`,
-          speed: `speed_${i}`
+          speed: `speed_${i}`,
         }
       })
     }
     const data = ref(createData());
     const columns= ref(createCols());
-    const pagination= ref({
+    const pagination= reactive({
+      page:1,
       pageSize: 10,
       showQuickJumper:true,
       pageSizes:[10, 20, 30, 40],
+      itemCount:data.value.length,
       showSizePicker:true,
+      onUpdatePageSize: (pageSize) => {
+        pagination.pageSize = pageSize
+        pagination.page = 1
+      },
+      onChange: (page) => {
+        pagination.page = page
+      },
     })
     const selectData=[
       {
@@ -131,21 +148,26 @@
         value: 'song2'
       },
     ]
+    const checkedRowKeys = ref([]);
     const config = reactive({
       tableOption:{
         "data":data,
         'columns':columns,
         'single-line':false,
-        'pagination':pagination
+        pagination:pagination,
+        checkedRowKeys:checkedRowKeys,
       },
+      paginationOption:pagination,
       moduleColOptions:{
+        search:{
+          isShow:true,
+          code:"search",
+          placeholder:'推广id或者用户名',
+          value:'',
+        },
         down:{
           isShow:true,
           code:"down",
-        },
-        refresh:{
-          isShow:true,
-          code:"refresh",
         },
         filter:{
           isShow:true,
@@ -154,6 +176,10 @@
         custom:{
           isShow:true,
           code:'custom',
+        },
+        add:{
+          isShow:true,
+          code:"add",
         }
       },
       selectOptions:[
@@ -205,6 +231,14 @@
         },
       ],
     })
+    const blukData = ref([23,33]);
+    const blukModuleOption = reactive({
+          delete:{
+            key:'delete',
+            code:'delete',
+          }
+    })
+
     /**
      * 自定义列选择完成
      */
@@ -246,6 +280,25 @@
     const refreshClick = () => {
       console.log("点击刷新");
     }
+    const searchInputChange = (value,selectOptions) => {
+      console.log("搜索后执行",value,selectOptions);
+    }
+
+    /**
+     * 执行批量删除操作 delete
+     * @param data
+     */
+    const deleteClickOk = (data) => {
+      console.log("执行批量删除",data);
+    }
+     /**
+     * 关闭批量模块 close
+     * @param data
+     */
+    const closeClick = (data) => {
+      console.log("关闭批量模块",data);
+    }
+
 </script>
 
 <style scoped>
