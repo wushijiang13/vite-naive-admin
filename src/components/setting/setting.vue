@@ -40,12 +40,12 @@
 
 <script setup lang="ts">
     import {Settings} from '@vicons/ionicons5';
-    import {reactive, ref, watch, PropType, defineEmits, defineProps} from 'vue'
+    import {reactive, ref, watch , defineEmits, defineProps} from 'vue'
     import { setLocalData} from '@utils'
-    import { layoutList, themeConfigClass } from './config'
+    import { layoutList } from './config'
 
     const props = defineProps({
-        modelValue : Object as PropType<themeConfigClass>
+        modelValue : Object
     })
     const emits = defineEmits(['update:modelValue'])
 

@@ -1,11 +1,10 @@
 /***
  * 主题配置存储
  */
-import layoutTeambition from '@/components/layout/layout-teambition.vue'
-import layoutTop from '@/components/layout/layout-top.vue'
-import layoutConventional from '@/components/layout/layout-conventional.vue'
-import layoutFullScreen from '@/components/layout/layout-full-screen.vue'
-import layoutSandwich from '@/components/layout/layout-sandwich.vue'
+import layoutTeambition from '@/components/layout/src/layout-teambition.vue'
+import layoutTop from '@/components/layout/src/layout-top.vue'
+import layoutConventional from '@/components/layout/src/layout-conventional.vue'
+import layoutSandwich from '@/components/layout/src/layout-sandwich.vue'
 
 export const layoutList = {
     "conventional": {
@@ -23,11 +22,6 @@ export const layoutList = {
         key: "layoutSandwich",
         value: layoutSandwich
     },
-    // "layoutFullScreen": {
-    //     label: "全屏布局",
-    //     key: "layoutFullScreen",
-    //     value: layoutFullScreen
-    // },
     "teambition": {
         label: "TB布局",
         key: "teambition",

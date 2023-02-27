@@ -1,12 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^18.14.2
   '@vicons/antd': ^0.12.0
   '@vicons/fluent': ^0.12.0
   '@vicons/ionicons5': ^0.11.0
   '@vicons/tabler': ^0.12.0
   '@vitejs/plugin-vue': ^2.3.4
   axios: ^0.21.4
+  components: link:@/components
   cross-env: ^7.0.3
   lodash: ^4.17.21
   naive-ui: ^2.34.3
@@ -29,11 +31,13 @@ dependencies:
   vuex: registry.npmmirror.com/vuex/4.1.0_vue@3.2.47
 
 devDependencies:
+  '@types/node': registry.npmmirror.com/@types/node/18.14.2
   '@vicons/antd': registry.npmmirror.com/@vicons/antd/0.12.0
   '@vicons/fluent': registry.npmmirror.com/@vicons/fluent/0.12.0
   '@vicons/ionicons5': registry.npmmirror.com/@vicons/ionicons5/0.11.0
   '@vicons/tabler': registry.npmmirror.com/@vicons/tabler/0.12.0
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.4_vite@2.9.15+vue@3.2.47
+  components: link:@/components
   naive-ui: registry.npmmirror.com/naive-ui/2.34.3_vue@3.2.47
   typescript: registry.npmmirror.com/typescript/4.9.5
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.17.21_vite@2.9.15+vue@3.2.47
@@ -203,6 +207,12 @@ packages:
     resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.191.tgz}
     name: '@types/lodash'
     version: 4.14.191
+    dev: true
+
+  registry.npmmirror.com/@types/node/18.14.2:
+    resolution: {integrity: sha512-1uEQxww3DaghA0RxqHx0O0ppVlo43pJhepY51OxuQIKHpjbnYLA7vcdwioNPzIqmC2u3I/dmylcqjlh0e7AyUA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-18.14.2.tgz}
+    name: '@types/node'
+    version: 18.14.2
     dev: true
 
   registry.npmmirror.com/@types/throttle-debounce/2.1.0:
