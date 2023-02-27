@@ -44,7 +44,6 @@
     import { setLocalData} from '@utils'
     import { layoutList, themeConfigClass } from './config'
 
-
     const props = defineProps({
         modelValue : Object as PropType<themeConfigClass>
     })

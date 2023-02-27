@@ -106,5 +106,7 @@
     }
     .bread-crumb{
       margin-left: 20px;
+      display: flex;
+      align-items: center;
     }
 </style>
