@@ -1,16 +1,257 @@
 <template>
     <div class="overivew">
-        <n-card title="卡片"> 如果你年轻的时候不 996，你什么时候可以 996？你一辈子没有 996，你觉得你就很骄傲了？这个世界上，我们每一个人都希望成功，都希望美好生活，都希望被尊重，我请问大家，你不付出超越别人的努力和时间，你怎么能够实现你想要的成功？ </n-card>
-        <n-card title="卡片"> 如果你年轻的时候不 996，你什么时候可以 996？你一辈子没有 996，你觉得你就很骄傲了？这个世界上，我们每一个人都希望成功，都希望美好生活，都希望被尊重，我请问大家，你不付出超越别人的努力和时间，你怎么能够实现你想要的成功？ </n-card>
-        <n-card title="卡片"> 如果你年轻的时候不 996，你什么时候可以 996？你一辈子没有 996，你觉得你就很骄傲了？这个世界上，我们每一个人都希望成功，都希望美好生活，都希望被尊重，我请问大家，你不付出超越别人的努力和时间，你怎么能够实现你想要的成功？ </n-card>
+      <n-grid x-gap="12" :cols="4">
+        <n-grid-item :span="1">
+          <n-card >
+            <template #header>
+              访问量
+            </template>
+            <template #header-extra>
+              <span class="day">日</span>
+            </template>
+            <div>
+            <div class="visits" ref="visits"></div>
+            </div>
+            <template #footer>
+              <div class="card-footer">
+                日均访问量: 31,332
+              </div>
+            </template>
+          </n-card>
+        </n-grid-item>
+        <n-grid-item :span="1">
+          <n-card >
+            <template #header>
+              授权树
+            </template>
+            <template #header-extra>
+              <span class="week">周</span>
+            </template>
+            <div>
+              <div class="empower" ref="empower"></div>
+            </div>
+            <template #footer>
+              <div class="card-footer">
+                授权数: 12,041
+              </div>
+            </template>
+          </n-card>
+        </n-grid-item>
+        <n-grid-item :span="2">
+          <n-card>
+            <template #header>
+              信息
+            </template>
+            <template #header-extra>
+              <span class="info">
+                当前版本：V10.5.0   部署时间：2023-02-22 18:47:26
+              </span>
+            </template>
+            <div>
+              <div class="empower">
+                <n-data-table
+                    size="small"
+                    :single-line="false"
+                    :columns="columns"
+                    :data="data"
+                />
+              </div>
+            </div>
+          </n-card>
+        </n-grid-item>
+      </n-grid>
+
+      <n-grid class="grid-2" x-gap="12" :cols="8">
+        <n-grid-item v-for="item in 8" :span="1">
+          <n-card title="访问量">
+          </n-card>
+        </n-grid-item>
+      </n-grid>
     </div>
 </template>
 
 <script setup lang="ts">
+import * as echarts from 'echarts/core';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+} from 'echarts/components';
+import { LineChart,BarChart } from 'echarts/charts';
+import { UniversalTransition } from 'echarts/features';
+import { CanvasRenderer } from 'echarts/renderers';
+import {ref, onMounted, nextTick, h} from 'vue';
+
+echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
+  TooltipComponent,BarChart]);
+let visits = ref<HTMLElement | null>(null);
+let empower = ref<HTMLElement | null>(null);
+let columns = ref<Object[]>([]);
+let data = ref<Object[]>([]);
+
+/**
+ * 访问量
+ */
+function visitsInit(){
+  let option = {
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['2.21', '2.22', '2.23', '2.24', '2.25', '2.26', '2.27']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    tooltip: {
+      trigger: 'axis'
+    },
+    grid:{
+      height:130,
+      bottom:20,
+      left:40,
+      right:20
+    },
+    series: [
+      {
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        smooth: true,
+        areaStyle: {}
+      }
+    ]
+  };
+  let myChart = echarts.init((visits.value as HTMLElement));
+  option && myChart.setOption(option);
+}
+/*
+*授权数
+ */
+function empowerInit(){
+  let option = {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    grid:{
+      height:130,
+      bottom:20,
+      left:40,
+      right:20
+    },
+    series: [
+      {
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar'
+      }
+    ]
+  };
+  let myChart = echarts.init((empower.value as HTMLElement));
+  option && myChart.setOption(option);
+}
+/**
+ *信息表格
+ */
+function tableInit(){
+  columns.value = [
+    {
+      key: 'name',
+      className:'dis-key',
+      align:'right',
+    },
+    {
+      key: 'version',
+      colSpan: (rowData:object, rowIndex:number) => (rowIndex === 3 ? 3 : 1),
+      render:(rowData:{version:string}, rowIndex: number)=>{
+        if(rowIndex === 3){
+          return h('n-button',{},()=>{123})
+        }
+        return `${rowData.version}`
+      }
+    },
+    {
+      key:'name2',
+      className:'dis-key',
+      align:'right',
+    },
+    {
+      key:"version2",
+    }
+  ]
+  data.value = [
+    {
+      "name":'vue',
+      "version":'^3.2.47',
+      "name2":'unplugin-auto-import',
+      "version2":'^0.14.2',
+    },
+    {
+      "name":'pinia',
+      "version":'^2.0.30',
+      "name2":'unplugin-auto-import',
+      "version2":'^0.14.2',
+    },
+    {
+      "name":'typescript',
+      "version":'^4.9.5',
+      "name2":'unplugin-auto-import',
+      "version2":'^0.14.2',
+    },
+    {
+      "name":'授权渠道',
+      "version":'^4.9.5',
+    }
+  ];
+}
+
+
+onMounted(()=>{
+  visitsInit()
+  empowerInit()
+  tableInit();
+  nextTick(()=>{
+    (document.querySelector(".n-data-table-thead") as HTMLElement).style.display="none";
+  })
+})
 
 </script>
 
 <style scoped>
 .overivew{
+}
+.grid-2{
+  margin-top: var(--theme-top-spacing);
+}
+.day{
+  background-color:#edf8e9 ;
+  color: #29d27a;
+  padding: 2px 10px;
+}
+.week{
+  background-color:#fdf5ea;
+  color: #feca70;
+  padding: 2px 10px;
+}
+.info{
+  background-color:#d1e9ff;
+  color: #1890ff;
+  padding: 2px 10px;
+  font-size: 13px;
+}
+.visits,.empower{
+  min-height: 170px;
+}
+.card-footer{
+  height: 40px;
+  text-align: center;
+  display: flex;
+  line-height: 40px;
+  font-size: 14px;
+  border-top: 1px solid #000000;
+}
+.dis-key {
+  background-color: #f6f6f6 !important;
 }
 </style>

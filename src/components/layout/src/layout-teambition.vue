@@ -77,9 +77,10 @@
       display: flex;
     }
     .layout-navigation{
-      width: 200px;
+      width: 280px;
       box-shadow: 0 0px 5px 1px rgb(57 66 60 / 20%);
       height: 100vh;
+      overflow: auto;
       margin-right: 2px;
     }
     .layout-main{

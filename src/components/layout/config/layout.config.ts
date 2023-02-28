@@ -23,60 +23,342 @@ export const menuOption:menuOptions[]=[
     {
         label: '概览',
         key: 'overivew',
-        icon: renderIcon(BookIcon)
     },
     {
-        label: '项目与录屏',
-        key: 'projectsAndScree',
-        icon: renderIcon(BookIcon),
+        label: '组件',
+        key: 'subassembly',
         children: [
             {
-                label: '项目管理',
-                key: 'project',
-                parendKey:"projectsAndScree",
+                label: '图标',
+                key: 'icon',
+                parendKey:"subassembly",
             },
             {
-                label:"录屏管理",
-                key: 'screen',
-                parendKey:"projectsAndScree",
-            }
+                label:"表格",
+                key: 'table',
+                parendKey:"subassembly",
+                children:[
+                    {
+                        label:"综合表格",
+                        key: 'synthesis',
+                        parendKey:"table",
+                    },
+                    {
+                        label:"行内编辑表格",
+                        key: 'Inline',
+                        parendKey:"table",
+                    },
+                    {
+                        label:"自定义表格",
+                        key: 'custom',
+                        parendKey:"table",
+                    },
+                    {
+                        label:"动态表格",
+                        key: 'dynamic',
+                        parendKey:"table",
+                    },
+                ],
+            },
+            {
+                label:"列表",
+                key: 'list',
+                parendKey:"subassembly",
+            },
+            {
+                label:"描述",
+                key: 'desc',
+                parendKey:"subassembly",
+            },
+            {
+                label:"日历",
+                key: 'calendar',
+                parendKey:"subassembly",
+            },
+            {
+                label:"编辑器",
+                key: 'editor',
+                parendKey:"subassembly",
+                children:[
+                    {
+                        label:"腾讯文档",
+                        key: 'tencent',
+                        parendKey:"editor",
+                    },
+                ],
+            },
+            {
+                label:"表单",
+                key: 'form',
+                parendKey:"subassembly",
+                children:[
+                    {
+                        label:"综合表单",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"分布表单",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"按钮",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"文字链接",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"单选框",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"多选框",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"输入框",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"计数器",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"选择器",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"开关",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"滑块",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"时间选择器",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"日期选择器",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"日期时间选择器",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                    {
+                        label:"评分",
+                        key: 'screen',
+                        parendKey:"form",
+                    },
+                ],
+            },
         ]
     },
     {
-        label: '数据',
-        key: 'data',
-        icon: renderIcon(BookIcon),
-    },
-    {
-        label: '系统',
-        key: 'system',
-        icon: renderIcon(BookIcon),
+        label: '其他',
+        key: 'other',
         children: [
             {
-                label: '操作日志',
+                label: '工作流',
                 key: 'operationLog',
-                parendKey:"system",
+                parendKey:"other",
             },
             {
-                label:"产品线管理",
+                label:"图表",
                 key: 'product',
-                parendKey:"system",
+                parendKey:"other",
             },
             {
-                label:"广告主管理",
+                label:"打印",
                 key: 'advertise',
-                parendKey:"system",
+                parendKey:"other",
             },
             {
-                label:"账户管理",
+                label:"通知",
                 key: 'account',
-                parendKey:"system",
+                parendKey:"other",
             },
             {
-                label:"角色管理",
+                label:"时间线",
                 key: 'role',
-                parendKey:"system",
-            }
+                parendKey:"other",
+            },
+            {
+                label:"多标签",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"水印",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"分享",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"动态锚点",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"动态Meta",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"动态路径参数",
+                key: 'dynamicParams',
+                parendKey:"other",
+                children:[
+                    {
+                        label:"Params id=1",
+                        key: 'role',
+                        parendKey:"dynamicParams",
+                    },
+                    {
+                        label:"Query id=1",
+                        key: 'role',
+                        parendKey:"dynamicParams",
+                    }
+                ]
+            },
+            {
+                label:"拖拽",
+                key: 'drag',
+                parendKey:"other",
+                children:[
+                    {
+                        label:"弹窗拖拽",
+                        key: 'role',
+                        parendKey:"drag",
+                    },
+                    {
+                        label:"卡片拖拽",
+                        key: 'role',
+                        parendKey:"drag",
+                    }
+                ]
+            },
+            {
+                label:"无框",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"上传",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"多级路由缓存",
+                key: 'multiLevelCaching',
+                parendKey:"other",
+                children:[
+                    {
+                        label:"多级路由1-1",
+                        key: 'multiLevelCaching1-1',
+                        parendKey:"multiLevelCaching",
+                        children:[
+                            {
+                                label:"多级路由1-1-1",
+                                key: 'multiLevelCaching1-1-1',
+                                parendKey:"multiLevelCaching1-1",
+                                children:[
+                                    {
+                                        label:"多级路由1-1-1-1",
+                                        key: 'multiLevelCaching1-1-1-1',
+                                        parendKey:"multiLevelCaching1-1-1",
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+            },
+            {
+                label:"错误日志模拟",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"Css动画",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"第三方登录",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"外链",
+                key: 'role',
+                parendKey:"other",
+            },
+            {
+                label:"iframe",
+                key: 'iframe',
+                parendKey:"other",
+                children: [
+                    {
+                        label:"360搜索",
+                        key: 'role',
+                        parendKey:"iframe",
+                    },
+                    {
+                        label:"哔哩哔哩",
+                        key: 'role',
+                        parendKey:"iframe",
+                    },
+                    {
+                        label:"自定义iframe",
+                        key: 'role',
+                        parendKey:"iframe",
+                    }
+                ]
+            },
+            {
+                label:"Execl",
+                key: 'execl',
+                parendKey:"other",
+                children: [
+                    {
+                        label:"导出Execl",
+                        key: 'role',
+                        parendKey:"execl",
+                    },
+                    {
+                        label:"导出选中行Excel",
+                        key: 'role',
+                        parendKey:"execl",
+                    },
+                    {
+                        label:"导出合并Excel",
+                        key: 'role',
+                        parendKey:"execl",
+                    }
+                ]
+            },
         ]
     },
 ];
