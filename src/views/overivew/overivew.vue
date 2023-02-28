@@ -62,8 +62,11 @@
       </n-grid>
 
       <n-grid class="grid-2" x-gap="12" :cols="8">
-        <n-grid-item v-for="item in 8" :span="1">
+        <n-grid-item v-for="item in matrixList" :span="1">
           <n-card title="访问量">
+            <template #footer>
+              {{item.name}}
+            </template>
           </n-card>
         </n-grid-item>
       </n-grid>
@@ -81,6 +84,7 @@ import { LineChart,BarChart } from 'echarts/charts';
 import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import {ref, onMounted, nextTick, h} from 'vue';
+import { NButton } from 'naive-ui'
 
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
@@ -88,6 +92,40 @@ let visits = ref<HTMLElement | null>(null);
 let empower = ref<HTMLElement | null>(null);
 let columns = ref<Object[]>([]);
 let data = ref<Object[]>([]);
+let matrixList = [
+  {
+    name:'随机换肤',
+    icon:"",
+  },
+  {
+    name:'主题配置',
+    icon:'',
+  },
+  {
+    name:"网站升级",
+    icon:'',
+  },
+  {
+    name:"百度一下",
+    icon:'',
+  },
+  {
+    name:'视频播放器',
+    icon:''
+  },
+  {
+    name:'表格',
+    icon:''
+  },
+  {
+    name:'源码',
+    icon:''
+  },
+  {
+    name:"公告",
+    icon:''
+  }
+]
 
 /**
  * 访问量
@@ -160,24 +198,29 @@ function tableInit(){
       key: 'name',
       className:'dis-key',
       align:'right',
+      width:170,
     },
     {
       key: 'version',
       colSpan: (rowData:object, rowIndex:number) => (rowIndex === 3 ? 3 : 1),
       render:(rowData:{version:string}, rowIndex: number)=>{
         if(rowIndex === 3){
-          return h('n-button',{},()=>{123})
+          return [h(NButton,{type:"info",class:'btn',size:"small"},{default:()=> "免费开源"}),
+            h(NButton,{type:"warning", class:'btn',size:"small"},{default:()=>"持续维护"})]
         }
         return `${rowData.version}`
-      }
+      },
+      width:170,
     },
     {
       key:'name2',
       className:'dis-key',
       align:'right',
+      width:170,
     },
     {
       key:"version2",
+      width:170,
     }
   ]
   data.value = [
@@ -250,6 +293,14 @@ onMounted(()=>{
   line-height: 40px;
   font-size: 14px;
   border-top: 1px solid #000000;
+}
+
+
+</style>
+<style>
+.btn{
+  font-size: 12px !important;
+  margin-left: 10px !important;
 }
 .dis-key {
   background-color: #f6f6f6 !important;
