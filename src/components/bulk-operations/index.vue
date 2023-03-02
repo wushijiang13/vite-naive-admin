@@ -26,12 +26,12 @@
 <script setup lang="ts">
   import { CloseOutline } from '@vicons/ionicons5'
   import { ref,reactive,defineEmits,defineProps,watch,onMounted} from 'vue'
-  import { useBulk } from './config/config.ts'
+  import { useBulk } from './config/config'
   const emits = defineEmits(['deleteClickOk','closeClick'])
   const { data , options } = defineProps(['data','options']);
-  const  { moduleList }  = useBulk(options)
+  let moduleList = useBulk(options)
 
-  const isShow = ref(true);
+  const isShow = ref(false);
 
   const bulkOperations = (item)=>{
     emits(item.emitsKey,data)

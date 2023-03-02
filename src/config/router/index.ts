@@ -1,16 +1,15 @@
-import {RouteRecordRaw} from 'vue-router';
 import layout from '@/components/layout/index.vue'
 
-const routers:Array<RouteRecordRaw>=[
+const routers:Object[]=[
     {
         path:'/',
         name:'index',
         component:layout,
+        redirect:'/overivew',
         children: [
             {
                 path:'/overivew',
-                // @ts-ignore
-                //这里两个用于路由守卫 权限判断使用
+                name:'overivew',
                 meta:{
                     code:'overivew',
                     overivew:'@/views/overivew/overivew.vue',
@@ -19,12 +18,22 @@ const routers:Array<RouteRecordRaw>=[
                 component:() => import('@/views/overivew/overivew.vue'),
             },
             {
-                path:'/project',
-                component:() =>import('@/views/project/project.vue'),
+                path:'/likeIcon',
+                name:'likeIcon',
+                meta:{
+                    code:'likeIcon',
+                    likeIcon:'@/views/icons/likeIcon.vue',
+                },
+                component:() => import('@/views/icons/likeIcon.vue'),
             },
             {
-                path:'/screen',
-                component:() =>import('@/views/screen/screen.vue')
+                path:'/table/synthesis',
+                name:'synthesis',
+                meta:{
+                    code:'synthesis',
+                    synthesis:'@/views/table/synthesis.vue',
+                },
+                component:() => import('@/views/table/synthesis/synthesis.vue'),
             }
         ]
     },

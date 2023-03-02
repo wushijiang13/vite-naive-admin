@@ -36,12 +36,14 @@
 </template>
 
 <script setup lang="ts">
-  import {menuOption,menuOptions} from '../config/layout.config';
-  import {ref} from 'vue';
+  import { menuOption,flatList } from '../config/layout.config';
+  import type { menuOptions } from '../config/layout.config';
+  import { ref} from 'vue';
+  import type { Ref } from 'vue';
   import { useRouter } from "vue-router";
   import { zhCN, dateZhCN } from 'naive-ui'
 
-  let bread = ref([]);
+  let bread:Ref<menuOptions[]> = ref([]);
   let menuValue = ref("overviews");
   let router = useRouter();
 
@@ -50,18 +52,28 @@
    * @param key
    * @param item
    */
-  function menuAction(key: string, item: menuOptions){
-    let result = [];
+  function  menuAction(key: string, item: menuOptions){
+    bread.value = [];
+    console.log(key, item);
+    recursionBread(key,item);
+    router.push({name:key})
+  }
+
+  /**
+   * 递归获取面包屑
+   * @param key
+   * @param item
+   */
+  function recursionBread(key: string, item: menuOptions){
+    bread.value.unshift(item);
     if (item.hasOwnProperty("parendKey")) {
-      result.push(menuOption.find(findItem=>{
+      let parentItem:menuOptions | undefined =  flatList.find((findItem:menuOptions)=>{
         return item.parendKey == findItem.key;
-      }))
-      result.push(item);
-    }else{
-      result.push(item);
+      })
+      if(parentItem){
+        recursionBread(parentItem['key'],parentItem);
+      }
     }
-    bread.value = result;
-    router.push(key)
   }
 </script>
 

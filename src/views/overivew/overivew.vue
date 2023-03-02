@@ -62,7 +62,7 @@
       </n-grid>
 
       <n-grid class="grid-2" x-gap="12" :cols="8">
-        <n-grid-item v-for="item in matrixList" :span="1">
+         <n-grid-item v-for="item in matrixList" :span="1">
           <n-card title="访问量">
             <template #footer>
               {{item.name}}

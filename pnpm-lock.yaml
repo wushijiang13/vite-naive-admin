@@ -3,7 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@types/node': ^18.14.2
   '@vicons/antd': ^0.12.0
+  '@vicons/carbon': ^0.12.0
   '@vicons/fluent': ^0.12.0
+  '@vicons/ionicons4': ^0.12.0
   '@vicons/ionicons5': ^0.11.0
   '@vicons/tabler': ^0.12.0
   '@vitejs/plugin-vue': ^2.3.4
@@ -35,7 +37,9 @@ dependencies:
 devDependencies:
   '@types/node': registry.npmmirror.com/@types/node/18.14.2
   '@vicons/antd': registry.npmmirror.com/@vicons/antd/0.12.0
+  '@vicons/carbon': registry.npmmirror.com/@vicons/carbon/0.12.0
   '@vicons/fluent': registry.npmmirror.com/@vicons/fluent/0.12.0
+  '@vicons/ionicons4': registry.npmmirror.com/@vicons/ionicons4/0.12.0
   '@vicons/ionicons5': registry.npmmirror.com/@vicons/ionicons5/0.11.0
   '@vicons/tabler': registry.npmmirror.com/@vicons/tabler/0.12.0
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.4_vite@2.9.15+vue@3.2.47
@@ -229,9 +233,21 @@ packages:
     version: 0.12.0
     dev: true
 
+  registry.npmmirror.com/@vicons/carbon/0.12.0:
+    resolution: {integrity: sha512-kCOgr/ZOhZzoiFLJ8pwxMa2TMxrkCUOA22qExPabus35F4+USqzcsxaPoYtqRd9ROOYiHrSqwapak/ywF0D9bg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vicons/carbon/-/carbon-0.12.0.tgz}
+    name: '@vicons/carbon'
+    version: 0.12.0
+    dev: true
+
   registry.npmmirror.com/@vicons/fluent/0.12.0:
     resolution: {integrity: sha512-ATCiqPuiJ6RI5GBlD3BIpZ9Xw4MsCA4RpI5oR6MCti4quS4mX1Gp6N74FCzw7lgOj+80rV4HMKhZTVInwimpVQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vicons/fluent/-/fluent-0.12.0.tgz}
     name: '@vicons/fluent'
+    version: 0.12.0
+    dev: true
+
+  registry.npmmirror.com/@vicons/ionicons4/0.12.0:
+    resolution: {integrity: sha512-i+7YwlpCrqD6m9esbZLy1bpVQlh4CKugtS3OzgfNw6BLTQQK6HT7drktaJgcESj/BTr4avdNbAtMQXx56wSVMg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vicons/ionicons4/-/ionicons4-0.12.0.tgz}
+    name: '@vicons/ionicons4'
     version: 0.12.0
     dev: true
 

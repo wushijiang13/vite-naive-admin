@@ -30,7 +30,7 @@ export const menuOption:menuOptions[]=[
         children: [
             {
                 label: '图标',
-                key: 'icon',
+                key: 'likeIcon',
                 parendKey:"subassembly",
             },
             {
@@ -362,3 +362,21 @@ export const menuOption:menuOptions[]=[
         ]
     },
 ];
+
+export let flatList:[] = [];
+
+const flatMeun = ():void=>{
+    flatArray(menuOption);
+    console.log(flatList);
+}
+function flatArray(arr:any){
+    // @ts-ignore
+    flatList.push(...arr);
+    arr.forEach((item:any)=>{
+        if (item.hasOwnProperty("children")) {
+            flatArray(item.children);
+        }
+    })
+}
+flatMeun();
+
