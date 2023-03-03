@@ -45,7 +45,7 @@ export const menuOption:menuOptions[]=[
                     },
                     {
                         label:"行内编辑表格",
-                        key: 'Inline',
+                        key: 'inline',
                         parendKey:"table",
                     },
                     {

@@ -463,6 +463,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 .table-select  .n-button,.table-select-slot .n-button,.table-select  .n-input{
   margin-left: 10px;

@@ -34,6 +34,15 @@ const routers:Object[]=[
                     synthesis:'@/views/table/synthesis.vue',
                 },
                 component:() => import('@/views/table/synthesis/synthesis.vue'),
+            },
+            {
+                path:'/table/lineEditing',
+                name:'inline',
+                meta:{
+                    code:'inline',
+                    synthesis:'@/views/table/inline.vue',
+                },
+                component:() => import('@/views/table/lineEditing/inline.vue'),
             }
         ]
     },
