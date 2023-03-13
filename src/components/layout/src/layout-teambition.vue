@@ -3,21 +3,44 @@
     <div class="layout-teambition">
       <n-config-provider class="layout-config-provider-box" :locale="zhCN" :date-locale="dateZhCN">
         <div class="layout-navigation">
-            <div class="logo">
-              运营支撑平台
-            </div>
-            <div>
-              <n-menu
-                  :options="menuOption"
-                  :default-value="menuValue"
-                  :default-expanded-keys="['projectsAndScree','system']"
-                  @update:value="menuAction"
-              />
-            </div>
+          <n-space vertical>
+            <n-layout has-sider>
+              <n-layout-sider
+                  bordered
+                  collapse-mode="width"
+                  :collapsed-width="64"
+                  :width="240"
+                  :collapsed="isCollapsed"
+              >
+                <div class="logo">
+                  <n-icon size="30"><LogoVue/></n-icon>
+                  <transition>
+                    <span v-show="!isCollapsed">运营支撑平台</span>
+                  </transition>
+                </div>
+                <div>
+                  <n-menu
+                      :collapsed="isCollapsed"
+                      :options="menuOption"
+                      :default-value="menuValue"
+                      :default-expanded-keys="['projectsAndScree','system']"
+                      @update:value="menuAction"
+                      :render-icon="renderIcon"
+                      collapsed-icon-size="18"
+                      collapsed-width="60"
+                  />
+                </div>
+              </n-layout-sider>
+            </n-layout>
+          </n-space>
           </div>
         <div class="layout-main">
               <div class="layout-inherit-flex-box">
                   <div class="layout-header">
+                    <n-button text class="layout-stow" @click="menuStow">
+                      <n-icon size="18" :component="
+                        isCollapsed ? LayoutSidebarLeftExpand : LayoutSidebarLeftCollapse"/>
+                    </n-button>
                     <div class="bread-crumb">
                       <n-breadcrumb separator=">">
                         <n-breadcrumb-item v-for="item in bread">
@@ -38,14 +61,23 @@
 <script setup lang="ts">
   import { menuOption,flatList } from '../config/layout.config';
   import type { menuOptions } from '../config/layout.config';
-  import { ref} from 'vue';
+  import { ref,h } from 'vue';
   import type { Ref } from 'vue';
   import { useRouter } from "vue-router";
   import { zhCN, dateZhCN } from 'naive-ui'
+  import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
+  import { LogoVue } from '@vicons/ionicons5'
+  import type {MenuOption} from 'naive-ui'
+  import  {NIcon} from 'naive-ui'
 
+  const router = useRouter();
   let bread:Ref<menuOptions[]> = ref([]);
   let menuValue = ref("overviews");
-  let router = useRouter();
+  let isCollapsed = ref(false);
+
+  function renderIcon(option: MenuOption){
+    return option["icon"] ? h(NIcon,{component:option["icon"],size:'18'}) : '';
+  }
 
   /**
    * 通过parendKey 生成二级面包屑
@@ -54,7 +86,6 @@
    */
   function  menuAction(key: string, item: menuOptions){
     bread.value = [];
-    console.log(key, item);
     recursionBread(key,item);
     router.push({name:key})
   }
@@ -75,6 +106,9 @@
       }
     }
   }
+  function menuStow(){
+    isCollapsed.value = !isCollapsed.value;
+  }
 </script>
 
 <style scoped>
@@ -89,7 +123,7 @@
       display: flex;
     }
     .layout-navigation{
-      width: 280px;
+      /*width: 280px;*/
       box-shadow: 0 0px 5px 1px rgb(57 66 60 / 20%);
       height: 100vh;
       overflow: auto;
@@ -106,6 +140,9 @@
       box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
       display: inline-flex;
     }
+    .layout-stow{
+      margin-left: 20px;
+    }
     .laout-content{
       padding: 20px;
       padding-bottom: 0px;
@@ -113,13 +150,22 @@
     .logo{
       font-size: 20px;
       line-height: 60px;
-      display:block;
+      height: 60px;
       text-align: center;
       font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .bread-crumb{
-      margin-left: 20px;
+      margin-left: 12px;
       display: flex;
       align-items: center;
+    }
+    .v-enter-active{
+      transition-delay: 0.1s;
+    }
+    .v-enter-from{
+      opacity: 0;
     }
 </style>

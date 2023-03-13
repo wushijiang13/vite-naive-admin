@@ -22,7 +22,7 @@
                       <ChevronUp v-if="isSearchShow"/>
                       <ChevronDown v-else/>
                     </template>
-                    合并
+                    {{isSearchShow ? "合并" : "展开"}}
                   </n-button>
                 </n-gi>
               </n-grid>

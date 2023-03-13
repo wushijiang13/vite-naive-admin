@@ -4,7 +4,9 @@ import { NIcon } from 'naive-ui';
 import { h } from 'vue'
 import {
     BookOutline as BookIcon,
+    FileTrayFullOutline
 } from '@vicons/ionicons5'
+import { Home12Regular,Code16Filled,Image24Regular } from '@vicons/fluent'
 
 // @ts-ignore
 function renderIcon (icon) {
@@ -23,14 +25,17 @@ export const menuOption:menuOptions[]=[
     {
         label: '概览',
         key: 'overivew',
+        icon:Home12Regular,
     },
     {
         label: '组件',
         key: 'subassembly',
+        icon:Code16Filled,
         children: [
             {
                 label: '图标',
                 key: 'likeIcon',
+                icon:Image24Regular,
                 parendKey:"subassembly",
             },
             {
@@ -174,6 +179,7 @@ export const menuOption:menuOptions[]=[
     {
         label: '其他',
         key: 'other',
+        icon:FileTrayFullOutline,
         children: [
             {
                 label: '工作流',

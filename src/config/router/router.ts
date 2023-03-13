@@ -18,28 +18,6 @@ router.beforeEach((to, from, next) => {
     const { isLogin } = store.state.users || {};
     const { path, fullPath } = to;
     next();
-    // if (fullPath === "/login") {
-    //     next();
-    // } else if (!isLogin) {
-    //     return next({
-    //         path: "/login"
-    //     });
-    // } else if (fullPath === "/permission") {
-    //     next();
-    // } else {
-    //     const code = to.meta[to.meta.code as string];
-    //     let token = getLocalData("USERS")?.token;
-    //     if (token !== store.state.users.token) {
-    //         window.location.reload();
-    //     }
-    //     if (store.getters.getPower(code)) {
-    //         next();
-    //     } else {
-    //         return next({
-    //             path: "/permission"
-    //         });
-    //     }
-    // }
 })
 
 export { router,initRouter };

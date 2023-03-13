@@ -1,6 +1,6 @@
 import layout from '@/components/layout/index.vue'
-
-const routers:Object[]=[
+import type { RouteRecordRaw} from "vue-router";
+const routers:RouteRecordRaw[]=[
     {
         path:'/',
         name:'index',
@@ -12,6 +12,7 @@ const routers:Object[]=[
                 name:'overivew',
                 meta:{
                     code:'overivew',
+                    pageName:"概览",
                     overivew:'@/views/overivew/overivew.vue',
                     
                 },
@@ -22,6 +23,7 @@ const routers:Object[]=[
                 name:'likeIcon',
                 meta:{
                     code:'likeIcon',
+                    pageName:"图标",
                     likeIcon:'@/views/icons/likeIcon.vue',
                 },
                 component:() => import('@/views/icons/likeIcon.vue'),
@@ -31,6 +33,7 @@ const routers:Object[]=[
                 name:'synthesis',
                 meta:{
                     code:'synthesis',
+                    pageName:"综合表格",
                     synthesis:'@/views/table/synthesis.vue',
                 },
                 component:() => import('@/views/table/synthesis/synthesis.vue'),
@@ -40,6 +43,7 @@ const routers:Object[]=[
                 name:'inline',
                 meta:{
                     code:'inline',
+                    pageName:"行内表格",
                     synthesis:'@/views/table/inline.vue',
                 },
                 component:() => import('@/views/table/lineEditing/inline.vue'),
