@@ -1,7 +1,6 @@
 /**
  * 面包屑
  */
-import { useStore } from "@pinia";
 
 export interface menuOptions{
     label:string,
@@ -28,9 +27,4 @@ export const recursionBread = (key: string, item: menuOptions,flatList,bread) =>
         }
     }
 }
-
-export const generateBread = () => {
-    const store = useStore();
-}
-
 
