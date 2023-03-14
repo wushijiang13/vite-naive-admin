@@ -8,7 +8,8 @@ export default defineConfig({
   resolve:{
     alias: {
         "@": path.resolve(__dirname, "src/"),
-        "@utils": path.resolve(__dirname, "src/utils/")
+        "@utils": path.resolve(__dirname, "src/utils"),
+        "@pinia": path.resolve(__dirname, "src/config/pinia")
     },
     extensions: ['.js', '.json', '.ts']
   },

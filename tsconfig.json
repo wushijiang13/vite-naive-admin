@@ -3,7 +3,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@utils": ["src/utils"]
+      "@utils": ["src/utils"],
+      "@utils/*": ["src/utils/*"],
+      "@pinia": ["src/config/pinia"]
     },
     "target": "esnext",
     "useDefineForClassFields": true,

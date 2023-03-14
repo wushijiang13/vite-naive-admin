@@ -22,7 +22,7 @@
                   <n-menu
                       :collapsed="isCollapsed"
                       :options="menuOption"
-                      :default-value="menuValue"
+                      v-model:value="menuValue"
                       :default-expanded-keys="['projectsAndScree','system']"
                       @update:value="menuAction"
                       :render-icon="renderIcon"
@@ -60,10 +60,11 @@
 
 <script setup lang="ts">
   import { menuOption,flatList } from '../config/layout.config';
-  import type { menuOptions } from '../config/layout.config';
-  import { ref,h } from 'vue';
+  import { menuOptions } from "@utils/bread";
+  import { recursionBread } from '@utils/bread'
+  import {ref, h, onMounted} from 'vue';
   import type { Ref } from 'vue';
-  import { useRouter } from "vue-router";
+  import { useRouter,useRoute } from "vue-router";
   import { zhCN, dateZhCN } from 'naive-ui'
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
   import { LogoVue } from '@vicons/ionicons5'
@@ -71,6 +72,7 @@
   import  {NIcon} from 'naive-ui'
 
   const router = useRouter();
+  const route = useRoute();
   let bread:Ref<menuOptions[]> = ref([]);
   let menuValue = ref("overviews");
   let isCollapsed = ref(false);
@@ -84,31 +86,33 @@
    * @param key
    * @param item
    */
-  function  menuAction(key: string, item: menuOptions){
-    bread.value = [];
-    recursionBread(key,item);
+  function menuAction(key: string, item: menuOptions){
+    let breads = [];
+    recursionBread(key,item,flatList,breads);
+    bread.value = breads;
     router.push({name:key})
   }
 
-  /**
-   * 递归获取面包屑
-   * @param key
-   * @param item
-   */
-  function recursionBread(key: string, item: menuOptions){
-    bread.value.unshift(item);
-    if (item.hasOwnProperty("parendKey")) {
-      let parentItem:menuOptions | undefined =  flatList.find((findItem:menuOptions)=>{
-        return item.parendKey == findItem.key;
-      })
-      if(parentItem){
-        recursionBread(parentItem['key'],parentItem);
-      }
-    }
-  }
   function menuStow(){
     isCollapsed.value = !isCollapsed.value;
   }
+
+  /**
+   * 初始化，包含面包屑初始化
+   * menu 导航默认选中
+   */
+  function init(){
+    let targetItem = flatList.find(item=>{
+      return item.key == route.name ? item : null;
+    })
+    menuValue.value = route.name;
+    menuAction(route.name,targetItem);
+  }
+
+  onMounted(()=>{
+    init();
+  })
+
 </script>
 
 <style scoped>
@@ -123,7 +127,6 @@
       display: flex;
     }
     .layout-navigation{
-      /*width: 280px;*/
       box-shadow: 0 0px 5px 1px rgb(57 66 60 / 20%);
       height: 100vh;
       overflow: auto;

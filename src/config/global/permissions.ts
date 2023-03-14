@@ -1,8 +1,7 @@
-// @ts-ignore
-import store from "@/config/store/index";
-// @ts-ignore
-import {app}  from "@/config/vue/app";
+import { app }  from "@/config/vue/app";
+import { useStore } from "@pinia";
 app.config.globalProperties.$permissions = (code: string[] | string) => {
-   return store.getters.getPower(code);
+   const store = useStore();
+   return store.getPower(code);
 };
 

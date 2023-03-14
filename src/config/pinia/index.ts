@@ -1,5 +1,6 @@
-import { createStore } from "vuex";
+import { defineStore } from "pinia";
 import { setLocalData , getLocalData } from "@utils";
+import layoutConventional from "@/components/layout/src/layout-conventional.vue";
 
 const INIT_USERS = {
   email: "",
@@ -14,20 +15,16 @@ const INIT_USERS = {
 
 const INIT_STATE = {
   users: getLocalData("USERS") || INIT_USERS,
-  routerPermissions:[
-
-  ],
+  routerPermissions:[],
+  themeConfigs:{
+    label: "常规布局",
+    key: "conventional",
+    value: layoutConventional
+  }
 };
 
-export default createStore({
-  state: INIT_STATE,
-  mutations: {
-    // 设置登陆信息
-    SET_USERS(state, payload) {
-      state.users = Object.assign({}, state.users, payload);
-      setLocalData("USERS", state.users);
-    },
-  },
+export const useStore =  defineStore('store',{
+  state: ()=> INIT_STATE,
   actions: {
     login: ({ commit }, params) => {
       commit("SET_USERS", {
@@ -40,7 +37,12 @@ export default createStore({
         isLogin: false
       });
       window.location.href = "/login";
-    }
+    },
+    // 设置登陆信息
+    SET_USERS(state, payload) {
+      state.users = Object.assign({}, state.users, payload);
+      setLocalData("USERS", state.users);
+    },
   },
   getters: {
     getPower: (state: any) => (id: string[] | string) => {

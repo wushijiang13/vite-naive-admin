@@ -1,10 +1,11 @@
-// @ts-ignore
-import store from "@/config/store/index";
+import {useStore} from "@pinia";
+
 import { Directive, nextTick } from "vue";
 const directive: Directive = {
   mounted(el, { value }) {
     nextTick(() => {
-      const status = store.getters.getPower(value);
+      const store = useStore();
+      const status = store.getPower(value);
       if (status) return;
       el.parentNode && el.parentNode.removeChild(el);
     });

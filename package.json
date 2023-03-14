@@ -12,10 +12,10 @@
     "cross-env": "^7.0.3",
     "echarts": "^5.4.1",
     "lodash": "^4.17.21",
+    "pinia": "^2.0.33",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
-    "vuedraggable": "^4.1.0",
-    "vuex": "^4.1.0"
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",

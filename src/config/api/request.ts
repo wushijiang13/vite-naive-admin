@@ -1,7 +1,7 @@
 import axios, { Method, AxiosRequestConfig } from "axios";
 import { useNotification } from "naive-ui";
-// @ts-ignore
-import store from "@/config/store/index";
+import {useStore} from '@pinia'
+const store:any = useStore();
 
 export type TResult<T = any> = Promise<{
   data: T;
@@ -36,7 +36,7 @@ request.interceptors.response.use(
         case 506:
           return res.data;
         case 1005: // 登录过期
-          store.dispatch("loginOut");
+          store.loginOut();
           return;
         default:
           notification['error']({

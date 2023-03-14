@@ -7,20 +7,13 @@ import {
     FileTrayFullOutline
 } from '@vicons/ionicons5'
 import { Home12Regular,Code16Filled,Image24Regular } from '@vicons/fluent'
+import { menuOptions } from "@utils/bread";
 
 // @ts-ignore
 function renderIcon (icon) {
     return () => h(NIcon, null, { default: () => h(icon) })
 }
 
-export interface menuOptions{
-    label:string,
-    key:string,
-    parendKey?:string,
-    icon?:any,
-    disabled?:boolean,
-    children?:menuOptions[],
-}
 export const menuOption:menuOptions[]=[
     {
         label: '概览',
@@ -373,7 +366,6 @@ export let flatList:[] = [];
 
 const flatMeun = ():void=>{
     flatArray(menuOption);
-    console.log(flatList);
 }
 function flatArray(arr:any){
     // @ts-ignore
