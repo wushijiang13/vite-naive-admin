@@ -28,6 +28,7 @@
                       :render-icon="renderIcon"
                       collapsed-icon-size="18"
                       collapsed-width="60"
+                      ref="menuRef"
                   />
                 </div>
               </n-layout-sider>
@@ -50,8 +51,8 @@
                     </div>
                   </div>
               </div>
-              <div class="laout-content">
-                  <router-view/>
+              <div>
+                <layoutTab />
               </div>
           </div>
       </n-config-provider>
@@ -65,15 +66,18 @@
   import {ref, h, onMounted} from 'vue';
   import type { Ref } from 'vue';
   import { useRouter,useRoute } from "vue-router";
-  import { zhCN, dateZhCN } from 'naive-ui'
+  import { zhCN, dateZhCN,NIcon} from 'naive-ui'
+  import type {MenuOption} from 'naive-ui'
+  import { useStore } from "@pinia";
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
   import { LogoVue } from '@vicons/ionicons5'
-  import type {MenuOption} from 'naive-ui'
-  import  {NIcon} from 'naive-ui'
+  import layoutTab from '@components/layout-tab/layout-tab.vue'
 
   const router = useRouter();
   const route = useRoute();
+  const store = useStore();
   let bread:Ref<menuOptions[]> = ref([]);
+  let menuRef = ref(null);
   let menuValue = ref("overviews");
   let isCollapsed = ref(false);
 
@@ -88,13 +92,25 @@
    */
   function menuAction(key: string, item: menuOptions){
     let breads = [];
+    store.TabPageListPush(item);
+    store.$patch({
+      tabPageActive:item.key,
+    })
     recursionBread(key,item,flatList,breads);
     bread.value = breads;
     router.push({name:key})
   }
-
+  /**
+   * 控制menu是否抽屉展开
+   */
   function menuStow(){
     isCollapsed.value = !isCollapsed.value;
+  }
+  /**
+   * 是否展开列表
+   */
+  function menuExpand(key){
+    menuRef.value?.showOption(key)
   }
 
   /**
@@ -107,6 +123,7 @@
     })
     menuValue.value = route.name;
     menuAction(route.name,targetItem);
+    menuExpand(targetItem.key);
   }
 
   onMounted(()=>{
@@ -145,10 +162,6 @@
     }
     .layout-stow{
       margin-left: 20px;
-    }
-    .laout-content{
-      padding: 20px;
-      padding-bottom: 0px;
     }
     .logo{
       font-size: 20px;

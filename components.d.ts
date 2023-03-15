@@ -9,6 +9,7 @@ declare module 'vue' {
     LayoutConventional: typeof import('./src/components/layout/src/layout-conventional.vue')['default']
     LayoutFullScreen: typeof import('./src/components/layout/src/layout-full-screen.vue')['default']
     LayoutSandwich: typeof import('./src/components/layout/src/layout-sandwich.vue')['default']
+    LayoutTab: typeof import('./src/components/layout-tab/layout-tab.vue')['default']
     LayoutTeambition: typeof import('./src/components/layout/src/layout-teambition.vue')['default']
     LayoutTop: typeof import('./src/components/layout/src/layout-top.vue')['default']
     Setting: typeof import('./src/components/setting/setting.vue')['default']

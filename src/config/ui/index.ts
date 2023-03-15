@@ -25,11 +25,12 @@ import {
     NSelect,
     NDatePicker,
     NTag,
-    NSwitch,
     NCheckboxGroup,
     NCheckbox,
     NAffix,
-    NPagination
+    NPagination,
+    NTabs,
+    NTabPane
 } from 'naive-ui'
 
 const naive = create({
@@ -37,6 +38,6 @@ const naive = create({
         NRadioButton,NGrid,NGridItem,NMenu,NBreadcrumb,NBreadcrumbItem,NDrawer,
         NDrawerContent,NConfigProvider,NInput,NSelect,NDatePicker,NTag,NSwitch,
         NCheckboxGroup,NCheckbox,NAffix,NPagination,
-        NSwitch,NLayout, NLayoutSider,NDataTable]
+        NSwitch,NLayout, NLayoutSider,NDataTable,NTabs,NTabPane]
 })
 export {naive}

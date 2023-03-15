@@ -5,10 +5,12 @@
 export interface menuOptions{
     label:string,
     key:string,
+    component?:any,
     parendKey?:string,
     icon?:any,
     disabled?:boolean,
     children?:menuOptions[],
+    isClose?:boolean
 }
 
 /**

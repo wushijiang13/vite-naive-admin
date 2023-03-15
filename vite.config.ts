@@ -9,7 +9,9 @@ export default defineConfig({
     alias: {
         "@": path.resolve(__dirname, "src/"),
         "@utils": path.resolve(__dirname, "src/utils"),
-        "@pinia": path.resolve(__dirname, "src/config/pinia")
+        "@pinia": path.resolve(__dirname, "src/config/pinia"),
+        "@components": path.resolve(__dirname, "src/components"),
+        "@views": path.resolve(__dirname, "src/views"),
     },
     extensions: ['.js', '.json', '.ts']
   },

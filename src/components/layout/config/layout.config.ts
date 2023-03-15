@@ -8,6 +8,7 @@ import {
 } from '@vicons/ionicons5'
 import { Home12Regular,Code16Filled,Image24Regular } from '@vicons/fluent'
 import { menuOptions } from "@utils/bread";
+import {likeIcon, overivew,  inline, synthesis} from '@views'
 
 // @ts-ignore
 function renderIcon (icon) {
@@ -19,6 +20,8 @@ export const menuOption:menuOptions[]=[
         label: '概览',
         key: 'overivew',
         icon:Home12Regular,
+        component:overivew,
+        isClose:false,
     },
     {
         label: '组件',
@@ -30,6 +33,8 @@ export const menuOption:menuOptions[]=[
                 key: 'likeIcon',
                 icon:Image24Regular,
                 parendKey:"subassembly",
+                component:likeIcon,
+                isClose:true,
             },
             {
                 label:"表格",
@@ -40,21 +45,27 @@ export const menuOption:menuOptions[]=[
                         label:"综合表格",
                         key: 'synthesis',
                         parendKey:"table",
+                        component:synthesis,
+                        isClose:true,
                     },
                     {
                         label:"行内编辑表格",
                         key: 'inline',
                         parendKey:"table",
+                        component:inline,
+                        isClose:true,
                     },
                     {
                         label:"自定义表格",
                         key: 'custom',
                         parendKey:"table",
+                        isClose:true,
                     },
                     {
                         label:"动态表格",
                         key: 'dynamic',
                         parendKey:"table",
+                        isClose:true,
                     },
                 ],
             },
@@ -62,16 +73,19 @@ export const menuOption:menuOptions[]=[
                 label:"列表",
                 key: 'list',
                 parendKey:"subassembly",
+                isClose:true,
             },
             {
                 label:"描述",
                 key: 'desc',
                 parendKey:"subassembly",
+                isClose:true,
             },
             {
                 label:"日历",
                 key: 'calendar',
                 parendKey:"subassembly",
+                isClose:true,
             },
             {
                 label:"编辑器",
@@ -82,6 +96,7 @@ export const menuOption:menuOptions[]=[
                         label:"腾讯文档",
                         key: 'tencent',
                         parendKey:"editor",
+                        isClose:true,
                     },
                 ],
             },
@@ -94,76 +109,91 @@ export const menuOption:menuOptions[]=[
                         label:"综合表单",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"分布表单",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"按钮",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"文字链接",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"单选框",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"多选框",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"输入框",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"计数器",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"选择器",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"开关",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"滑块",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"时间选择器",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"日期选择器",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"日期时间选择器",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                     {
                         label:"评分",
                         key: 'screen',
                         parendKey:"form",
+                        isClose:true,
                     },
                 ],
             },
@@ -178,51 +208,61 @@ export const menuOption:menuOptions[]=[
                 label: '工作流',
                 key: 'operationLog',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"图表",
                 key: 'product',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"打印",
                 key: 'advertise',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"通知",
                 key: 'account',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"时间线",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"多标签",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"水印",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"分享",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"动态锚点",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"动态Meta",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"动态路径参数",
@@ -233,11 +273,13 @@ export const menuOption:menuOptions[]=[
                         label:"Params id=1",
                         key: 'role',
                         parendKey:"dynamicParams",
+                        isClose:true,
                     },
                     {
                         label:"Query id=1",
                         key: 'role',
                         parendKey:"dynamicParams",
+                        isClose:true,
                     }
                 ]
             },
@@ -250,11 +292,13 @@ export const menuOption:menuOptions[]=[
                         label:"弹窗拖拽",
                         key: 'role',
                         parendKey:"drag",
+                        isClose:true,
                     },
                     {
                         label:"卡片拖拽",
                         key: 'role',
                         parendKey:"drag",
+                        isClose:true,
                     }
                 ]
             },
@@ -262,11 +306,13 @@ export const menuOption:menuOptions[]=[
                 label:"无框",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"上传",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"多级路由缓存",
@@ -287,6 +333,7 @@ export const menuOption:menuOptions[]=[
                                         label:"多级路由1-1-1-1",
                                         key: 'multiLevelCaching1-1-1-1',
                                         parendKey:"multiLevelCaching1-1-1",
+                                        isClose:true,
                                     }
                                 ]
                             }
@@ -298,21 +345,25 @@ export const menuOption:menuOptions[]=[
                 label:"错误日志模拟",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"Css动画",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"第三方登录",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"外链",
                 key: 'role',
                 parendKey:"other",
+                isClose:true,
             },
             {
                 label:"iframe",
@@ -323,16 +374,19 @@ export const menuOption:menuOptions[]=[
                         label:"360搜索",
                         key: 'role',
                         parendKey:"iframe",
+                        isClose:true,
                     },
                     {
                         label:"哔哩哔哩",
                         key: 'role',
                         parendKey:"iframe",
+                        isClose:true,
                     },
                     {
                         label:"自定义iframe",
                         key: 'role',
                         parendKey:"iframe",
+                        isClose:true,
                     }
                 ]
             },
@@ -345,16 +399,19 @@ export const menuOption:menuOptions[]=[
                         label:"导出Execl",
                         key: 'role',
                         parendKey:"execl",
+                        isClose:true,
                     },
                     {
                         label:"导出选中行Excel",
                         key: 'role',
                         parendKey:"execl",
+                        isClose:true,
                     },
                     {
                         label:"导出合并Excel",
                         key: 'role',
                         parendKey:"execl",
+                        isClose:true,
                     }
                 ]
             },
