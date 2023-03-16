@@ -5,6 +5,7 @@
 现在支持的功能是：  
 *  <input type='checkbox' disabled checked>多布局切换</input>
 *  <input type='checkbox' disabled checked>tab展示页面</input>
+*  <input type='checkbox' disabled checked>tab页快捷操作组件</input>
 *  <input type='checkbox' disabled checked>概览</input>
 *  <input type='checkbox' disabled checked>图标</input>
 *  <input type='checkbox' disabled checked>综合表格</input>
