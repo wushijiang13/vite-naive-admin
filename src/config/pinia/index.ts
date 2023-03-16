@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 import { setLocalData , getLocalData } from "@utils";
 import layoutConventional from "@/components/layout/src/layout-conventional.vue";
 import { menuOptions } from "@utils/bread";
+import { flatList } from '@components/layout/config/layout.config'
+
 const INIT_USERS = {
   email: "",
   username: "",
@@ -44,8 +46,51 @@ export const useStore =  defineStore('store',{
       this.users = Object.assign({}, this.users, payload);
       setLocalData("USERS", this.users);
     },
-    TabPageListClear(){
-      this.tabPageList = [];
+    TabPageListClear(type:string='all',key:string=''){
+      try {
+        switch (type) {
+          case "all":{
+            this.tabPageList = [];
+            break;
+          }
+          case 'left':{
+            let tarIndex = this.tabPageList.findIndex(item=>item.key == key);
+            if(tarIndex == -1 ){
+              //TODO 这里应该加入一个错误提示。无效删除操作
+              return ;
+            }
+            this.tabPageList.splice(1,tarIndex-1);
+            break;
+          }
+          case 'right':{
+            let tarIndex = this.tabPageList.findIndex(item=>item.key == key);
+            if(tarIndex == -1 ){
+              //TODO 同上
+              return ;
+            }
+            this.tabPageList.splice(tarIndex+1,this.tabPageList.length);
+            break;
+          }
+          case 'other': {
+            let tar:menuOptions|undefined = this.tabPageList.find(item=>item.key == key);
+            this.TabPageListInit();
+            if(tar){
+              this.TabPageListPush(tar);
+            }
+            break;
+          }
+        }
+      }catch (err){
+        //TODO 应该对整体加入一个错误验证
+      }
+    },
+    /**
+     * 初始化 tab
+     * @constructor
+     */
+    TabPageListInit(){
+      this.TabPageListClear();
+      this.tabPageList.push(flatList[0]);
     },
     TabPageListPush(target:menuOptions){
       let isPush =  this.tabPageList.findIndex(item=> target.key == item.key);
@@ -53,8 +98,8 @@ export const useStore =  defineStore('store',{
         this.tabPageList.push(target);
       }
     },
-    TabPageListDelete(target:menuOptions){
-      let targetIndex =  this.tabPageList.findIndex((item:menuOptions)=> item.key == target.key)
+    TabPageListDelete(key:string| number){
+      let targetIndex =  this.tabPageList.findIndex((item:menuOptions)=> item.key == key)
       this.tabPageList.splice(targetIndex,1);
     },
   },

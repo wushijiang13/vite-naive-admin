@@ -65,8 +65,8 @@
   import { recursionBread } from '@utils/bread'
   import {ref, h, onMounted} from 'vue';
   import type { Ref } from 'vue';
-  import { useRouter,useRoute } from "vue-router";
-  import { zhCN, dateZhCN,NIcon} from 'naive-ui'
+  import { useRouter,useRoute} from "vue-router";
+  import { zhCN, dateZhCN,NIcon,NMenu} from 'naive-ui'
   import type {MenuOption} from 'naive-ui'
   import { useStore } from "@pinia";
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
@@ -74,11 +74,11 @@
   import layoutTab from '@components/layout-tab/layout-tab.vue'
 
   const router = useRouter();
-  const route = useRoute();
+  const route:any = useRoute();
   const store = useStore();
   let bread:Ref<menuOptions[]> = ref([]);
-  let menuRef = ref(null);
-  let menuValue = ref("overviews");
+  let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
+  let menuValue:Ref<string|null> = ref("overviews");
   let isCollapsed = ref(false);
 
   function renderIcon(option: MenuOption){
@@ -91,7 +91,7 @@
    * @param item
    */
   function menuAction(key: string, item: menuOptions){
-    let breads = [];
+    let breads:[] = [];
     store.TabPageListPush(item);
     store.$patch({
       tabPageActive:item.key,
@@ -109,7 +109,7 @@
   /**
    * 是否展开列表
    */
-  function menuExpand(key){
+  function menuExpand(key:string){
     menuRef.value?.showOption(key)
   }
 
@@ -118,12 +118,16 @@
    * menu 导航默认选中
    */
   function init(){
-    let targetItem = flatList.find(item=>{
-      return item.key == route.name ? item : null;
+    //不管从哪个页面进来概览都要排到第一个
+    store.TabPageListInit();
+    let targetItem:menuOptions|undefined = flatList.find((item:menuOptions)=>{
+      return item.key == route.name;
     })
     menuValue.value = route.name;
-    menuAction(route.name,targetItem);
-    menuExpand(targetItem.key);
+    if(targetItem){
+      menuAction(route.name,targetItem);
+      menuExpand((targetItem as menuOptions).key);
+    }
   }
 
   onMounted(()=>{

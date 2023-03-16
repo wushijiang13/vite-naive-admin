@@ -419,7 +419,7 @@ export const menuOption:menuOptions[]=[
     },
 ];
 
-export let flatList:[] = [];
+export let flatList:menuOptions[] = [];
 
 const flatMeun = ():void=>{
     flatArray(menuOption);

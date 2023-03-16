@@ -14,6 +14,7 @@ import {
     NMenu,
     NSwitch,
     NDataTable,
+    NDropdown,
     NLayout,
     NLayoutSider,
     NBreadcrumb,
@@ -35,7 +36,7 @@ import {
 
 const naive = create({
     components: [NButton,NPopover,NIcon,NRadio,NCard,NSpace,NRadioGroup,
-        NRadioButton,NGrid,NGridItem,NMenu,NBreadcrumb,NBreadcrumbItem,NDrawer,
+        NRadioButton,NGrid,NGridItem,NMenu,NBreadcrumb,NBreadcrumbItem,NDrawer,NDropdown,
         NDrawerContent,NConfigProvider,NInput,NSelect,NDatePicker,NTag,NSwitch,
         NCheckboxGroup,NCheckbox,NAffix,NPagination,
         NSwitch,NLayout, NLayoutSider,NDataTable,NTabs,NTabPane]
