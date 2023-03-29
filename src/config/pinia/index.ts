@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
-import { setLocalData , getLocalData } from "@utils";
+import { setLocalData , getLocalData, getKeyFindDelete } from "@utils";
 import layoutConventional from "@/components/layout/src/layout-conventional.vue";
 import { menuOptions } from "@utils/bread";
 import { flatList } from '@components/layout/config/layout.config'
+import {nextTick} from "vue";
+import { useLoadingBar } from 'naive-ui'
 
 const INIT_USERS = {
   email: "",
@@ -25,6 +27,8 @@ const INIT_STATE = {
   },
   tabPageList:[] as menuOptions[],
   tabPageActive:'',
+  refresh:true,
+  excludePage:[] as any[],
 };
 
 export const useStore =  defineStore('store',{
@@ -45,6 +49,30 @@ export const useStore =  defineStore('store',{
     setUsers( payload) {
       this.users = Object.assign({}, this.users, payload);
       setLocalData("USERS", this.users);
+    },
+    /**
+     * 将指定name 从禁止缓存list 中移除
+     */
+    getNameExcludePageDelete(name:string){
+      if(name == ''){
+        return;
+      }
+      this.excludePage =  getKeyFindDelete(this.excludePage,'',name);
+    },
+    /**
+     * 刷新页面组件
+     */
+    async refreshPageComponents(){
+      this.refresh = false;
+      //移除缓存中在当前选中的组件
+      this.excludePage.push(this.tabPageActive);
+      await nextTick(async ()=>{
+        await setTimeout(()=>{
+          this.refresh = true;
+          this.getNameExcludePageDelete(this.tabPageActive)
+        },300)
+      })
+      await "success";
     },
     TabPageListClear(type:string='all',key:string=''){
       try {
@@ -99,8 +127,7 @@ export const useStore =  defineStore('store',{
       }
     },
     TabPageListDelete(key:string| number){
-      let targetIndex =  this.tabPageList.findIndex((item:menuOptions)=> item.key == key)
-      this.tabPageList.splice(targetIndex,1);
+      this.tabPageList =  getKeyFindDelete(this.tabPageList,'key',key);
     },
   },
   getters: {

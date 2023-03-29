@@ -24,9 +24,11 @@
 </script>
 <template>
   <n-config-provider  :theme="themeColorMap[store.themeConfigs.themeColorValue]" :locale="zhCN" :date-locale="dateZhCN">
-    <component :is="store.themeConfigs.layoutValue.value"></component>
-    <setting v-model="store.themeConfigs"/>
-    <n-global-style />
-    <n-theme-editor/>
+    <n-loading-bar-provider>
+      <component :is="store.themeConfigs.layoutValue.value"></component>
+      <setting v-model="store.themeConfigs"/>
+      <n-global-style />
+      <n-theme-editor/>
+    </n-loading-bar-provider>
   </n-config-provider>
 </template>

@@ -18,8 +18,8 @@
           :closable="store.tabPageActive == page.key && page.isClose"
       >
         <div class="tab-pane-box">
-          <keep-alive>
-            <component :is="page.component"></component>
+          <keep-alive :exclude="store.excludePage" :max="10">
+            <component v-if=" store.refresh && store.tabPageActive == page.key" :is="page.component"></component>
           </keep-alive>
         </div>
         <template #tab>
@@ -39,11 +39,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import {nextTick, ref} from 'vue';
 import { useStore } from "@pinia";
 import layoutTabClose from '@components/layout-tab-close/layout-tab-close.vue'
+import { useLoadingBar } from 'naive-ui'
 const store = useStore();
 const name = ref('');
+const loadingBar= useLoadingBar();
 
 const handleClose = (name: string | number) => {
   let tabPageList = store.tabPageList;
@@ -52,6 +54,19 @@ const handleClose = (name: string | number) => {
     tabPageActive:tabPageList[tabPageList.length-1].key
   })
 }
+
+const refresh = () => {
+  store.$patch({
+    refresh:false,
+  })
+  nextTick(()=>{
+    store.$patch({
+      refresh:true,
+    })
+  })
+}
+
+refresh();
 </script>
 <style scoped>
 .tab-pane-box {

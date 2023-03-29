@@ -253,7 +253,7 @@ function tableInit(){
 onMounted(()=>{
   visitsInit()
   empowerInit()
-  tableInit();
+  tableInit()
   nextTick(()=>{
     (document.querySelector(".n-data-table-thead") as HTMLElement).style.display="none";
   })

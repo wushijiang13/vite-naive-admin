@@ -1,24 +1,22 @@
 <template>
   <div class="layout-tab-close">
-    <n-dropdown trigger="hover" :options="options" @select="dropDownSelect">
-      <n-button text class="tab-operate-icon">
-        <template #icon>
-          <n-icon  :component="BorderAll" size="20"/>
-        </template>
-      </n-button>
+    <n-dropdown trigger="hover" class="tab-drop"  :options="options" @select="dropDownSelect">
+      <n-icon class="tab-operate-icon" :component="BorderAll" size="20"/>
     </n-dropdown>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, h , Ref } from 'vue';
+import {ref, h, Ref} from 'vue';
 import { useStore } from "@pinia";
 import { BorderAll,Refresh } from '@vicons/tabler'
 import { CloseSharp } from '@vicons/ionicons5'
 import { ArrowLeft12Regular,ArrowRight16Regular } from '@vicons/fluent'
 import {NIcon,DropdownOption} from "naive-ui";
+import { useLoadingBar } from 'naive-ui'
 
 const store = useStore();
+const loadingBar = useLoadingBar();
 const options:Ref<DropdownOption[]> = ref([
   {
     label:'刷新',
@@ -51,7 +49,7 @@ const dropDownSelect = (key: string | number, option: DropdownOption) => {
   let tabKey = store.tabPageActive;
   switch(key){
     case 'refresh':{
-
+      loadingRefresh()
       break;
     }
     case 'closeOther':{
@@ -76,15 +74,27 @@ const dropDownSelect = (key: string | number, option: DropdownOption) => {
   }
 }
 
+/**
+ * 刷新组件loading组件加载
+ */
+const loadingRefresh = async () => {
+  await loadingBar.start();
+  await store.refreshPageComponents();
+  loadingBar.finish();
+}
+
 const renderIcon = (component:any) => {
   return h(NIcon,{component})
 }
+
 </script>
-<style scoped>
+<style>
 .tab-operate-icon{
+  cursor: pointer;
   transition: .3s linear;
 }
 .tab-operate-icon:hover{
+  color: #18a058;
   transform: rotateZ(90deg);
 }
 </style>

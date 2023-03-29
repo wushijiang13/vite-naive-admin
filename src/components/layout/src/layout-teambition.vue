@@ -10,8 +10,7 @@
                   collapse-mode="width"
                   :collapsed-width="64"
                   :width="240"
-                  :collapsed="isCollapsed"
-              >
+                  :collapsed="isCollapsed">
                 <div class="logo">
                   <n-icon size="30"><LogoVue/></n-icon>
                   <transition>
@@ -100,12 +99,14 @@
     bread.value = breads;
     router.push({name:key})
   }
+
   /**
    * 控制menu是否抽屉展开
    */
   function menuStow(){
     isCollapsed.value = !isCollapsed.value;
   }
+
   /**
    * 是否展开列表
    */

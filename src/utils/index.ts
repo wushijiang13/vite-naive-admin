@@ -39,11 +39,33 @@ const downLoadFile = (url = "", name = "文件") => {
         console.log("下载失败");
     }
 };
-
+/**
+ * 根据传入的key和name比对并删除目标中的这个对象
+ * @param targetList 目标数组
+ * @param key 用于目标数组遍历的key
+ * @param name 外部条件
+ * @retrun 删除成功或者没有找到返回已操作的数组， key或者目标参数为空返回空数组
+ */
+const getKeyFindDelete = (targetList:any[],key:string,name:string|number) =>{
+    if(targetList.length == 0 || name == ''){
+        return [];
+    }
+    let targetIndex;
+    if(key == ''){
+        targetIndex = targetList.findIndex((item:string)=>item == name)
+    }else {
+        targetIndex = targetList.findIndex((item:string)=>item[key] == name)
+    }
+    if(targetIndex != -1){
+        targetList.splice(targetIndex,1);
+    }
+    return targetList;
+}
 
 export {
     downLoadFile,
     isNullCheck,
     setLocalData,
-    getLocalData
+    getLocalData,
+    getKeyFindDelete
 }
