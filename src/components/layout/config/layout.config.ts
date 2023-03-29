@@ -421,6 +421,7 @@ export const menuOption:menuOptions[]=[
 ];
 
 export let flatList:menuOptions[] = [];
+export let flatObject:any = {};
 
 const flatMeun = ():void=>{
     flatArray(menuOption);
@@ -429,27 +430,12 @@ function flatArray(arr:any){
     // @ts-ignore
     flatList.push(...arr);
     arr.forEach((item:any)=>{
+        flatObject[item.key] = item;
         if (item.hasOwnProperty("children")) {
             flatArray(item.children);
         }
     })
 }
 flatMeun();
-
-
-/**
- * 通过parendKey 生成二级面包屑
- * @param key
- * @param item
- */
-export function generateBread(key: string, item: menuOptions){
-    const store = useStore();
-    let breads:[] = [];
-    store.TabPageListPush(item);
-    store.$patch({
-        tabPageActive:item.key,
-    })
-    recursionBread(key,item,flatList,breads);
-    store.bread = breads;
-}
+console.log(flatObject);
 

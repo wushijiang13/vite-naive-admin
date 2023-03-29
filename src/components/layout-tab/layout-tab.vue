@@ -5,7 +5,7 @@
         @update:value="tabChange"
         type="card"
         closable
-        animated="true"
+        :animated="false"
         @close="handleClose"
         pane-class="pane-box"
         tabs-padding="20"
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import {nextTick, ref, defineEmits} from 'vue';
+import { nextTick, ref, defineEmits } from 'vue';
 import { useStore } from "@pinia";
 import layoutTabClose from '@components/layout-tab-close/layout-tab-close.vue'
 import { useLoadingBar } from 'naive-ui'

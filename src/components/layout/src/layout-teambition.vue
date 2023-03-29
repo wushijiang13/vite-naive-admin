@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-  import { menuOption,flatList,generateBread } from '../config/layout.config';
+  import { menuOption,flatList,flatObject } from '../config/layout.config';
   import { menuOptions } from "@utils/bread";
   import { ref, h, onMounted } from 'vue';
   import { useRouter,useRoute} from "vue-router";
@@ -92,7 +92,8 @@
    */
   function tabChange(){
     //通知父级tab 已更新
-    menuExpand()
+    menuExpand();
+    store.generateBread(store.menuValue,flatObject[store.menuValue]);
   }
   /**
    * 是否展开列表
@@ -102,7 +103,7 @@
   }
 
   const menuAction = (key:string,targetItem:menuOptions) => {
-    generateBread(key,targetItem);
+    store.generateBread(key,targetItem);
     store.$patch({
       menuValue:key,
     })
@@ -110,13 +111,8 @@
   }
 
   function findMenuAction(key:string){
-    let targetItem:menuOptions|undefined = flatList.find((item:menuOptions)=>{
-      return item.key == key;
-    })
-    if(targetItem){
-      menuAction(key,targetItem);
-      menuExpand((targetItem as menuOptions).key);
-    }
+    menuAction(key,flatObject[key]);
+    menuExpand();
   }
 
   /**

@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { setLocalData , getLocalData, getKeyFindDelete } from "@utils";
 import layoutConventional from "@/components/layout/src/layout-conventional.vue";
-import { menuOptions } from "@utils/bread";
+import {menuOptions, recursionBread} from "@utils/bread";
 import { flatList } from '@components/layout/config/layout.config'
 import {nextTick} from "vue";
 import { useLoadingBar } from 'naive-ui'
@@ -75,6 +75,18 @@ export const useStore =  defineStore('store',{
         },300)
       })
       await "success";
+    },
+    /**
+     * 通过parendKey 生成二级面包屑
+     * @param key
+     * @param item
+     */
+    generateBread(key: string, item: menuOptions){
+      let breads:[] = [];
+      this.TabPageListPush(item);
+      this.tabPageActive = item.key
+      recursionBread(key,item,flatList,breads);
+      this.bread = breads;
     },
     TabPageListClear(type:string='all',key:string=''){
       try {
