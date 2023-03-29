@@ -1,14 +1,15 @@
 /*暂定设计*/
 // 关于这里的key 既代表code 也代表 页面路由的code 这样跳转不加任何处理
 import { NIcon } from 'naive-ui';
-import { h } from 'vue'
-import {
-    BookOutline as BookIcon,
+import {h, nextTick} from 'vue'
+import { BookOutline as BookIcon,
     FileTrayFullOutline
 } from '@vicons/ionicons5'
 import { Home12Regular,Code16Filled,Image24Regular } from '@vicons/fluent'
-import { menuOptions } from "@utils/bread";
+import {menuOptions, recursionBread} from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis} from '@views'
+import { useStore } from '@pinia'
+import  { useRouter }  from 'vue-router'
 
 // @ts-ignore
 function renderIcon (icon) {
@@ -434,4 +435,21 @@ function flatArray(arr:any){
     })
 }
 flatMeun();
+
+
+/**
+ * 通过parendKey 生成二级面包屑
+ * @param key
+ * @param item
+ */
+export function generateBread(key: string, item: menuOptions){
+    const store = useStore();
+    let breads:[] = [];
+    store.TabPageListPush(item);
+    store.$patch({
+        tabPageActive:item.key,
+    })
+    recursionBread(key,item,flatList,breads);
+    store.bread = breads;
+}
 

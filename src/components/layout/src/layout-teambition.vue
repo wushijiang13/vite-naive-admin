@@ -21,7 +21,7 @@
                   <n-menu
                       :collapsed="isCollapsed"
                       :options="menuOption"
-                      v-model:value="menuValue"
+                      v-model:value="store.menuValue"
                       :default-expanded-keys="['projectsAndScree','system']"
                       @update:value="menuAction"
                       :render-icon="renderIcon"
@@ -43,7 +43,7 @@
                     </n-button>
                     <div class="bread-crumb">
                       <n-breadcrumb separator=">">
-                        <n-breadcrumb-item v-for="item in bread">
+                        <n-breadcrumb-item v-for="item in store.bread">
                           {{item.label}}
                         </n-breadcrumb-item>
                       </n-breadcrumb>
@@ -51,7 +51,7 @@
                   </div>
               </div>
               <div>
-                <layoutTab />
+                <layoutTab @tabChange='tabChange'/>
               </div>
           </div>
       </n-config-provider>
@@ -59,13 +59,11 @@
 </template>
 
 <script setup lang="ts">
-  import { menuOption,flatList } from '../config/layout.config';
+  import { menuOption,flatList,generateBread } from '../config/layout.config';
   import { menuOptions } from "@utils/bread";
-  import { recursionBread } from '@utils/bread'
-  import {ref, h, onMounted} from 'vue';
-  import type { Ref } from 'vue';
+  import { ref, h, onMounted } from 'vue';
   import { useRouter,useRoute} from "vue-router";
-  import { zhCN, dateZhCN,NIcon,NMenu} from 'naive-ui'
+  import { zhCN, dateZhCN , NIcon, NMenu} from 'naive-ui'
   import type {MenuOption} from 'naive-ui'
   import { useStore } from "@pinia";
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
@@ -75,29 +73,11 @@
   const router = useRouter();
   const route:any = useRoute();
   const store = useStore();
-  let bread:Ref<menuOptions[]> = ref([]);
   let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
-  let menuValue:Ref<string|null> = ref("overviews");
   let isCollapsed = ref(false);
 
   function renderIcon(option: MenuOption){
     return option["icon"] ? h(NIcon,{component:option["icon"],size:'18'}) : '';
-  }
-
-  /**
-   * 通过parendKey 生成二级面包屑
-   * @param key
-   * @param item
-   */
-  function menuAction(key: string, item: menuOptions){
-    let breads:[] = [];
-    store.TabPageListPush(item);
-    store.$patch({
-      tabPageActive:item.key,
-    })
-    recursionBread(key,item,flatList,breads);
-    bread.value = breads;
-    router.push({name:key})
   }
 
   /**
@@ -108,10 +88,35 @@
   }
 
   /**
+   * tab 选中页反正改变
+   */
+  function tabChange(){
+    //通知父级tab 已更新
+    menuExpand()
+  }
+  /**
    * 是否展开列表
    */
-  function menuExpand(key:string){
-    menuRef.value?.showOption(key)
+  function menuExpand(){
+    menuRef.value?.showOption(store.menuValue)
+  }
+
+  const menuAction = (key:string,targetItem:menuOptions) => {
+    generateBread(key,targetItem);
+    store.$patch({
+      menuValue:key,
+    })
+    router.push({name:key})
+  }
+
+  function findMenuAction(key:string){
+    let targetItem:menuOptions|undefined = flatList.find((item:menuOptions)=>{
+      return item.key == key;
+    })
+    if(targetItem){
+      menuAction(key,targetItem);
+      menuExpand((targetItem as menuOptions).key);
+    }
   }
 
   /**
@@ -121,20 +126,12 @@
   function init(){
     //不管从哪个页面进来概览都要排到第一个
     store.TabPageListInit();
-    let targetItem:menuOptions|undefined = flatList.find((item:menuOptions)=>{
-      return item.key == route.name;
-    })
-    menuValue.value = route.name;
-    if(targetItem){
-      menuAction(route.name,targetItem);
-      menuExpand((targetItem as menuOptions).key);
-    }
+    findMenuAction(route.name)
   }
 
   onMounted(()=>{
     init();
   })
-
 </script>
 
 <style scoped>

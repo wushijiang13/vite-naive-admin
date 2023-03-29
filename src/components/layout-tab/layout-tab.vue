@@ -2,6 +2,7 @@
   <div class="layout-tab">
     <n-tabs
         v-model:value="store.tabPageActive"
+        @update:value="tabChange"
         type="card"
         closable
         animated="true"
@@ -39,12 +40,14 @@
 </template>
 
 <script setup lang="ts">
-import {nextTick, ref} from 'vue';
+import {nextTick, ref, defineEmits} from 'vue';
 import { useStore } from "@pinia";
 import layoutTabClose from '@components/layout-tab-close/layout-tab-close.vue'
 import { useLoadingBar } from 'naive-ui'
+import {router} from "@/config/router/router";
 const store = useStore();
 const name = ref('');
+const emits = defineEmits(['tabChange'])
 const loadingBar= useLoadingBar();
 
 const handleClose = (name: string | number) => {
@@ -54,19 +57,18 @@ const handleClose = (name: string | number) => {
     tabPageActive:tabPageList[tabPageList.length-1].key
   })
 }
-
-const refresh = () => {
+/**
+ * tab点击同步路由
+ * @param value
+ */
+const tabChange = (value: string | number) => {
   store.$patch({
-    refresh:false,
+    menuValue:store.tabPageActive,
   })
-  nextTick(()=>{
-    store.$patch({
-      refresh:true,
-    })
-  })
+  emits('tabChange')
+  router.push({name:(value as string)});
 }
 
-refresh();
 </script>
 <style scoped>
 .tab-pane-box {

@@ -25,6 +25,8 @@ const INIT_STATE = {
     key: "conventional",
     value: layoutConventional
   },
+  menuValue:'overviews',//默认是概览
+  bread:[] as menuOptions[],
   tabPageList:[] as menuOptions[],
   tabPageActive:'',
   refresh:true,
