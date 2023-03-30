@@ -60,12 +60,12 @@
 
 <script setup lang="ts">
   import { menuOption,flatList,flatObject } from '../config/layout.config';
-  import { menuOptions } from "@utils/bread";
   import { ref, h, onMounted } from 'vue';
   import { useRouter,useRoute} from "vue-router";
   import { zhCN, dateZhCN , NIcon, NMenu} from 'naive-ui'
   import type {MenuOption} from 'naive-ui'
   import { useStore } from "@pinia";
+  import type { menuOptions } from '@types'
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
   import { LogoVue } from '@vicons/ionicons5'
   import layoutTab from '@components/layout-tab/layout-tab.vue'

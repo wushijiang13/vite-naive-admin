@@ -6,10 +6,11 @@ import { BookOutline as BookIcon,
     FileTrayFullOutline
 } from '@vicons/ionicons5'
 import { Home12Regular,Code16Filled,Image24Regular } from '@vicons/fluent'
-import {menuOptions, recursionBread} from "@utils/bread";
+import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis} from '@views'
 import { useStore } from '@pinia'
-import  { useRouter }  from 'vue-router'
+import { useRouter }  from 'vue-router'
+import type { menuOptions } from '@types'
 
 // @ts-ignore
 function renderIcon (icon) {

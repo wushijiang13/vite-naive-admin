@@ -1,40 +1,26 @@
 <!--设置-->
 <template>
     <div class="setting">
-        <n-popover trigger="click">
-            <template #trigger>
-                <n-button type="success" style="font-size: 20px;" >
-                    <n-icon>
-                        <Settings/>
-                    </n-icon>
-                </n-button>
-            </template>
-            <div class="setting-popover">
-                <h3>主题更换</h3>
-                <h4>布局更换</h4>
-                <n-space vertical>
-                  <n-radio-group
-                            v-model:value="selectLayout"
-                            name="radiobuttongroup1">
-                    <n-grid x-gap="12" :cols="2">
-                        <n-gi
-                                v-for="layout in layoutList"
-                                :key="layout.key">
-                            <n-radio-button
-                                    :key="layout.key"
-                                    :value="layout.key">
-                                {{ layout.label }}
-                            </n-radio-button>
-                        </n-gi>
-                    </n-grid>
-                    </n-radio-group>
-                </n-space>
-                <h4>主题色切换</h4>
-                <n-button @click="themeClick" strong secondary>
-                    {{modelValue.themeColorValue == null ? "深色" : "浅色" }}
-                </n-button>
+        <n-button @click="()=>{active = !active}" style="font-size: 20px;" >
+          <n-icon>
+            <Settings/>
+          </n-icon>
+        </n-button>
+        <n-drawer v-model:show="active"  placement="right">
+          <template #default>
+            <div class="setting-drawer">
+              <h3>主题更换</h3>
+              <h4>布局更换</h4>
+              <n-space vertical>
+                <n-select v-model:value="selectLayout" :value-field="'key'" :options="layoutList" />
+              </n-space>
+              <h4>主题色切换</h4>
+              <n-button @click="themeClick" strong secondary>
+                {{modelValue.themeColorValue == null ? "深色" : "浅色" }}
+              </n-button>
             </div>
-        </n-popover>
+          </template>
+        </n-drawer>
     </div>
 </template>
 
@@ -42,11 +28,12 @@
     import {Settings} from '@vicons/ionicons5';
     import {reactive, ref, watch , defineEmits, defineProps} from 'vue'
     import { setLocalData} from '@utils'
-    import { layoutList } from './config'
+    import { layoutList,layoutMap } from './config'
 
     const props = defineProps({
         modelValue : {} as any
     })
+    const active = ref(false)
     const emits = defineEmits(['update:modelValue'])
 
 
@@ -68,7 +55,7 @@
     watch(
         () => selectLayout.value,
         (newValue) => {
-            themeConfigs.layoutValue = layoutList[newValue];
+            themeConfigs.layoutValue = layoutMap[newValue];
         }
     )
 </script>
@@ -76,10 +63,10 @@
 <style scoped>
     .setting {
         position: fixed;
-        right: 40px;
-        bottom: 90px;
+        right: 0px;
+        bottom: 60px;
     }
-    .setting-popover {
-        width: 200px;
+    .setting-drawer {
+        padding: 0px 30px;
     }
 </style>

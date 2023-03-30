@@ -12,6 +12,7 @@ export default defineConfig({
         "@pinia": path.resolve(__dirname, "src/config/pinia"),
         "@components": path.resolve(__dirname, "src/components"),
         "@views": path.resolve(__dirname, "src/views"),
+        "@types": path.resolve(__dirname, "src/config/types"),
     },
     extensions: ['.js', '.json', '.ts']
   },

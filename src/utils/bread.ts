@@ -1,24 +1,10 @@
-/**
- * 面包屑
- */
-
-export interface menuOptions{
-    label:string,
-    key:string,
-    component?:any,
-    parendKey?:string,
-    icon?:any,
-    disabled?:boolean,
-    children?:menuOptions[],
-    isClose?:boolean
-}
-
+import type { menuOptions } from '@types'
 /**
  * 递归获取面包屑
  * @param key
  * @param item
  */
-export const recursionBread = (key: string, item: menuOptions,flatList,bread) => {
+export const recursionBread = (key: string, item: menuOptions,flatList:menuOptions[],bread:menuOptions[]) => {
     bread.unshift(item);
     if (item.hasOwnProperty("parendKey")) {
         let parentItem:menuOptions | undefined =  flatList.find((findItem:menuOptions)=>{

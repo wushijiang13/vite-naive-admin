@@ -1,10 +1,10 @@
 import { defineStore } from "pinia";
 import { setLocalData , getLocalData, getKeyFindDelete } from "@utils";
-import layoutConventional from "@/components/layout/src/layout-conventional.vue";
-import {menuOptions, recursionBread} from "@utils/bread";
+import { recursionBread} from "@utils/bread";
 import { flatList } from '@components/layout/config/layout.config'
 import {nextTick} from "vue";
-import { useLoadingBar } from 'naive-ui'
+import type { menuOptions, layoutOption } from '@types'
+
 
 const INIT_USERS = {
   email: "",
@@ -21,9 +21,8 @@ const INIT_STATE = {
   users: getLocalData("USERS") || INIT_USERS,
   routerPermissions:[],
   themeConfigs:{
-    label: "常规布局",
-    key: "conventional",
-    value: layoutConventional
+    layoutValue:{} as layoutOption,
+    themeColorValue:'' as string,
   },
   menuValue:'overviews',//默认是概览
   bread:[] as menuOptions[],

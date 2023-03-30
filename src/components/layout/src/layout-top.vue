@@ -28,10 +28,10 @@
 import {flatObject, menuOption} from '../config/layout.config';
 import { LogoVue } from '@vicons/ionicons5'
 import { useStore } from "@pinia";
-import {menuOptions} from "@utils/bread";
 import {useRoute, useRouter} from "vue-router";
 import {MenuOption, NIcon} from "naive-ui";
 import {h, onMounted} from "vue";
+import type { menuOptions } from '@types'
 
 const store = useStore();
 const router = useRouter();

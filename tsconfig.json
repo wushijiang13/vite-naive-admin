@@ -9,7 +9,8 @@
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
       "@views": ["src/views"],
-      "@views/*": ["src/views/*"]
+      "@views/*": ["src/views/*"],
+      "@types": ["src/config/types"]
     },
     "target": "esnext",
     "useDefineForClassFields": true,
