@@ -5,8 +5,18 @@ import layoutTeambition from '@/components/layout/src/layout-teambition.vue'
 import layoutTop from '@/components/layout/src/layout-top.vue'
 import layoutConventional from '@/components/layout/src/layout-conventional.vue'
 import layoutSandwich from '@/components/layout/src/layout-sandwich.vue'
+import { ComponentOptions , DefineComponent} from "vue";
 
-export const layoutList = {
+interface layoutOption {
+    label:string,
+    key:string,
+    value: ComponentOptions | DefineComponent,
+}
+interface LayoutList {
+    [key: string]: layoutOption;
+}
+
+export const layoutList:LayoutList = {
     "conventional": {
         label: "常规布局",
         key: "conventional",

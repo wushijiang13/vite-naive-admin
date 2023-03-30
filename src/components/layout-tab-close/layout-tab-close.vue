@@ -1,6 +1,6 @@
 <template>
   <div class="layout-tab-close">
-    <n-dropdown trigger="hover" class="tab-drop"  :options="options" @select="dropDownSelect">
+    <n-dropdown trigger="hover" :placement="'bottom-end'" class="tab-drop"  :options="options" @select="dropDownSelect">
       <n-icon class="tab-operate-icon" :component="BorderAll" size="20"/>
     </n-dropdown>
   </div>

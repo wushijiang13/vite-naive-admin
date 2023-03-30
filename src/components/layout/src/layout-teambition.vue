@@ -4,7 +4,7 @@
       <n-config-provider class="layout-config-provider-box" :locale="zhCN" :date-locale="dateZhCN">
         <div class="layout-navigation">
           <n-space vertical>
-            <n-layout has-sider>
+            <n-layout has-sider class="layout-navigation-box">
               <n-layout-sider
                   bordered
                   collapse-mode="width"
@@ -51,7 +51,7 @@
                   </div>
               </div>
               <div>
-                <layoutTab @tabChange='tabChange'/>
+                <layoutTab @tabChange='tabChange' :tabsPadding="20"/>
               </div>
           </div>
       </n-config-provider>
@@ -143,9 +143,11 @@
     }
     .layout-navigation{
       box-shadow: 0 0px 5px 1px rgb(57 66 60 / 20%);
+      margin-right: 2px;
+    }
+    .layout-navigation-box{
       height: 100vh;
       overflow: auto;
-      margin-right: 2px;
     }
     .layout-main{
       flex: 1;

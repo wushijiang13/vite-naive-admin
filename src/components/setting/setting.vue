@@ -45,7 +45,7 @@
     import { layoutList } from './config'
 
     const props = defineProps({
-        modelValue : Object
+        modelValue : {} as any
     })
     const emits = defineEmits(['update:modelValue'])
 
@@ -69,7 +69,6 @@
         () => selectLayout.value,
         (newValue) => {
             themeConfigs.layoutValue = layoutList[newValue];
-            console.log(themeConfigs.layoutValue);
         }
     )
 </script>

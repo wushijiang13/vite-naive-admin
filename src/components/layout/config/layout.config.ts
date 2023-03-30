@@ -437,5 +437,4 @@ function flatArray(arr:any){
     })
 }
 flatMeun();
-console.log(flatObject);
 

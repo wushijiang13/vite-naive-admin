@@ -7,8 +7,7 @@
         closable
         :animated="false"
         @close="handleClose"
-        pane-class="pane-box"
-        tabs-padding="20"
+        :tabs-padding="props.tabsPadding"
     >
       <n-tab-pane
           v-for="page in store.tabPageList"
@@ -18,7 +17,7 @@
           display-directive="show:lazy"
           :closable="store.tabPageActive == page.key && page.isClose"
       >
-        <div class="tab-pane-box">
+        <div class="tab-pane-box" :style="props.paneStyle" >
           <keep-alive :exclude="store.excludePage" :max="10">
             <component v-if=" store.refresh && store.tabPageActive == page.key" :is="page.component"></component>
           </keep-alive>
@@ -31,7 +30,7 @@
         </template>
       </n-tab-pane>
       <template #suffix>
-        <div class="suffix-box">
+        <div class="suffix-box" :style="props.suffixStyle">
           <layoutTabClose/>
         </div>
       </template>
@@ -40,14 +39,14 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, defineEmits } from 'vue';
+import { nextTick, ref, defineEmits,defineProps } from 'vue';
 import { useStore } from "@pinia";
 import layoutTabClose from '@components/layout-tab-close/layout-tab-close.vue'
 import { useLoadingBar } from 'naive-ui'
 import {router} from "@/config/router/router";
 const store = useStore();
-const name = ref('');
 const emits = defineEmits(['tabChange'])
+const props = defineProps(['tabsPadding','paneStyle','suffixStyle'])
 const loadingBar= useLoadingBar();
 
 const handleClose = (name: string | number) => {
