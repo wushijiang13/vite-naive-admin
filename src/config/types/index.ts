@@ -23,3 +23,8 @@ export interface LayoutOption {
 export interface LayoutMap {
     [key: string]: LayoutOption;
 }
+
+export interface ThemeConfig {
+    layoutValue:LayoutOption,
+    themeColorValue:string,
+}

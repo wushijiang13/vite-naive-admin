@@ -67,6 +67,6 @@
         bottom: 60px;
     }
     .setting-drawer {
-        padding: 0px 30px;
+        padding: 0px 12px;
     }
 </style>

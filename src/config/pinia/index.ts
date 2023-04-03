@@ -3,7 +3,7 @@ import { setLocalData , getLocalData, getKeyFindDelete } from "@utils";
 import { recursionBread} from "@utils/bread";
 import { flatList } from '@components/layout/config/layout.config'
 import {nextTick} from "vue";
-import type { menuOptions, layoutOption } from '@types'
+import type { menuOptions,ThemeConfig } from '@types'
 
 
 const INIT_USERS = {
@@ -20,10 +20,7 @@ const INIT_USERS = {
 const INIT_STATE = {
   users: getLocalData("USERS") || INIT_USERS,
   routerPermissions:[],
-  themeConfigs:{
-    layoutValue:{} as layoutOption,
-    themeColorValue:'' as string,
-  },
+  themeConfigs:{} as ThemeConfig,
   menuValue:'overviews',//默认是概览
   bread:[] as menuOptions[],
   tabPageList:[] as menuOptions[],

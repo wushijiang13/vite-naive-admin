@@ -5,9 +5,10 @@
   import {themeConfigDeep,layoutMap} from '@/components/setting/config';
   import { setLocalData, getLocalData} from '@utils'
   import {useStore} from '@pinia'
+  import type {ThemeConfig} from '@types'
 
   const store = useStore();
-  const themeData = !getLocalData('themeLayoutKey') ?  _.cloneDeep(themeConfigDeep) :
+  const themeData:ThemeConfig = !getLocalData('themeLayoutKey') ?  _.cloneDeep(themeConfigDeep) :
       {layoutValue:layoutMap[getLocalData('themeLayoutKey')],themeColorValue:getLocalData('themeColor')};
   store.$patch({
     themeConfigs:themeData,
