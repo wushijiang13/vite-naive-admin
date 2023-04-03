@@ -30,9 +30,13 @@
         </template>
       </n-tab-pane>
       <template #suffix>
+        <slot name="tab-suffix"></slot>
         <div class="suffix-box" :style="props.suffixStyle">
           <layoutTabClose/>
         </div>
+      </template>
+      <template #prefix>
+        <slot name="tab-prefix"></slot>
       </template>
     </n-tabs>
   </div>

@@ -22,7 +22,6 @@
                       :collapsed="isCollapsed"
                       :options="menuOption"
                       v-model:value="store.menuValue"
-                      :default-expanded-keys="['projectsAndScree','system']"
                       @update:value="menuAction"
                       :render-icon="renderIcon"
                       collapsed-icon-size="18"
