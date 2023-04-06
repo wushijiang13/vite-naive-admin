@@ -123,7 +123,6 @@ const listFilterData = (search:string='',page:number=1,pageSize:number=10) =>{
   listData.value = searchData.value.filter((item,index)=>{
     return item.title.includes(search) && (index+1 > (parentPage*pageSize) && index+1<= page*pageSize)
   })
-  console.log(newPageCount);
   newPageCount =  newPageCount == 0 ? data.length : newPageCount;
   pageCount.value = Math.ceil(newPageCount/pageSize);
 }
