@@ -10,6 +10,7 @@
 *  <input type='checkbox' disabled checked>图标</input>
 *  <input type='checkbox' disabled checked>综合表格</input>
 *  <input type='checkbox' disabled checked>行内编辑表格</input>
+*  <input type='checkbox' disabled checked>列表</input>
 
 
 待实现功能：  
