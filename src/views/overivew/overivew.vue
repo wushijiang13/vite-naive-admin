@@ -1,76 +1,76 @@
 <template>
-    <div class="overivew">
-      <n-grid x-gap="12" :cols="4">
-        <n-grid-item :span="1">
-          <n-card >
-            <template #header>
-              访问量
-            </template>
-            <template #header-extra>
-              <span class="day">日</span>
-            </template>
-            <div>
+  <div class="overivew">
+    <n-grid x-gap="12" :cols="4">
+      <n-grid-item :span="1">
+        <n-card >
+          <template #header>
+            访问量
+          </template>
+          <template #header-extra>
+            <span class="day">日</span>
+          </template>
+          <div>
             <div class="visits" ref="visits"></div>
+          </div>
+          <template #footer>
+            <div class="card-footer">
+              日均访问量: 31,332
             </div>
-            <template #footer>
-              <div class="card-footer">
-                日均访问量: 31,332
-              </div>
-            </template>
-          </n-card>
-        </n-grid-item>
-        <n-grid-item :span="1">
-          <n-card >
-            <template #header>
-              授权树
-            </template>
-            <template #header-extra>
-              <span class="week">周</span>
-            </template>
-            <div>
-              <div class="empower" ref="empower"></div>
+          </template>
+        </n-card>
+      </n-grid-item>
+      <n-grid-item :span="1">
+        <n-card >
+          <template #header>
+            授权树
+          </template>
+          <template #header-extra>
+            <span class="week">周</span>
+          </template>
+          <div>
+            <div class="empower" ref="empower"></div>
+          </div>
+          <template #footer>
+            <div class="card-footer">
+              授权数: 12,041
             </div>
-            <template #footer>
-              <div class="card-footer">
-                授权数: 12,041
-              </div>
-            </template>
-          </n-card>
-        </n-grid-item>
-        <n-grid-item :span="2">
-          <n-card>
-            <template #header>
-              信息
-            </template>
-            <template #header-extra>
+          </template>
+        </n-card>
+      </n-grid-item>
+      <n-grid-item :span="2">
+        <n-card>
+          <template #header>
+            信息
+          </template>
+          <template #header-extra>
               <span class="info">
                 当前版本：V10.5.0   部署时间：2023-02-22 18:47:26
               </span>
-            </template>
-            <div>
-              <div class="empower">
-                <n-data-table
-                    size="small"
-                    :single-line="false"
-                    :columns="columns"
-                    :data="data"
-                />
-              </div>
+          </template>
+          <div>
+            <div class="empower">
+              <n-data-table
+                  size="small"
+                  :single-line="false"
+                  :columns="columns"
+                  :data="data"
+              />
             </div>
-          </n-card>
-        </n-grid-item>
-      </n-grid>
+          </div>
+        </n-card>
+      </n-grid-item>
+    </n-grid>
 
-      <n-grid class="grid-2" x-gap="12" :cols="8">
-         <n-grid-item v-for="item in matrixList" :span="1">
-          <n-card title="访问量">
-            <template #footer>
-              {{item.name}}
-            </template>
-          </n-card>
-        </n-grid-item>
-      </n-grid>
-    </div>
+    <n-grid class="grid-2" x-gap="12" :cols="8">
+      <n-grid-item v-for="item in matrixList" :span="1">
+        <n-card title="访问量">
+          <template #footer>
+            {{item.name}}
+          </template>
+        </n-card>
+      </n-grid-item>
+    </n-grid>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -85,7 +85,6 @@ import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import {ref, onMounted, nextTick, h} from 'vue';
 import { NButton } from 'naive-ui'
-
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
 let visits = ref<HTMLElement | null>(null);
@@ -126,7 +125,6 @@ let matrixList = [
     icon:''
   }
 ]
-
 /**
  * 访问量
  */
@@ -248,8 +246,6 @@ function tableInit(){
     }
   ];
 }
-
-
 onMounted(()=>{
   visitsInit()
   empowerInit()
@@ -258,7 +254,6 @@ onMounted(()=>{
     (document.querySelector(".n-data-table-thead") as HTMLElement).style.display="none";
   })
 })
-
 </script>
 
 <style scoped>
@@ -294,8 +289,6 @@ onMounted(()=>{
   font-size: 14px;
   border-top: 1px solid #000000;
 }
-
-
 </style>
 <style>
 .btn{

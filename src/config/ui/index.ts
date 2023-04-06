@@ -32,13 +32,16 @@ import {
     NPagination,
     NTabs,
     NTabPane,
-    NLoadingBarProvider
+    NLoadingBarProvider,
+    NList,
+    NListItem,
+    NThing,
 } from 'naive-ui'
 
 const naive = create({
     components: [NButton,NPopover,NIcon,NRadio,NCard,NSpace,NRadioGroup,
         NRadioButton,NGrid,NGridItem,NMenu,NBreadcrumb,NBreadcrumbItem,NDrawer,NDropdown,
-        NDrawerContent,NConfigProvider,NInput,NSelect,NDatePicker,NTag,NSwitch,
+        NDrawerContent,NConfigProvider,NInput,NSelect,NDatePicker,NTag,NSwitch,NList,NListItem,NThing,
         NCheckboxGroup,NCheckbox,NAffix,NPagination,NLoadingBarProvider,
         NSwitch,NLayout, NLayoutSider,NDataTable,NTabs,NTabPane]
 })

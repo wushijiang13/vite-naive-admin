@@ -105,7 +105,3 @@ const closeClick = (data) => {
 }
 
 </script>
-
-<style scoped>
-
-</style>

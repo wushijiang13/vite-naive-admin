@@ -47,7 +47,17 @@ const routers:RouteRecordRaw[]=[
                     synthesis:'@/views/table/inline.vue',
                 },
                 component:() => import('@/views/table/lineEditing/inline.vue'),
-            }
+            },
+            {
+                path:'/list',
+                name:'list',
+                meta:{
+                    code:'list',
+                    pageName:"列表",
+                    synthesis:'@/views/list/list.vue',
+                },
+                component:() => import('@/views/list/list.vue'),
+            },
         ]
     },
     {

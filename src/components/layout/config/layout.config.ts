@@ -7,7 +7,7 @@ import { BookOutline as BookIcon,
 } from '@vicons/ionicons5'
 import { Home12Regular,Code16Filled,Image24Regular } from '@vicons/fluent'
 import {  recursionBread } from "@utils/bread";
-import {likeIcon, overivew,  inline, synthesis} from '@views'
+import {likeIcon, overivew,  inline, synthesis,list} from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
 import type { menuOptions } from '@types'
@@ -75,6 +75,7 @@ export const menuOption:menuOptions[]=[
                 label:"列表",
                 key: 'list',
                 parendKey:"subassembly",
+                component:list,
                 isClose:true,
             },
             {
