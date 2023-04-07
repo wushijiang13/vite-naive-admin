@@ -58,6 +58,26 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/list/list.vue'),
             },
+            {
+                path:'/desc',
+                name:'desc',
+                meta:{
+                    code:'list',
+                    pageName:"描述",
+                    synthesis:'@/views/desc/desc.vue',
+                },
+                component:() => import('@/views/desc/desc.vue'),
+            },
+            {
+                path:'/calendar',
+                name:'calendar',
+                meta:{
+                    code:'calendar',
+                    pageName:"日历",
+                    synthesis:'@/views/calendar/calendar.vue',
+                },
+                component:() => import('@/views/calendar/calendar.vue'),
+            },
         ]
     },
     {

@@ -21,6 +21,8 @@ import {
     NBreadcrumbItem,
     NDrawer,
     NDrawerContent,
+    NDescriptions,
+    NDescriptionsItem,
     NConfigProvider,
     NInput,
     NSelect,
@@ -30,19 +32,24 @@ import {
     NCheckbox,
     NAffix,
     NPagination,
+    NP,
+    NH6,
     NTabs,
     NTabPane,
     NLoadingBarProvider,
     NList,
     NListItem,
     NThing,
+    NCalendar,
+    NCollapseTransition,
 } from 'naive-ui'
 
 const naive = create({
     components: [NButton,NPopover,NIcon,NRadio,NCard,NSpace,NRadioGroup,
         NRadioButton,NGrid,NGridItem,NMenu,NBreadcrumb,NBreadcrumbItem,NDrawer,NDropdown,
         NDrawerContent,NConfigProvider,NInput,NSelect,NDatePicker,NTag,NSwitch,NList,NListItem,NThing,
-        NCheckboxGroup,NCheckbox,NAffix,NPagination,NLoadingBarProvider,
+        NCheckboxGroup,NCheckbox,NAffix,NPagination,NLoadingBarProvider,NDescriptions,
+        NDescriptionsItem, NP, NH6,NCollapseTransition, NCalendar,
         NSwitch,NLayout, NLayoutSider,NDataTable,NTabs,NTabPane]
 })
 export {naive}

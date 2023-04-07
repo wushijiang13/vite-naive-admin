@@ -5,9 +5,11 @@ import {h, nextTick} from 'vue'
 import { BookOutline as BookIcon,
     FileTrayFullOutline
 } from '@vicons/ionicons5'
-import { Home12Regular,Code16Filled,Image24Regular } from '@vicons/fluent'
+import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
+    TextDescription24Regular, CalendarRtl28Regular
+} from '@vicons/fluent'
 import {  recursionBread } from "@utils/bread";
-import {likeIcon, overivew,  inline, synthesis,list} from '@views'
+import {likeIcon, overivew,  inline, synthesis,list, desc, calendar } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
 import type { menuOptions } from '@types'
@@ -76,18 +78,23 @@ export const menuOption:menuOptions[]=[
                 key: 'list',
                 parendKey:"subassembly",
                 component:list,
+                icon:AppsListDetail24Regular,
                 isClose:true,
             },
             {
                 label:"描述",
                 key: 'desc',
                 parendKey:"subassembly",
+                component:desc,
+                icon:TextDescription24Regular,
                 isClose:true,
             },
             {
                 label:"日历",
                 key: 'calendar',
                 parendKey:"subassembly",
+                component:calendar,
+                icon:CalendarRtl28Regular,
                 isClose:true,
             },
             {

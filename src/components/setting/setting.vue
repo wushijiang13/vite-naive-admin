@@ -1,12 +1,22 @@
 <!--设置-->
 <template>
     <div class="setting">
-        <n-button @click="()=>{active = !active}" style="font-size: 20px;" >
-          <n-icon>
-            <Settings/>
-          </n-icon>
+      <n-space vertical>
+        <n-button v-for="item in settingListData"
+                  @click="item.click"
+                  block
+                  class="set-btn"
+                  strong
+                  :color="item.color">
+          <template #default>
+            <n-space vertical>
+              <n-icon size="14" :component="item.icon" />
+              <div>{{item.title}}</div>
+            </n-space>
+          </template>
         </n-button>
-        <n-drawer v-model:show="active"  placement="right">
+      </n-space>
+      <n-drawer v-model:show="active"  placement="right">
           <template #default>
             <div class="setting-drawer">
               <h3>主题更换</h3>
@@ -25,9 +35,9 @@
 </template>
 
 <script setup lang="ts">
-    import {Settings} from '@vicons/ionicons5';
+    import { Settings,Copy } from '@vicons/ionicons5';
     import {reactive, ref, watch , defineEmits, defineProps} from 'vue'
-    import { setLocalData} from '@utils'
+    import { setLocalData } from '@utils'
     import { layoutList,layoutMap } from './config'
 
     const props = defineProps({
@@ -35,7 +45,24 @@
     })
     const active = ref(false)
     const emits = defineEmits(['update:modelValue'])
-
+    const settingListData = [
+      {
+        title:"主题配置",
+        icon:Settings,
+        color:'#68e1e3',
+        click:()=>{
+          active.value = !active.value
+        }
+      },
+      {
+        title:"拷贝源码",
+        icon:Copy,
+        color:'#2e6cf6',
+        click:()=>{
+          window.open('https://github.com/wushijiang13/vite-naive-admin')
+        }
+      }
+    ]
 
     let themeConfigs = reactive(props.modelValue);
     let selectLayout = ref(themeConfigs.layoutValue.key);
@@ -43,7 +70,7 @@
     /**
      * 主题切换
      */
-    const  themeClick =  () => {
+    const themeClick =  () => {
         themeConfigs.themeColorValue = themeConfigs.themeColorValue == "dark" ? "white" : "dark"
     }
 
@@ -62,11 +89,33 @@
 
 <style scoped>
     .setting {
-        position: fixed;
-        right: 0px;
-        bottom: 60px;
+      position: fixed;
+      margin: auto;
+      width: 70px;
+      height: 140px;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #fff;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-left: 1px solid #bababa;
+      border-bottom: 1px solid #bababa;
+      border-top: 1px solid #bababa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .setting-drawer {
-        padding: 0px 12px;
+      padding: 0px 12px;
+    }
+    .set-btn {
+      height: 60px;
+      width: 60px;
+      font-size: 12px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
 </style>
