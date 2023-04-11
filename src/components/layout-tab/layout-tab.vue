@@ -7,25 +7,29 @@
         closable
         :animated="false"
         @close="handleClose"
-        :tabs-padding="props.tabsPadding"
-    >
+        :tabs-padding="props.tabsPadding">
       <n-tab-pane
           v-for="page in store.tabPageList"
           :key="page.key"
           :tab="page.label"
           :name="page.key"
           display-directive="show:lazy"
-          :closable="store.tabPageActive == page.key && page.isClose"
-      >
+          :closable="store.tabPageActive == page.key && page.isClose">
         <div class="tab-pane-box" :style="props.paneStyle" >
           <keep-alive :exclude="store.excludePage" :max="10">
             <component v-if=" store.refresh && store.tabPageActive == page.key" :is="page.component"></component>
           </keep-alive>
         </div>
         <template #tab>
-          <div class="tab-box">
-            <n-icon v-if="page.icon" size="16" :component="page.icon"/>
-            <span class="tab-span">{{page.label}}</span>
+          <div>
+            <layoutTabClose :config="closeConfig" :isShowContent="false">
+              <template #external>
+                <div class="tab-box" @contextmenu="layoutContextMenu">
+                  <n-icon v-if="page.icon" size="16" :component="page.icon"/>
+                  <span class="tab-span">{{page.label}}</span>
+                </div>
+              </template>
+            </layoutTabClose>
           </div>
         </template>
       </n-tab-pane>
@@ -43,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, defineEmits,defineProps } from 'vue';
+import {nextTick, ref, defineEmits, defineProps, reactive} from 'vue';
 import { useStore } from "@pinia";
 import layoutTabClose from '@components/layout-tab-close/layout-tab-close.vue'
 import { useLoadingBar } from 'naive-ui'
@@ -52,6 +56,23 @@ const store = useStore();
 const emits = defineEmits(['tabChange'])
 const props = defineProps(['tabsPadding','paneStyle','suffixStyle'])
 const loadingBar= useLoadingBar();
+const closeConfig = reactive({
+  x:0,
+  y:0,
+  show:false,
+  trigger:'manual',
+  onSelect:(key)=>{
+    store.dropDownSelect(key);
+    closeConfig.show = false;
+  },
+  onClickoutside:()=>{
+    //因为插槽嵌套问题，导致clickout 触发会高于select 所以需要把设置隐藏弄到队列最后执行
+    let stop =  setTimeout(()=>{
+      closeConfig.show = false;
+      clearTimeout(stop);
+    },0)
+  }
+})
 
 const handleClose = (name: string | number) => {
   let tabPageList = store.tabPageList;
@@ -72,6 +93,15 @@ const tabChange = (value: string | number) => {
   router.push({name:(value as string)});
 }
 
+const layoutContextMenu = (e:MouseEvent) => {
+  e.preventDefault();
+  closeConfig.show = false;
+  nextTick(()=>{
+    closeConfig.x = e.clientX;
+    closeConfig.y = e.clientY;
+    closeConfig.show = true;
+  })
+}
 </script>
 <style scoped>
 .tab-pane-box {

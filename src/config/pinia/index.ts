@@ -2,9 +2,8 @@ import { defineStore } from "pinia";
 import { setLocalData , getLocalData, getKeyFindDelete } from "@utils";
 import { recursionBread} from "@utils/bread";
 import { flatList } from '@components/layout/config/layout.config'
-import {nextTick} from "vue";
 import type { menuOptions,ThemeConfig } from '@types'
-
+import {nextTick } from 'vue';
 
 const INIT_USERS = {
   email: "",
@@ -27,6 +26,7 @@ const INIT_STATE = {
   tabPageActive:'',
   refresh:true,
   excludePage:[] as any[],
+  loadingBar:null,
 };
 
 export const useStore =  defineStore('store',{
@@ -139,6 +139,40 @@ export const useStore =  defineStore('store',{
     TabPageListDelete(key:string| number){
       this.tabPageList =  getKeyFindDelete(this.tabPageList,'key',key);
     },
+    /**
+     * 刷新组件loading组件加载
+     */
+    async loadingRefresh(){
+      await this.loadingBar.start()
+      await this.refreshPageComponents();
+      this.loadingBar.finish();
+    },
+    dropDownSelect(key: string | number) {
+      let tabKey = this.tabPageActive;
+      switch(key){
+        case 'refresh':{
+          this.loadingRefresh()
+          break;
+        }
+        case 'closeOther':{
+          this.TabPageListClear('other',tabKey);
+          break;
+        }
+        case 'closeLeft':{
+          this.TabPageListClear('left',tabKey);
+          break;
+        }
+        case 'closeRight':{
+          this.TabPageListClear('right',tabKey);
+          break;
+        }
+        case 'closeAll':{
+          this.TabPageListInit();
+          this.tabPageActive = this.tabPageList[0].key;
+          break;
+        }
+      }
+    }
   },
   getters: {
     getPower: (state: any) => (id: string[] | string) => {

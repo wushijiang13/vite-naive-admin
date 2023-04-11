@@ -91,8 +91,8 @@
     .setting {
       position: fixed;
       margin: auto;
-      width: 70px;
-      height: 140px;
+      width: 76px;
+      height: 146px;
       right: 0;
       top: 0;
       bottom: 0;

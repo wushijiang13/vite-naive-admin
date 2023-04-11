@@ -9,7 +9,7 @@
         </div>
         <div class="layout-main">
             <div class="layout-navigation">
-                <n-layout has-sider>
+                <n-layout has-sider  class="layout-navigation-box">
                     <n-layout-sider
                         bordered
                         collapse-mode="width"
@@ -37,15 +37,12 @@
                                   isCollapsed ? LayoutSidebarLeftExpand : LayoutSidebarLeftCollapse"/>
                                 </n-button>
                               </div>
-
                             </template>
                           </layoutTab>
                         </div>
                     </n-layout>
                 </n-layout>
             </div>
-
-
         </div>
     </div>
 </template>
@@ -120,7 +117,10 @@
     .layout-inherit-flex-box{
         display: flex;
     }
-
+    .layout-navigation-box{
+      height: calc(100vh - 66px);
+      overflow: auto;
+    }
     .layout-conventional{
         display: flex;
         flex-direction: column;

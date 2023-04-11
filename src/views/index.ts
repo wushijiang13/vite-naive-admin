@@ -1,11 +1,12 @@
-import likeIcon from './icons/likeIcon.vue'
 import login from './login/login.vue'
 import overivew from './overivew/overivew.vue'
-import inline from './table/lineEditing/inline.vue'
-import synthesis from './table/synthesis/synthesis.vue'
-import list from './list/list.vue'
-import desc from './desc/desc.vue'
-import calendar from './calendar/calendar.vue'
+import likeIcon from './components/icons/likeIcon.vue'
+import inline from './components/table/lineEditing/inline.vue'
+import synthesis from './components/table/synthesis/synthesis.vue'
+import list from './components/list/list.vue'
+import desc from './components/desc/desc.vue'
+import calendar from './components/calendar/calendar.vue'
+import synthesizeFrom from './components/form/synthesizeFrom.vue'
 
 export {
     likeIcon,
@@ -16,4 +17,5 @@ export {
     list,
     desc,
     calendar,
+    synthesizeFrom
 }

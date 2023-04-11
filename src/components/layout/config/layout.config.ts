@@ -9,7 +9,7 @@ import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
     TextDescription24Regular, CalendarRtl28Regular
 } from '@vicons/fluent'
 import {  recursionBread } from "@utils/bread";
-import {likeIcon, overivew,  inline, synthesis,list, desc, calendar } from '@views'
+import {likeIcon, overivew,  inline, synthesis,list, desc, calendar,synthesizeFrom  } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
 import type { menuOptions } from '@types'
@@ -117,8 +117,9 @@ export const menuOption:menuOptions[]=[
                 children:[
                     {
                         label:"综合表单",
-                        key: 'screen',
+                        key: 'synthesizeFrom',
                         parendKey:"form",
+                        component:synthesizeFrom,
                         isClose:true,
                     },
                     {

@@ -1,22 +1,31 @@
 <template>
   <div class="layout-tab-close">
-    <n-dropdown trigger="hover" :placement="'bottom-end'" class="tab-drop"  :options="options" @select="dropDownSelect">
-      <n-icon class="tab-operate-icon" :component="BorderAll" size="20"/>
+    <div>
+      <slot name="external"></slot>
+    </div>
+    <n-dropdown
+        v-bind="props.config"
+        :placement="'bottom-end'"
+        class="tab-drop"
+        :options="options"
+        @select="dropDownSelect">
+      <slot name="content">
+        <n-icon  class="tab-operate-icon" :component="BorderAll" size="20"/>
+      </slot>
     </n-dropdown>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref, h, Ref} from 'vue';
+import {ref, h, Ref,defineProps,defineEmits} from 'vue';
 import { useStore } from "@pinia";
 import { BorderAll,Refresh } from '@vicons/tabler'
 import { CloseSharp } from '@vicons/ionicons5'
 import { ArrowLeft12Regular,ArrowRight16Regular } from '@vicons/fluent'
 import {NIcon,DropdownOption} from "naive-ui";
-import { useLoadingBar } from 'naive-ui'
 
 const store = useStore();
-const loadingBar = useLoadingBar();
+const props = defineProps(['config','isShowContent']);
 const options:Ref<DropdownOption[]> = ref([
   {
     label:'刷新',
@@ -45,42 +54,8 @@ const options:Ref<DropdownOption[]> = ref([
   }
 ])
 
-const dropDownSelect = (key: string | number, option: DropdownOption) => {
-  let tabKey = store.tabPageActive;
-  switch(key){
-    case 'refresh':{
-      loadingRefresh()
-      break;
-    }
-    case 'closeOther':{
-      store.TabPageListClear('other',tabKey);
-      break;
-    }
-    case 'closeLeft':{
-      store.TabPageListClear('left',tabKey);
-      break;
-    }
-    case 'closeRight':{
-      store.TabPageListClear('right',tabKey);
-      break;
-    }
-    case 'closeAll':{
-      store.TabPageListInit();
-      store.$patch({
-        tabPageActive:store.tabPageList[0].key
-      })
-      break;
-    }
-  }
-}
-
-/**
- * 刷新组件loading组件加载
- */
-const loadingRefresh = async () => {
-  await loadingBar.start();
-  await store.refreshPageComponents();
-  loadingBar.finish();
+const dropDownSelect = (key: string | number) => {
+  store.dropDownSelect(key)
 }
 
 const renderIcon = (component:any) => {

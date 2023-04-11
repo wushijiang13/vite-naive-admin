@@ -134,10 +134,7 @@
       width: 100vw;
       display: flex;
     }
-    .layout-inherit-flex-box{
-      display: flex;
-    }
-    .layout-teambition{
+    .layout-inherit-flex-box,.layout-teambition{
       display: flex;
     }
     .layout-navigation{

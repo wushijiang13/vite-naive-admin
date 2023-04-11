@@ -6,8 +6,14 @@
   import { setLocalData, getLocalData} from '@utils'
   import {useStore} from '@pinia'
   import type {ThemeConfig} from '@types'
+  import { useLoadingBar } from "naive-ui";
 
   const store = useStore();
+  const loadingBar = useLoadingBar();
+  store.$patch({
+    loadingBar:loadingBar,
+  })
+
   const themeData:ThemeConfig = !getLocalData('themeLayoutKey') ?  _.cloneDeep(themeConfigDeep) :
       {layoutValue:layoutMap[getLocalData('themeLayoutKey')],themeColorValue:getLocalData('themeColor')};
   store.$patch({
@@ -24,11 +30,11 @@
 </script>
 <template>
   <n-config-provider  :theme="themeColorMap[store.themeConfigs.themeColorValue]" :locale="zhCN" :date-locale="dateZhCN">
-    <n-loading-bar-provider>
-      <component :is="store.themeConfigs.layoutValue.value"></component>
-      <setting v-model="store.themeConfigs"/>
-      <n-global-style />
-      <n-theme-editor/>
-    </n-loading-bar-provider>
+    <n-message-provider>
+          <component :is="store.themeConfigs.layoutValue.value"></component>
+    </n-message-provider>
+    <setting v-model="store.themeConfigs"/>
+    <n-global-style />
+    <n-theme-editor/>
   </n-config-provider>
 </template>
