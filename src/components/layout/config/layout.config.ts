@@ -9,7 +9,8 @@ import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
     TextDescription24Regular, CalendarRtl28Regular
 } from '@vicons/fluent'
 import {  recursionBread } from "@utils/bread";
-import {likeIcon, overivew,  inline, synthesis,list, desc, calendar,synthesizeFrom  } from '@views'
+import {likeIcon, overivew,  inline, synthesis,
+    list, desc, calendar,synthesizeFrom,distributionFrom  } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
 import type { menuOptions } from '@types'
@@ -124,8 +125,9 @@ export const menuOption:menuOptions[]=[
                     },
                     {
                         label:"分布表单",
-                        key: 'screen',
+                        key: 'distributionFrom',
                         parendKey:"form",
+                        component:distributionFrom,
                         isClose:true,
                     },
                     {

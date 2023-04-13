@@ -79,6 +79,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/synthesizeFrom.vue'),
             },
+            {
+                path:'/distributionFrom',
+                name:'distributionFrom',
+                meta:{
+                    code:'distributionFrom',
+                    pageName:"综合表单",
+                },
+                component:() => import('@/views/components/form/distributionFrom.vue'),
+            },
         ]
     },
     {
