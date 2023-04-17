@@ -7,11 +7,11 @@
                   block
                   class="set-btn"
                   strong
-                  :color="item.color">
+                  :color="item.bgColor">
           <template #default>
             <n-space vertical>
-              <n-icon size="14" :component="item.icon" />
-              <div>{{item.title}}</div>
+              <n-icon size="14" :color="item.color" :component="item.icon" />
+              <div :style="{color:item.color}">{{item.title}}</div>
             </n-space>
           </template>
         </n-button>
@@ -49,7 +49,8 @@
       {
         title:"主题配置",
         icon:Settings,
-        color:'#68e1e3',
+        color:'#18a058',
+        bgColor:'#d6eee3',
         click:()=>{
           active.value = !active.value
         }
@@ -57,7 +58,8 @@
       {
         title:"拷贝源码",
         icon:Copy,
-        color:'#2e6cf6',
+        color:'#2080f0',
+        bgColor:'#cbdffa',
         click:()=>{
           window.open('https://github.com/wushijiang13/vite-naive-admin')
         }
@@ -99,9 +101,9 @@
       background-color: #fff;
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
-      border-left: 1px solid #bababa;
-      border-bottom: 1px solid #bababa;
-      border-top: 1px solid #bababa;
+      border-left: 1px solid #dcdfe6;
+      border-bottom: 1px solid #dcdfe6;
+      border-top: 1px solid #dcdfe6;
       display: flex;
       align-items: center;
       justify-content: center;
