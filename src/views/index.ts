@@ -10,6 +10,7 @@ import synthesizeFrom from './components/form/synthesizeFrom.vue'
 import distributionFrom from './components/form/distributionFrom.vue'
 import button from './components/form/button.vue'
 import link from './components/form/link.vue'
+import radio from './components/form/radio.vue'
 
 export {
     likeIcon,
@@ -23,5 +24,6 @@ export {
     synthesizeFrom,
     distributionFrom,
     button,
-    link
+    link,
+    radio,
 }

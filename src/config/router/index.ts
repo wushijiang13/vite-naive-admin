@@ -106,6 +106,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/link.vue'),
             },
+            {
+                path:'/radio',
+                name:'radio',
+                meta:{
+                    code:'radio',
+                    pageName:"单选框",
+                },
+                component:() => import('@/views/components/form/radio.vue'),
+            },
         ]
     },
     {

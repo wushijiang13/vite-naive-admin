@@ -11,7 +11,7 @@ import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
 import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
-    button,link,
+    button,link,radio
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -148,8 +148,9 @@ export const menuOption:menuOptions[]=[
                     },
                     {
                         label:"单选框",
-                        key: 'screen',
+                        key: 'radio',
                         parendKey:"form",
+                        component:radio,
                         isClose:true,
                     },
                     {
