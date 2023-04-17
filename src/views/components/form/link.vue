@@ -1,0 +1,197 @@
+<template>
+  <div>
+    <n-descriptions bordered label-placement="top" class="desc-box">
+      <n-descriptions-item label="基础用法">
+        <n-space>
+          <n-button
+              text
+              tag="a"
+              href="https://github.com/wushijiang13/vite-naive-admin"
+              target="_blank"
+              type="primary"
+          >
+            primary
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              href="https://github.com/wushijiang13/vite-naive-admin"
+              target="_blank"
+              type="tertiary"
+          >
+            tertiary
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              href="https://github.com/wushijiang13/vite-naive-admin"
+              target="_blank"
+              type="primary"
+          >
+            primary
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              href="https://github.com/wushijiang13/vite-naive-admin"
+              target="_blank"
+              type="info"
+          >
+            info
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              href="https://github.com/wushijiang13/vite-naive-admin"
+              target="_blank"
+              type="success"
+          >
+            success
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              href="https://github.com/wushijiang13/vite-naive-admin"
+              target="_blank"
+              type="warning"
+          >
+            warning
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              href="https://github.com/wushijiang13/vite-naive-admin"
+              target="_blank"
+              type="error"
+          >
+            error
+          </n-button>
+        </n-space>
+      </n-descriptions-item>
+    </n-descriptions>
+    <n-descriptions bordered label-placement="top" class="desc-box">
+      <n-descriptions-item label="禁用状态">
+        <n-space>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="primary"
+              disabled
+          >
+            primary
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="tertiary"
+              disabled
+          >
+            tertiary
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="primary"
+              disabled>
+            primary
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="info"
+              disabled>
+            info
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="success"
+              disabled>
+            success
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="warning"
+              disabled>
+            warning
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="error"
+              disabled>
+            error
+          </n-button>
+        </n-space>
+      </n-descriptions-item>
+    </n-descriptions>
+    <n-descriptions bordered label-placement="top" class="desc-box">
+      <n-descriptions-item label="下划线">
+        <n-space>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              class="a-underline"
+              type="primary">
+            下划线
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="primary"
+          >
+            无下划线
+          </n-button>
+        </n-space>
+      </n-descriptions-item>
+    </n-descriptions>
+    <n-descriptions bordered label-placement="top" class="desc-box">
+      <n-descriptions-item label="图标">
+        <n-space>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="primary">
+            <template #icon>
+              <n-icon>
+                <cash-icon />
+              </n-icon>
+            </template>
+            primary
+          </n-button>
+          <n-button
+              text
+              tag="a"
+              target="_blank"
+              type="tertiary">
+            <template #icon>
+              <n-icon>
+                <cash-icon />
+              </n-icon>
+            </template>
+            tertiary
+          </n-button>
+        </n-space>
+      </n-descriptions-item>
+    </n-descriptions>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { CashOutline as CashIcon } from '@vicons/ionicons5'
+</script>
+
+<style scoped>
+
+</style>

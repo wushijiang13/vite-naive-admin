@@ -8,6 +8,8 @@ import desc from './components/desc/desc.vue'
 import calendar from './components/calendar/calendar.vue'
 import synthesizeFrom from './components/form/synthesizeFrom.vue'
 import distributionFrom from './components/form/distributionFrom.vue'
+import button from './components/form/button.vue'
+import link from './components/form/link.vue'
 
 export {
     likeIcon,
@@ -19,5 +21,7 @@ export {
     desc,
     calendar,
     synthesizeFrom,
-    distributionFrom
+    distributionFrom,
+    button,
+    link
 }

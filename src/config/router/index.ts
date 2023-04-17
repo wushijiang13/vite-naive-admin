@@ -88,6 +88,24 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/distributionFrom.vue'),
             },
+            {
+                path:'/button',
+                name:'button',
+                meta:{
+                    code:'button',
+                    pageName:"按钮",
+                },
+                component:() => import('@/views/components/form/button.vue'),
+            },
+            {
+                path:'/link',
+                name:'link',
+                meta:{
+                    code:'link',
+                    pageName:"文字链接",
+                },
+                component:() => import('@/views/components/form/link.vue'),
+            },
         ]
     },
     {

@@ -16,6 +16,8 @@
 *  <input type='checkbox' disabled checked>日历</input>
 *  <input type='checkbox' disabled checked>综合表单</input>
 *  <input type='checkbox' disabled checked>分步表单</input>
+*  <input type='checkbox' disabled checked>按钮</input>
+*  <input type='checkbox' disabled checked>文字链接</input>
 
 待实现功能：  
 * 拖拽排序  vuedraggable   

@@ -10,7 +10,9 @@ import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
 } from '@vicons/fluent'
 import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
-    list, desc, calendar,synthesizeFrom,distributionFrom  } from '@views'
+    list, desc, calendar,synthesizeFrom,distributionFrom,
+    button,link,
+} from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
 import type { menuOptions } from '@types'
@@ -132,14 +134,16 @@ export const menuOption:menuOptions[]=[
                     },
                     {
                         label:"按钮",
-                        key: 'screen',
+                        key: 'button',
                         parendKey:"form",
+                        component:button,
                         isClose:true,
                     },
                     {
                         label:"文字链接",
-                        key: 'screen',
+                        key: 'link',
                         parendKey:"form",
+                        component:link,
                         isClose:true,
                     },
                     {

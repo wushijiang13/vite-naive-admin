@@ -21,3 +21,9 @@ body{
     border-radius: 5px;
     background: #00000000;
 }
+.desc-box:not(:first-child){
+    margin-top: 14px;
+}
+.a-underline:hover{
+    text-decoration: underline;
+}
