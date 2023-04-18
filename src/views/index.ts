@@ -11,6 +11,8 @@ import distributionFrom from './components/form/distributionFrom.vue'
 import button from './components/form/button.vue'
 import link from './components/form/link.vue'
 import radio from './components/form/radio.vue'
+import input from './components/form/input.vue'
+import inputNumber from './components/form/inputNumber.vue'
 
 export {
     likeIcon,
@@ -26,4 +28,6 @@ export {
     button,
     link,
     radio,
+    input,
+    inputNumber,
 }

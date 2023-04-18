@@ -115,6 +115,24 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/radio.vue'),
             },
+            {
+                path:'/input',
+                name:'input',
+                meta:{
+                    code:'input',
+                    pageName:"输入框",
+                },
+                component:() => import('@/views/components/form/input.vue'),
+            },
+            {
+                path:'/inputNumber',
+                name:'inputNumber',
+                meta:{
+                    code:'inputNumber',
+                    pageName:"计数器",
+                },
+                component:() => import('@/views/components/form/inputNumber.vue'),
+            },
         ]
     },
     {
