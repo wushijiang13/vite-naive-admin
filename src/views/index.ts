@@ -15,6 +15,7 @@ import input from './components/form/input.vue'
 import inputNumber from './components/form/inputNumber.vue'
 import select from './components/form/select.vue'
 import switchs from './components/form/switchs.vue'
+import slider from './components/form/slider.vue'
 
 export {
     likeIcon,
@@ -33,5 +34,6 @@ export {
     input,
     inputNumber,
     select,
-    switchs
+    switchs,
+    slider
 }

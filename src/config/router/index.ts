@@ -151,6 +151,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/switchs.vue'),
             },
+            {
+                path:'/slider',
+                name:'slider',
+                meta:{
+                    code:'slider',
+                    pageName:"选择器",
+                },
+                component:() => import('@/views/components/form/slider.vue'),
+            },
         ]
     },
     {

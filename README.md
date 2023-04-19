@@ -24,6 +24,7 @@
 *  <input type='checkbox' disabled checked>计数器</input>
 *  <input type='checkbox' disabled checked>选择器</input>
 *  <input type='checkbox' disabled checked>开关</input>
+*  <input type='checkbox' disabled checked>滑块</input>
 
 待实现功能：  
 * 拖拽排序  vuedraggable   
