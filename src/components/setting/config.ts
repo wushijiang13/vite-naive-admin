@@ -36,7 +36,7 @@ layoutList.forEach(item=>{
     layoutMap[item.key] = item;
 })
 
-console.log(layoutMap['top']);
+console.log("当前主题:"+layoutMap['top'].label);
 export const themeConfigDeep = {
     layoutValue:layoutMap['top'],//布局值
     themeColorValue:"dark",//全局深浅主题是否启动 dark 为深色 white 为白色

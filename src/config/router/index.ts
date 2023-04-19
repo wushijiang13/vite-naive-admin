@@ -133,6 +133,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/inputNumber.vue'),
             },
+            {
+                path:'/select',
+                name:'select',
+                meta:{
+                    code:'select',
+                    pageName:"选择器",
+                },
+                component:() => import('@/views/components/form/select.vue'),
+            },
         ]
     },
     {

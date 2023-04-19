@@ -19,6 +19,9 @@
 *  <input type='checkbox' disabled checked>按钮</input>
 *  <input type='checkbox' disabled checked>文字链接</input>
 *  <input type='checkbox' disabled checked>单选框</input>
+*  <input type='checkbox' disabled checked>多选框</input>
+*  <input type='checkbox' disabled checked>输入框</input>
+*  <input type='checkbox' disabled checked>计数器</input>
 
 待实现功能：  
 * 拖拽排序  vuedraggable   
