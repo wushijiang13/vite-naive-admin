@@ -14,6 +14,7 @@ import radio from './components/form/radio.vue'
 import input from './components/form/input.vue'
 import inputNumber from './components/form/inputNumber.vue'
 import select from './components/form/select.vue'
+import switchs from './components/form/switchs.vue'
 
 export {
     likeIcon,
@@ -31,5 +32,6 @@ export {
     radio,
     input,
     inputNumber,
-    select
+    select,
+    switchs
 }

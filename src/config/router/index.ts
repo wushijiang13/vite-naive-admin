@@ -142,6 +142,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/select.vue'),
             },
+            {
+                path:'/switch',
+                name:'switchs',
+                meta:{
+                    code:'switchs',
+                    pageName:"选择器",
+                },
+                component:() => import('@/views/components/form/switchs.vue'),
+            },
         ]
     },
     {
