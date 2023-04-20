@@ -3,6 +3,7 @@
 > 基于naive-ui风格的后台模板
 
 现在支持的功能是：  
+
 *  <input type='checkbox' disabled checked>多布局切换</input>
 *  <input type='checkbox' disabled checked>tab展示页面</input>
 *  <input type='checkbox' disabled checked>tab页快捷操作组件</input>
@@ -25,6 +26,7 @@
 *  <input type='checkbox' disabled checked>选择器</input>
 *  <input type='checkbox' disabled checked>开关</input>
 *  <input type='checkbox' disabled checked>滑块</input>
+*  <input type='checkbox' disabled checked>时间选择器</input>
 
 待实现功能：  
 * 拖拽排序  vuedraggable   

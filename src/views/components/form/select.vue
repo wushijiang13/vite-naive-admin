@@ -197,7 +197,5 @@ onMounted(()=>{
 
 </script>
 <style scoped>
-.select-sl{
-  width: 200px;
-}
+
 </style>

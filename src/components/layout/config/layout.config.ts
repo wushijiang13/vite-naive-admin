@@ -11,7 +11,8 @@ import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
 import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
-    button,link,radio,input,inputNumber,select,switchs,slider
+    button,link,radio,input,inputNumber,select,switchs,slider,
+    timePicker
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -196,8 +197,9 @@ export const menuOption:menuOptions[]=[
                     },
                     {
                         label:"时间选择器",
-                        key: 'screen',
+                        key: 'timePicker',
                         parendKey:"form",
+                        component:timePicker,
                         isClose:true,
                     },
                     {

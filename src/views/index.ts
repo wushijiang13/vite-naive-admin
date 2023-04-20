@@ -16,6 +16,7 @@ import inputNumber from './components/form/inputNumber.vue'
 import select from './components/form/select.vue'
 import switchs from './components/form/switchs.vue'
 import slider from './components/form/slider.vue'
+import timePicker from './components/form/timePicker.vue'
 
 export {
     likeIcon,
@@ -35,5 +36,6 @@ export {
     inputNumber,
     select,
     switchs,
-    slider
+    slider,
+    timePicker
 }

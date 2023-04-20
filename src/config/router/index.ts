@@ -160,6 +160,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/slider.vue'),
             },
+            {
+                path:'/timePicker',
+                name:'timePicker',
+                meta:{
+                    code:'timePicker',
+                    pageName:"选择器",
+                },
+                component:() => import('@/views/components/form/timePicker.vue'),
+            },
         ]
     },
     {
