@@ -17,6 +17,9 @@ import select from './components/form/select.vue'
 import switchs from './components/form/switchs.vue'
 import slider from './components/form/slider.vue'
 import timePicker from './components/form/timePicker.vue'
+import datePicker from './components/form/datePicker.vue'
+import dateTimePicker from './components/form/dateTimePicker.vue'
+import rate from './components/form/rate.vue'
 
 export {
     likeIcon,
@@ -37,5 +40,8 @@ export {
     select,
     switchs,
     slider,
-    timePicker
+    timePicker,
+    datePicker,
+    dateTimePicker,
+    rate
 }

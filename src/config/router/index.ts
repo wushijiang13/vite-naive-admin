@@ -147,7 +147,7 @@ const routers:RouteRecordRaw[]=[
                 name:'switchs',
                 meta:{
                     code:'switchs',
-                    pageName:"选择器",
+                    pageName:"开关",
                 },
                 component:() => import('@/views/components/form/switchs.vue'),
             },
@@ -156,7 +156,7 @@ const routers:RouteRecordRaw[]=[
                 name:'slider',
                 meta:{
                     code:'slider',
-                    pageName:"选择器",
+                    pageName:"滑块",
                 },
                 component:() => import('@/views/components/form/slider.vue'),
             },
@@ -165,9 +165,36 @@ const routers:RouteRecordRaw[]=[
                 name:'timePicker',
                 meta:{
                     code:'timePicker',
-                    pageName:"选择器",
+                    pageName:"时间选择器",
                 },
                 component:() => import('@/views/components/form/timePicker.vue'),
+            },
+            {
+                path:'/datePicker',
+                name:'datePicker',
+                meta:{
+                    code:'datePicker',
+                    pageName:"日期选择器",
+                },
+                component:() => import('@/views/components/form/datePicker.vue'),
+            },
+            {
+                path:'/dateTimePicker',
+                name:'dateTimePicker',
+                meta:{
+                    code:'dateTimePicker',
+                    pageName:"日期时间选择器",
+                },
+                component:() => import('@/views/components/form/dateTimePicker.vue'),
+            },
+            {
+                path:'/rate',
+                name:'rate',
+                meta:{
+                    code:'rate',
+                    pageName:"评分",
+                },
+                component:() => import('@/views/components/form/rate.vue'),
             },
         ]
     },

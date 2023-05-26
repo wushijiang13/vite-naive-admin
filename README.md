@@ -27,6 +27,9 @@
 *  <input type='checkbox' disabled checked>开关</input>
 *  <input type='checkbox' disabled checked>滑块</input>
 *  <input type='checkbox' disabled checked>时间选择器</input>
+*  <input type='checkbox' disabled checked>日期选择器</input>
+*  <input type='checkbox' disabled checked>日期时间选择器</input>
+*  <input type='checkbox' disabled checked>评分</input>
 
 待实现功能：  
 * 拖拽排序  vuedraggable   

@@ -12,7 +12,7 @@ import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
-    timePicker
+    timePicker,datePicker,dateTimePicker,rate
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -204,20 +204,23 @@ export const menuOption:menuOptions[]=[
                     },
                     {
                         label:"日期选择器",
-                        key: 'screen',
+                        key: 'datePicker',
+                        component:datePicker,
                         parendKey:"form",
                         isClose:true,
                     },
                     {
                         label:"日期时间选择器",
-                        key: 'screen',
+                        key: 'dateTimePicker',
+                        component:dateTimePicker,
                         parendKey:"form",
                         isClose:true,
                     },
                     {
                         label:"评分",
-                        key: 'screen',
+                        key: 'rate',
                         parendKey:"form",
+                        component:rate,
                         isClose:true,
                     },
                 ],
