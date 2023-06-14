@@ -9,7 +9,7 @@
         @close="handleClose"
         :tabs-padding="props.tabsPadding">
       <n-tab-pane
-          v-for="page in store.tabPageList"
+          v-for="(page,index) in store.tabPageList"
           :key="page.key"
           :tab="page.label"
           :name="page.key"
@@ -22,9 +22,9 @@
         </div>
         <template #tab>
           <div>
-            <layoutTabClose :config="closeConfig" :isShowContent="false">
+            <layoutTabClose :config="closeConfigList[index]" :isShowContent="false">
               <template #external>
-                <div class="tab-box" @contextmenu="layoutContextMenu">
+                <div class="tab-box" @contextmenu="layoutContextMenu(index)">
                   <n-icon v-if="page.icon" size="16" :component="page.icon"/>
                   <span class="tab-span">{{page.label}}</span>
                 </div>
@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import {nextTick, ref, defineEmits, defineProps, reactive} from 'vue';
+import { nextTick, ref, defineEmits, defineProps, watchEffect } from 'vue';
 import { useStore } from "@pinia";
 import layoutTabClose from '@components/layout-tab-close/layout-tab-close.vue'
 import { useLoadingBar } from 'naive-ui'
@@ -56,23 +56,30 @@ const store = useStore();
 const emits = defineEmits(['tabChange'])
 const props = defineProps(['tabsPadding','paneStyle','suffixStyle'])
 const loadingBar= useLoadingBar();
-const closeConfig = reactive({
-  x:0,
-  y:0,
-  show:false,
-  trigger:'manual',
-  onSelect:(key)=>{
-    store.dropDownSelect(key);
-    closeConfig.show = false;
-  },
-  onClickoutside:()=>{
-    //因为插槽嵌套问题，导致clickout 触发会高于select 所以需要把设置隐藏弄到队列最后执行
-    let stop =  setTimeout(()=>{
-      closeConfig.show = false;
-      clearTimeout(stop);
-    },0)
-  }
+const closeConfigList:any = ref([]);
+
+watchEffect(()=>{
+  closeConfigList.value = store.tabPageList.map((item,index:number)=>{
+    return {
+      x:0,
+      y:0,
+      show:false,
+      trigger:'manual',
+      onSelect:(key)=>{
+        store.dropDownSelect(key);
+        closeConfigList.value[index].show = false;
+      },
+      onClickoutside:()=>{
+        //因为插槽嵌套问题，导致clickout 触发会高于select 所以需要把设置隐藏弄到队列最后执行
+        let stop =  setTimeout(()=>{
+          closeConfigList.value[index].show = false;
+          clearTimeout(stop);
+        },0)
+      }
+    }
+  })
 })
+
 
 const handleClose = (name: string | number) => {
   let tabPageList = store.tabPageList;
@@ -93,13 +100,14 @@ const tabChange = (value: string | number) => {
   router.push({name:(value as string)});
 }
 
-const layoutContextMenu = (e:MouseEvent) => {
+const layoutContextMenu = (index:number) => {
+  let e:MouseEvent|any = window.event;
   e.preventDefault();
-  closeConfig.show = false;
+  closeConfigList.value[index].show = false;
   nextTick(()=>{
-    closeConfig.x = e.clientX;
-    closeConfig.y = e.clientY;
-    closeConfig.show = true;
+    closeConfigList.value[index].x = e.clientX;
+    closeConfigList.value[index].y = e.clientY;
+    closeConfigList.value[index].show = true;
   })
 }
 </script>
