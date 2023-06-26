@@ -87,17 +87,18 @@ const handleClose = (name: string | number) => {
   store.$patch({
     tabPageActive:tabPageList[tabPageList.length-1].key
   })
+  store.getKeyActiveMenu();
 }
 /**
  * tab点击同步路由
  * @param value
  */
-const tabChange = (value: string | number) => {
-  store.$patch({
-    menuValue:store.tabPageActive,
-  })
+const tabChange = (value:string) => {
   emits('tabChange')
-  router.push({name:(value as string)});
+  store.$patch({
+    tabPageActive:value,
+  })
+  store.getKeyActiveMenu();
 }
 
 const layoutContextMenu = (index:number) => {

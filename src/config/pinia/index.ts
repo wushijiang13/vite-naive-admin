@@ -4,6 +4,7 @@ import { recursionBread} from "@utils/bread";
 import { flatList } from '@components/layout/config/layout.config'
 import type { menuOptions,ThemeConfig } from '@types'
 import {nextTick } from 'vue';
+import {router} from "@/config/router/router";
 
 const INIT_USERS = {
   email: "",
@@ -23,7 +24,7 @@ const INIT_STATE = {
   menuValue:'overviews',//默认是概览
   bread:[] as menuOptions[],
   tabPageList:[] as menuOptions[],
-  tabPageActive:'',
+  tabPageActive:'' as string,
   refresh:true,
   excludePage:[] as any[],
   loadingBar:null,
@@ -172,7 +173,14 @@ export const useStore =  defineStore('store',{
           break;
         }
       }
-    }
+    },
+    getKeyActiveMenu(){
+      console.log(this.tabPageActive);
+      this.$patch({
+        menuValue:this.tabPageActive,
+      })
+      router.push({name:this.tabPageActive});
+    },
   },
   getters: {
     getPower: (state: any) => (id: string[] | string) => {

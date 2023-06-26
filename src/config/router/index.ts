@@ -196,6 +196,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/form/rate.vue'),
             },
+            {
+                path:'/chart',
+                name:'chart',
+                meta:{
+                    code:'chart',
+                    pageName:"图表",
+                },
+                component:() => import('@/views/components/other/chart.vue'),
+            },
         ]
     },
     {

@@ -12,7 +12,7 @@ import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
-    timePicker,datePicker,dateTimePicker,rate
+    timePicker,datePicker,dateTimePicker,rate,chart
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -240,8 +240,9 @@ export const menuOption:menuOptions[]=[
             },
             {
                 label:"图表",
-                key: 'product',
+                key: 'chart',
                 parendKey:"other",
+                component:chart,
                 isClose:true,
             },
             {
