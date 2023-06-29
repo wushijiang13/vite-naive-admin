@@ -17,6 +17,7 @@ specifiers:
   lodash: ^4.17.21
   naive-ui: ^2.34.3
   pinia: ^2.0.33
+  print-js: ^1.6.0
   typescript: ^4.9.5
   unplugin-vue-components: ^0.17.21
   vite: ^2.9.15
@@ -32,6 +33,7 @@ dependencies:
   echarts: registry.npmmirror.com/echarts/5.4.1
   lodash: registry.npmmirror.com/lodash/4.17.21
   pinia: registry.npmmirror.com/pinia/2.0.33_hmuptsblhheur2tugfgucj7gc4
+  print-js: registry.npmmirror.com/print-js/1.6.0
   vue: registry.npmmirror.com/vue/3.2.47
   vue-router: registry.npmmirror.com/vue-router/4.1.6_vue@3.2.47
   vuedraggable: registry.npmmirror.com/vuedraggable/4.1.0_vue@3.2.47
@@ -1389,6 +1391,12 @@ packages:
       nanoid: registry.npmmirror.com/nanoid/3.3.4
       picocolors: registry.npmmirror.com/picocolors/1.0.0
       source-map-js: registry.npmmirror.com/source-map-js/1.0.2
+
+  registry.npmmirror.com/print-js/1.6.0:
+    resolution: {integrity: sha512-BfnOIzSKbqGRtO4o0rnj/K3681BSd2QUrsIZy/+WdCIugjIswjmx3lDEZpXB2ruGf9d4b3YNINri81+J0FsBWg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/print-js/-/print-js-1.6.0.tgz}
+    name: print-js
+    version: 1.6.0
+    dev: false
 
   registry.npmmirror.com/promise/7.3.1:
     resolution: {integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/promise/-/promise-7.3.1.tgz}

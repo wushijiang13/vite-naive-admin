@@ -3,8 +3,14 @@
 > 基于naive-ui风格的后台模板
 
 现在支持的功能是：  
-
-*  <input type='checkbox' disabled checked>多布局切换</input>
+<table>
+    <tr>
+        <td>已支持</td>
+        <td>待开发</td>
+    </tr>
+    <tr>
+        <td>
+             <input type='checkbox' disabled checked>多布局切换</input>
 *  <input type='checkbox' disabled checked>tab展示页面</input>
 *  <input type='checkbox' disabled checked>tab页快捷操作组件</input>
 *  <input type='checkbox' disabled checked>tab页右键菜单</input>
@@ -31,8 +37,11 @@
 *  <input type='checkbox' disabled checked>日期时间选择器</input>
 *  <input type='checkbox' disabled checked>评分</input>
 *  <input type='checkbox' disabled checked>图表</input>
-
-待实现功能：  
-* 拖拽排序  vuedraggable   
-* 主题切换  var css
-
+*  <input type='checkbox' disabled checked>打印</input>
+        </td>
+        <td>
+            *  拖拽排序  vuedraggable   
+            *  主题切换  var css
+        </td>
+    </tr>
+</table>

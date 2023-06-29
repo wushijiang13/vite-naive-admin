@@ -21,6 +21,7 @@ import datePicker from './components/form/datePicker.vue'
 import dateTimePicker from './components/form/dateTimePicker.vue'
 import rate from './components/form/rate.vue'
 import chart from './components/other/chart.vue'
+import print from './components/other/print.vue'
 
 export {
     likeIcon,
@@ -45,5 +46,6 @@ export {
     datePicker,
     dateTimePicker,
     rate,
-    chart
+    chart,
+    print
 }

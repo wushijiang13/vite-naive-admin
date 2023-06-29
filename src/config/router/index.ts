@@ -205,6 +205,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/other/chart.vue'),
             },
+            {
+                path:'/print',
+                name:'print',
+                meta:{
+                    code:'print',
+                    pageName:"打印",
+                },
+                component:() => import('@/views/components/other/print.vue'),
+            },
         ]
     },
     {
