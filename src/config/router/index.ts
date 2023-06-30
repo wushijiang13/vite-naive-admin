@@ -250,6 +250,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/other/manyTab.vue'),
             },
+            {
+                path:'/watermark',
+                name:'watermark',
+                meta:{
+                    code:'watermark',
+                    pageName:"水印",
+                },
+                component:() => import('@/views/components/other/watermark.vue'),
+            },
         ]
     },
     {

@@ -13,7 +13,7 @@ import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,manyTab,
+    timeline,manyTab,watermark,
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -277,8 +277,9 @@ export const menuOption:menuOptions[]=[
             },
             {
                 label:"水印",
-                key: 'role',
+                key: 'watermark',
                 parendKey:"other",
+                component: watermark,
                 isClose:true,
             },
             {

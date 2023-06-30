@@ -26,6 +26,7 @@ import print from './components/other/print.vue'
 import notice from './components/other/notice.vue'
 import timeline from './components/other/timeline.vue'
 import manyTab from './components/other/manyTab.vue'
+import watermark from './components/other/watermark.vue'
 
 export {
     likeIcon,
@@ -56,4 +57,5 @@ export {
     notice,
     timeline,
     manyTab,
+    watermark,
 }

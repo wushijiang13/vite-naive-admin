@@ -48,10 +48,15 @@ const options:Ref<DropdownOption[]> = ref([
     icon:()=>renderIcon(ArrowRight16Regular),
   },
   {
+    label:'关闭当前',
+    key:'closeCurrent',
+    icon:()=>renderIcon(CloseSharp)
+  },
+  {
     label:'关闭全部',
     key:'closeAll',
     icon:()=>renderIcon(CloseSharp)
-  }
+  },
 ])
 
 const dropDownSelect = (key: string | number) => {
