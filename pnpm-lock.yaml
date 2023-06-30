@@ -13,6 +13,7 @@ specifiers:
   axios: ^0.21.4
   components: link:@/components
   cross-env: ^7.0.3
+  css-vars-ponyfill: ^2.4.8
   echarts: ^5.4.1
   lodash: ^4.17.21
   naive-ui: ^2.34.3
@@ -30,6 +31,7 @@ dependencies:
   '@vicons/material': registry.npmmirror.com/@vicons/material/0.12.0
   axios: registry.npmmirror.com/axios/0.21.4
   cross-env: registry.npmmirror.com/cross-env/7.0.3
+  css-vars-ponyfill: registry.npmmirror.com/css-vars-ponyfill/2.4.8
   echarts: registry.npmmirror.com/echarts/5.4.1
   lodash: registry.npmmirror.com/lodash/4.17.21
   pinia: registry.npmmirror.com/pinia/2.0.33_hmuptsblhheur2tugfgucj7gc4
@@ -520,7 +522,6 @@ packages:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/balanced-match/-/balanced-match-1.0.2.tgz}
     name: balanced-match
     version: 1.0.2
-    dev: true
 
   registry.npmmirror.com/binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/binary-extensions/-/binary-extensions-2.2.0.tgz}
@@ -625,6 +626,15 @@ packages:
       '@emotion/hash': registry.npmmirror.com/@emotion/hash/0.8.0
       csstype: registry.npmmirror.com/csstype/3.0.11
     dev: true
+
+  registry.npmmirror.com/css-vars-ponyfill/2.4.8:
+    resolution: {integrity: sha512-4/j4AX4htytYHWyHVZ2BFQ+NoCGZEcOH2h4/2mmgE4SkrFg4Xq6tGYR77DtvvUIDsaXuJN+sj41bbgauA0Gfmg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.8.tgz}
+    name: css-vars-ponyfill
+    version: 2.4.8
+    dependencies:
+      balanced-match: registry.npmmirror.com/balanced-match/1.0.2
+      get-css-data: registry.npmmirror.com/get-css-data/2.1.0
+    dev: false
 
   registry.npmmirror.com/csstype/2.6.21:
     resolution: {integrity: sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/csstype/-/csstype-2.6.21.tgz}
@@ -1060,6 +1070,12 @@ packages:
     name: function-bind
     version: 1.1.1
     dev: true
+
+  registry.npmmirror.com/get-css-data/2.1.0:
+    resolution: {integrity: sha512-HtPrzGk8aBF9rLeQNuImcXci7YVqsMEKzVflEWaCJu25ehxyDNiZRWoSxqSFUBfma8LERqKo70t/TcaGjIsM9g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/get-css-data/-/get-css-data-2.1.0.tgz}
+    name: get-css-data
+    version: 2.1.0
+    dev: false
 
   registry.npmmirror.com/get-intrinsic/1.2.0:
     resolution: {integrity: sha512-L049y6nFOuom5wGyRc3/gdTLO94dySVKRACj1RmJZBQXlbTMhtNIgkWkUHq+jYmZvKf14EW1EoJnnjbmoHij0Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/get-intrinsic/-/get-intrinsic-1.2.0.tgz}

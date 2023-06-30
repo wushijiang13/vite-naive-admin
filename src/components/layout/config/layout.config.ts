@@ -12,7 +12,8 @@ import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
-    timePicker,datePicker,dateTimePicker,rate,chart,print
+    timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
+    timeline,
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -234,8 +235,9 @@ export const menuOption:menuOptions[]=[
         children: [
             {
                 label: '工作流',
-                key: 'operationLog',
+                key: 'workflow',
                 parendKey:"other",
+                component:workflow,
                 isClose:true,
             },
             {
@@ -254,14 +256,16 @@ export const menuOption:menuOptions[]=[
             },
             {
                 label:"通知",
-                key: 'account',
+                key: 'notice',
                 parendKey:"other",
+                component: notice,
                 isClose:true,
             },
             {
                 label:"时间线",
-                key: 'role',
+                key: 'timeline',
                 parendKey:"other",
+                component: timeline,
                 isClose:true,
             },
             {

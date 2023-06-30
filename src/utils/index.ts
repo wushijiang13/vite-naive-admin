@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash'
 /**
  * 此工具类 为了方便以后使用，只写一次，整体项目如有需要 所有工具或简化函数添加此处
  * 用处：将融合进loadsh 和 自定义函数导出新的loadsh 对象以供使用
@@ -62,10 +63,39 @@ const getKeyFindDelete = (targetList:any[],key:string,name:string|number) =>{
     return targetList;
 }
 
+/**
+ * 拷贝合并器
+ * 对象比较合并 以第一个参数为主,如果有相同第二个对象属性会覆盖
+ * @params defaultInfo 默认参数
+ * @params propsInfo 更新参数
+ * @waring 如果两个参数不一致最后会合并成 第一个参数的属性长度，但是参数值以新值为主，后值为辅
+ */
+function mergeAssign(defaultInfo,propsInfo) {
+    let keyList = Object.keys(defaultInfo);
+    keyList.forEach(item =>{
+        if (propsInfo.hasOwnProperty(item)) {
+            if(Object.prototype.toString.call(defaultInfo[item]) == Object.prototype.toString.call(propsInfo[item])){
+                if(Object.prototype.toString.call(defaultInfo[item]).includes('Object')){
+                    propsInfo[item] = Object.assign(defaultInfo[item],propsInfo[item]);
+                }
+            }else{
+                if(!Object.prototype.toString.call(defaultInfo[item]).includes('Object')){
+                    if(propsInfo[item] != undefined){
+                        return;
+                    }
+                    propsInfo[item] = cloneDeep(defaultInfo[item]);
+                }
+            }
+        }
+    })
+    return propsInfo;
+}
+
 export {
     downLoadFile,
     isNullCheck,
     setLocalData,
     getLocalData,
-    getKeyFindDelete
+    getKeyFindDelete,
+    mergeAssign
 }

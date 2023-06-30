@@ -197,6 +197,15 @@ const routers:RouteRecordRaw[]=[
                 component:() => import('@/views/components/form/rate.vue'),
             },
             {
+                path:'/workflow',
+                name:'workflow',
+                meta:{
+                    code:'workflow',
+                    pageName:"工作流",
+                },
+                component:() => import('@/views/components/other/workflow.vue'),
+            },
+            {
                 path:'/chart',
                 name:'chart',
                 meta:{
@@ -213,6 +222,24 @@ const routers:RouteRecordRaw[]=[
                     pageName:"打印",
                 },
                 component:() => import('@/views/components/other/print.vue'),
+            },
+            {
+                path:'/notice',
+                name:'notice',
+                meta:{
+                    code:'notice',
+                    pageName:"通知",
+                },
+                component:() => import('@/views/components/other/notice.vue'),
+            },
+            {
+                path:'/timeline',
+                name:'timeline',
+                meta:{
+                    code:'timeline',
+                    pageName:"时间线",
+                },
+                component:() => import('@/views/components/other/timeline.vue'),
             },
         ]
     },

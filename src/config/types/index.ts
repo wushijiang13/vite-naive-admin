@@ -28,3 +28,11 @@ export interface ThemeConfig {
     layoutValue:LayoutOption,
     themeColorValue:string,
 }
+
+/**
+ * 气泡配置项
+ */
+export interface bubbleConfig{
+    color:string,
+    content:string,
+}

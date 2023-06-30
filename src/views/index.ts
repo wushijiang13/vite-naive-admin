@@ -20,8 +20,11 @@ import timePicker from './components/form/timePicker.vue'
 import datePicker from './components/form/datePicker.vue'
 import dateTimePicker from './components/form/dateTimePicker.vue'
 import rate from './components/form/rate.vue'
+import workflow from './components/other/workflow.vue'
 import chart from './components/other/chart.vue'
 import print from './components/other/print.vue'
+import notice from './components/other/notice.vue'
+import timeline from './components/other/timeline.vue'
 
 export {
     likeIcon,
@@ -46,6 +49,9 @@ export {
     datePicker,
     dateTimePicker,
     rate,
+    workflow,
     chart,
-    print
+    print,
+    notice,
+    timeline,
 }
