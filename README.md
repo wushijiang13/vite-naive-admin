@@ -1,4 +1,4 @@
-# Vue 3 + Typescript + Vite
+# vite-naive-admin
 
 > 基于naive-ui风格的后台模板
 
