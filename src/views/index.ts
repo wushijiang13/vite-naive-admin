@@ -25,6 +25,7 @@ import chart from './components/other/chart.vue'
 import print from './components/other/print.vue'
 import notice from './components/other/notice.vue'
 import timeline from './components/other/timeline.vue'
+import manyTab from './components/other/manyTab.vue'
 
 export {
     likeIcon,
@@ -54,4 +55,5 @@ export {
     print,
     notice,
     timeline,
+    manyTab,
 }

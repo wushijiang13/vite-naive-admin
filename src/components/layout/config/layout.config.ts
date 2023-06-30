@@ -13,7 +13,7 @@ import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,
+    timeline,manyTab,
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -270,8 +270,9 @@ export const menuOption:menuOptions[]=[
             },
             {
                 label:"多标签",
-                key: 'role',
+                key: 'manyTab',
                 parendKey:"other",
+                component: manyTab,
                 isClose:true,
             },
             {

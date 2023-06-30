@@ -241,6 +241,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/other/timeline.vue'),
             },
+            {
+                path:'/manyTab',
+                name:'manyTab',
+                meta:{
+                    code:'manyTab',
+                    pageName:"多标签",
+                },
+                component:() => import('@/views/components/other/manyTab.vue'),
+            },
         ]
     },
     {

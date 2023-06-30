@@ -118,6 +118,16 @@ export const useStore =  defineStore('store',{
             }
             break;
           }
+          case 'current':{
+            let tarIndex = this.tabPageList.findIndex(item=>item.key == key);
+            if(tarIndex == -1 || this.tabPageActive == 'overivew'){
+              //TODO 同上
+              return ;
+            }
+            this.tabPageList.splice(tarIndex,1);
+            this.tabPageActive =  this.tabPageList[this.tabPageList.length-1].key;
+            break;
+          }
         }
       }catch (err){
         //TODO 应该对整体加入一个错误验证
@@ -171,6 +181,9 @@ export const useStore =  defineStore('store',{
           this.TabPageListInit();
           this.tabPageActive = this.tabPageList[0].key;
           break;
+        }
+        case 'closeCurrent':{
+          this.TabPageListClear('current',tabKey);
         }
       }
     },
