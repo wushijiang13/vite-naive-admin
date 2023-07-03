@@ -27,6 +27,7 @@ import notice from './components/other/notice.vue'
 import timeline from './components/other/timeline.vue'
 import manyTab from './components/other/manyTab.vue'
 import watermark from './components/other/watermark.vue'
+import share from './components/other/share.vue'
 
 export {
     likeIcon,
@@ -58,4 +59,5 @@ export {
     timeline,
     manyTab,
     watermark,
+    share,
 }

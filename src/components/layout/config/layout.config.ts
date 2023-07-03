@@ -13,7 +13,7 @@ import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,manyTab,watermark,
+    timeline,manyTab,watermark,share,
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -284,8 +284,9 @@ export const menuOption:menuOptions[]=[
             },
             {
                 label:"分享",
-                key: 'role',
+                key: 'share',
                 parendKey:"other",
+                component: share,
                 isClose:true,
             },
             {

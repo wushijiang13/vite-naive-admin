@@ -259,6 +259,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/other/watermark.vue'),
             },
+            {
+                path:'/share',
+                name:'share',
+                meta:{
+                    code:'share',
+                    pageName:"分享",
+                },
+                component:() => import('@/views/components/other/share.vue'),
+            },
         ]
     },
     {
