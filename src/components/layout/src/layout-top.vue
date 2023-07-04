@@ -1,7 +1,7 @@
 <!--房间布局-->
 <template>
     <div class="layout-top">
-        <div class="layout-header">
+        <div class="layout-header fixed-header">
             <n-icon size="30"><LogoVue/></n-icon>
             <span>
                 运营支撑后台
@@ -19,7 +19,7 @@
           />
         </div>
         <div class="layout-main">
-          <layoutTab @tabChange='tabChange' :tabsPadding="70" :paneStyle="{padding:'0px 70px 70px 70px'}" :suffixStyle="{marginRight:'70px'}"/>
+          <layoutTab  @tabChange='tabChange' :tabsPadding="70" :paneStyle="{padding:'0px 70px 70px 70px'}" :suffixStyle="{marginRight:'70px'}"/>
         </div>
     </div>
 </template>
@@ -87,9 +87,11 @@ onMounted(()=>{
         align-items: center;
         font-size: 20px;
         font-weight: 600;
+        background-color: #fff;
     }
     .layout-main{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
-        height: calc(100vh - 70px);
+        min-height: calc(100vh - 70px);
+        margin-top: 70px;
     }
 </style>

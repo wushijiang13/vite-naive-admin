@@ -30,3 +30,8 @@ body{
 .a-underline:hover{
     text-decoration: underline;
 }
+.fixed-header{
+    position: fixed;
+    z-index: 4;
+    width: 100%;
+}

@@ -28,6 +28,7 @@ import timeline from './components/other/timeline.vue'
 import manyTab from './components/other/manyTab.vue'
 import watermark from './components/other/watermark.vue'
 import share from './components/other/share.vue'
+import dynamicAnchor from './components/other/dynamicAnchor.vue'
 
 export {
     likeIcon,
@@ -60,4 +61,5 @@ export {
     manyTab,
     watermark,
     share,
+    dynamicAnchor,
 }

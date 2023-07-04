@@ -13,7 +13,7 @@ import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,manyTab,watermark,share,
+    timeline,manyTab,watermark,share,dynamicAnchor
 } from '@views'
 import { useStore } from '@pinia'
 import { useRouter }  from 'vue-router'
@@ -291,8 +291,9 @@ export const menuOption:menuOptions[]=[
             },
             {
                 label:"动态锚点",
-                key: 'role',
+                key: 'dynamicAnchor',
                 parendKey:"other",
+                component: dynamicAnchor,
                 isClose:true,
             },
             {

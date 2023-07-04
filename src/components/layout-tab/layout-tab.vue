@@ -115,6 +115,7 @@ const layoutContextMenu = (index:number) => {
 <style scoped>
 .tab-pane-box {
   padding: 0px 20px 20px 20px;
+  overflow: auto;
 }
 .tab-box{
   height: 26px;

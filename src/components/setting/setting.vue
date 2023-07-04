@@ -107,6 +107,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 4;
     }
     .setting-drawer {
       padding: 0px 12px;

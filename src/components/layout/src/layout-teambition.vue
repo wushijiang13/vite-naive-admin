@@ -148,6 +148,7 @@
     .layout-main{
       flex: 1;
       flex-direction: column;
+      height: 100vh;
     }
     .layout-header{
       flex:1;
