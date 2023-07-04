@@ -13,12 +13,12 @@
 </template>
 
 <script setup lang="ts">
-  import {ref} from "vue";
+  import {ref,Ref} from "vue";
   import logo from '@/assets/logo.png'
   import vueQr from "vue-qr/src/packages/vue-qr.vue";
   import copy from 'copy-text-to-clipboard';
   import { useMessage } from 'naive-ui'
-  const urlValue = ref('https://wushijiang.cn/vite-naive-admin');
+  const urlValue:Ref<string> = ref('https://wushijiang.cn/vite-naive-admin');
   const message = useMessage();
   /**
    * 拷贝URL
@@ -30,6 +30,5 @@
     }catch (err){
       message.error('分享失败！');
     }
-
   }
 </script>
