@@ -16,6 +16,7 @@
   import {ref} from "vue";
   import logo from '@/assets/logo.png'
   import vueQr from "vue-qr/src/packages/vue-qr.vue";
+  import copy from 'copy-text-to-clipboard';
   import { useMessage } from 'naive-ui'
   const urlValue = ref('https://wushijiang.cn/vite-naive-admin');
   const message = useMessage();
@@ -24,13 +25,8 @@
    */
   const copyUrl = () => {
     try{
-      let oInput = document.createElement('textarea');
-      oInput.value = urlValue.value;
-      document.body.appendChild(oInput);
-      oInput.select();
-      document.execCommand('Copy');
+      copy(urlValue.value);
       message.success("分享成功！");
-      oInput.remove();
     }catch (err){
       message.error('分享失败！');
     }
