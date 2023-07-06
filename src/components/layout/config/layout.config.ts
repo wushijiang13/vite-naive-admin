@@ -6,8 +6,11 @@ import { BookOutline as BookIcon,
     FileTrayFullOutline
 } from '@vicons/ionicons5'
 import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
-    TextDescription24Regular, CalendarRtl28Regular
+    TextDescription24Regular, CalendarRtl28Regular,Table24Regular,TextEditStyle24Regular,
+    Textbox24Regular,Flowchart24Regular,ChartMultiple24Regular,Print24Regular,Chat24Regular,
+    History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,
 } from '@vicons/fluent'
+import { Anchor } from '@vicons/tabler';
 import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
@@ -48,6 +51,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"表格",
                 key: 'table',
+                icon:Table24Regular,
                 parendKey:"subassembly",
                 children:[
                     {
@@ -105,6 +109,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"编辑器",
                 key: 'editor',
+                icon:TextEditStyle24Regular,
                 parendKey:"subassembly",
                 children:[
                     {
@@ -118,6 +123,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"表单",
                 key: 'form',
+                icon:Textbox24Regular,
                 parendKey:"subassembly",
                 children:[
                     {
@@ -236,6 +242,7 @@ export const menuOption:menuOptions[]=[
             {
                 label: '工作流',
                 key: 'workflow',
+                icon:Flowchart24Regular,
                 parendKey:"other",
                 component:workflow,
                 isClose:true,
@@ -243,6 +250,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"图表",
                 key: 'chart',
+                icon:ChartMultiple24Regular,
                 parendKey:"other",
                 component:chart,
                 isClose:true,
@@ -250,6 +258,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"打印",
                 key: 'print',
+                icon:Print24Regular,
                 parendKey:"other",
                 component:print,
                 isClose:true,
@@ -257,6 +266,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"通知",
                 key: 'notice',
+                icon:Chat24Regular,
                 parendKey:"other",
                 component: notice,
                 isClose:true,
@@ -264,6 +274,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"时间线",
                 key: 'timeline',
+                icon:History24Regular,
                 parendKey:"other",
                 component: timeline,
                 isClose:true,
@@ -271,6 +282,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"多标签",
                 key: 'manyTab',
+                icon:TabDesktopCopy20Regular,
                 parendKey:"other",
                 component: manyTab,
                 isClose:true,
@@ -278,6 +290,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"水印",
                 key: 'watermark',
+                icon:Drop24Regular,
                 parendKey:"other",
                 component: watermark,
                 isClose:true,
@@ -285,6 +298,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"分享",
                 key: 'share',
+                icon:ShareAndroid24Regular,
                 parendKey:"other",
                 component: share,
                 isClose:true,
@@ -292,6 +306,7 @@ export const menuOption:menuOptions[]=[
             {
                 label:"动态锚点",
                 key: 'dynamicAnchor',
+                icon:Anchor,
                 parendKey:"other",
                 component: dynamicAnchor,
                 isClose:true,
