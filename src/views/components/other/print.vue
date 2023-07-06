@@ -91,4 +91,9 @@ const closeModal = () => {
 #data-table-ref{
   margin-top: 10px;
 }
+@media print {
+  .n-scrollbar-container {
+    overflow: hidden !important;
+  }
+}
 </style>

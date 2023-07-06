@@ -1,7 +1,7 @@
 <!--房间布局-->
 <template>
     <div class="layout-top">
-        <div class="layout-header fixed-header">
+        <div class="layout-header">
             <n-icon size="30"><LogoVue/></n-icon>
             <span>
                 运营支撑后台
@@ -91,7 +91,6 @@ onMounted(()=>{
     }
     .layout-main{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
-        min-height: calc(100vh - 70px);
-        margin-top: 70px;
+        height: 100vh;
     }
 </style>
