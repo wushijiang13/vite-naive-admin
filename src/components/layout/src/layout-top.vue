@@ -91,6 +91,6 @@ onMounted(()=>{
     }
     .layout-main{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
-        height: 100vh;
+        min-height: 100vh;
     }
 </style>
