@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { setLocalData , getLocalData, getKeyFindDelete } from "@utils";
 import { recursionBread} from "@utils/bread";
-import { flatList } from '@components/layout/config/layout.config'
+import {badgeValue, flatList} from '@components/layout/config/layout.config'
 import type { menuOptions,ThemeConfig } from '@types'
 import {nextTick } from 'vue';
 import {router} from "@/config/router/router";
@@ -27,7 +27,8 @@ const INIT_STATE = {
   tabPageActive:'' as string,
   refresh:true,
   excludePage:[] as any[],
-  loadingBar:null,
+  loadingBar:null as any,
+  badgeValue:0 as number,
 };
 
 export const useStore =  defineStore('store',{

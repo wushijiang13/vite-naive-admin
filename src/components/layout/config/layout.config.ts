@@ -1,33 +1,26 @@
 /*暂定设计*/
 // 关于这里的key 既代表code 也代表 页面路由的code 这样跳转不加任何处理
-import { NIcon } from 'naive-ui';
-import {h, nextTick} from 'vue'
-import { BookOutline as BookIcon,
+import { NIcon,NBadge } from 'naive-ui';
+import {h, ref} from 'vue'
+import {
     FileTrayFullOutline
 } from '@vicons/ionicons5'
 import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
     TextDescription24Regular, CalendarRtl28Regular,Table24Regular,TextEditStyle24Regular,
     Textbox24Regular,Flowchart24Regular,ChartMultiple24Regular,Print24Regular,Chat24Regular,
-    History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,
+    History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,CalendarEmpty24Regular
 } from '@vicons/fluent'
 import { Anchor } from '@vicons/tabler';
-import {  recursionBread } from "@utils/bread";
 import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,manyTab,watermark,share,dynamicAnchor
+    timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta
 } from '@views'
-import { useStore } from '@pinia'
-import { useRouter }  from 'vue-router'
 import type { menuOptions } from '@types'
+import { useStore } from "@pinia";
 
-// @ts-ignore
-function renderIcon (icon) {
-    return () => h(NIcon, null, { default: () => h(icon) })
-}
-
-export const menuOption:menuOptions[]=[
+export const menuOption:menuOptions[]= ref([
     {
         label: '概览',
         key: 'overivew',
@@ -313,7 +306,13 @@ export const menuOption:menuOptions[]=[
             },
             {
                 label:"动态Meta",
-                key: 'role',
+                key: 'dynamicMeta',
+                icon:CalendarEmpty24Regular,
+                component: dynamicMeta,
+                renderCompoent:()=>{
+                    const stroe = useStore();
+                    return h(NBadge,{value:stroe.badgeValue,offset:[20,0]},{})
+                },
                 parendKey:"other",
                 isClose:true,
             },
@@ -470,13 +469,13 @@ export const menuOption:menuOptions[]=[
             },
         ]
     },
-];
+]);
 
 export let flatList:menuOptions[] = [];
 export let flatObject:any = {};
 
 const flatMeun = ():void=>{
-    flatArray(menuOption);
+    flatArray(menuOption.value);
 }
 function flatArray(arr:any){
     // @ts-ignore
@@ -489,4 +488,18 @@ function flatArray(arr:any){
     })
 }
 flatMeun();
+
+export function updateExpandIcon(key:string,expand:Function){
+    if(key == ''){
+        return;
+    }
+    let targetIndex: number;
+    menuOption.value.find((item:menuOptions,index:number)=>{
+        if(item.key == key){
+            targetIndex = index;
+            return true;
+        }
+    })
+    menuOption.value[targetIndex]['expand'] = expand;
+}
 

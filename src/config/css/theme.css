@@ -35,3 +35,6 @@ body{
     z-index: 4;
     width: 100%;
 }
+.inblock{
+    display: inline-block;
+}

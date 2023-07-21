@@ -20,6 +20,7 @@
                   v-model:value="store.menuValue"
                   @update:value="menuAction"
                   :render-icon="renderIcon"
+                  :render-label="labelRender"
                   collapsed-icon-size="18"
                   collapsed-width="60"
                   ref="menuRef"
@@ -35,7 +36,8 @@
     import { useStore } from '@pinia'
     import { useRouter,useRoute } from "vue-router";
     import { LogoVue } from '@vicons/ionicons5'
-    import { menuOption,flatList,flatObject } from '../config/layout.config';
+    import {menuOption, flatObject } from '../config/layout.config';
+    import type { menuOptions } from '@types'
 
     const store = useStore();
     const router = useRouter();
@@ -44,6 +46,14 @@
 
     function renderIcon(option: MenuOption){
       return option["icon"] ? h(NIcon,{component:option["icon"],size:'18'}) : '';
+    }
+    function labelRender (option: MenuOption){
+      return h('div',{class:'.inblock'},{default:()=>{
+          return [
+            h('span',{},{default:()=>option.label}),
+            option['renderCompoent'] ?  h(NIcon,{component:option["renderCompoent"],size:'18'}) : undefined
+          ]
+        }})
     }
     const menuAction = (key:string,targetItem:menuOptions) => {
       store.generateBread(key,targetItem);

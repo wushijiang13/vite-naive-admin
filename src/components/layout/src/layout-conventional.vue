@@ -22,6 +22,7 @@
                             v-model:value="store.menuValue"
                             @update:value="menuAction"
                             :render-icon="renderIcon"
+                            :render-label="labelRender"
                             collapsed-icon-size="18"
                             collapsed-width="60"
                             ref="menuRef"
@@ -52,7 +53,7 @@
     import {MenuOption, NIcon, NMenu} from 'naive-ui'
     import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
     import { LogoVue } from '@vicons/ionicons5'
-    import { menuOption,flatList,flatObject } from '../config/layout.config';
+    import { menuOption,flatObject,updateExpandIcon } from '../config/layout.config';
     import { useStore } from "@pinia";
     import { useRoute,useRouter} from "vue-router";
     import {menuOptions} from "@types";
@@ -64,6 +65,15 @@
 
     function renderIcon(option: MenuOption){
       return option["icon"] ? h(NIcon,{component:option["icon"],size:'18'}) : '';
+    }
+
+    function labelRender (option: MenuOption){
+      return h('div',{class:'.inblock'},{default:()=>{
+          return [
+            h('span',{},{default:()=>option.label}),
+            option['renderCompoent'] ?  h(NIcon,{component:option["renderCompoent"],size:'18'}) : undefined
+          ]
+        }})
     }
 
     let isCollapsed = ref(false);

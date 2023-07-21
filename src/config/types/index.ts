@@ -9,6 +9,7 @@ export interface menuOptions{
     component?:any,
     parendKey?:string,
     icon?:any,
+    expand?:any,
     disabled?:boolean,
     children?:menuOptions[],
     isClose?:boolean

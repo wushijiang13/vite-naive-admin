@@ -277,6 +277,15 @@ const routers:RouteRecordRaw[]=[
                 },
                 component:() => import('@/views/components/other/dynamicAnchor.vue'),
             },
+            {
+                path:'/dynamicMeta',
+                name:'dynamicMeta',
+                meta:{
+                    code:'dynamicMeta',
+                    pageName:"动态锚点",
+                },
+                component:() => import('@/views/components/other/dynamicMeta.vue'),
+            },
         ]
     },
     {

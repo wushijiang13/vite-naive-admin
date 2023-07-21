@@ -12,10 +12,11 @@
         </n-anchor-link>
       </n-anchor>
     </div>
-
-    <div :id="item.title" class="card-box" :style="{backgroundColor: item.color}"  v-for="item in cardList">
+  <template  v-for="item in cardList">
+    <div :id="item.title" class="card-box" :style="{backgroundColor: item.color}" >
       {{item.title}}
     </div>
+  </template>
   </div>
 </template>
 

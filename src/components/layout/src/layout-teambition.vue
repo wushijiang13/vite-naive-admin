@@ -23,6 +23,7 @@
                       :options="menuOption"
                       v-model:value="store.menuValue"
                       @update:value="menuAction"
+                      :render-label="labelRender"
                       :render-icon="renderIcon"
                       collapsed-icon-size="18"
                       collapsed-width="60"
@@ -77,6 +78,15 @@
 
   function renderIcon(option: MenuOption){
     return option["icon"] ? h(NIcon,{component:option["icon"],size:'18'}) : '';
+  }
+
+  function labelRender (option: MenuOption){
+    return h('div',{class:'.inblock'},{default:()=>{
+        return [
+          h('span',{},{default:()=>option.label}),
+          option['renderCompoent'] ?  h(NIcon,{component:option["renderCompoent"],size:'18'}) : undefined
+        ]
+      }})
   }
 
   /**

@@ -29,6 +29,7 @@ import manyTab from './components/other/manyTab.vue'
 import watermark from './components/other/watermark.vue'
 import share from './components/other/share.vue'
 import dynamicAnchor from './components/other/dynamicAnchor.vue'
+import dynamicMeta from './components/other/dynamicMeta.vue'
 
 export {
     likeIcon,
@@ -62,4 +63,5 @@ export {
     watermark,
     share,
     dynamicAnchor,
+    dynamicMeta,
 }
