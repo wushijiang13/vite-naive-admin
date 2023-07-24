@@ -18,7 +18,7 @@
                   :mode="'horizontal'"
                   :options="menuOption"
                   v-model:value="store.menuValue"
-                  @update:value="menuAction"
+                  @update:value="store.menuAction"
                   :render-icon="renderIcon"
                   :render-label="labelRender"
                   collapsed-icon-size="18"
@@ -55,14 +55,6 @@
           ]
         }})
     }
-    const menuAction = (key:string,targetItem:menuOptions) => {
-      store.generateBread(key,targetItem);
-      store.$patch({
-        menuValue:key,
-      })
-      router.push({name:key})
-    }
-
     /**
      * 是否展开列表
      */
@@ -71,7 +63,7 @@
     }
 
     function findMenuAction(key:string){
-      menuAction(key,flatObject[key]);
+      store.menuAction(key,flatObject[key]);
       menuExpand();
     }
 

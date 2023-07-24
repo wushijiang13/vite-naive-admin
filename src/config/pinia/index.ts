@@ -28,7 +28,7 @@ const INIT_STATE = {
   refresh:true,
   excludePage:[] as any[],
   loadingBar:null as any,
-  badgeValue:0 as number,
+  badgeValue:1 as number,
 };
 
 export const useStore =  defineStore('store',{
@@ -195,6 +195,22 @@ export const useStore =  defineStore('store',{
       })
       router.push({name:this.tabPageActive});
     },
+    /**
+     * 设置菜单选中并跳转
+     * @param key
+     * @param targetItem
+     */
+    menuAction(key:string,targetItem:menuOptions){
+      this.generateBread(key,targetItem);
+      this.$patch({
+        menuValue:key,
+      })
+      if(targetItem["params"]){
+        router.push({name:key,params:targetItem.params});
+      }else {
+        router.push({name:key})
+      }
+    }
   },
   getters: {
     getPower: (state: any) => (id: string[] | string) => {

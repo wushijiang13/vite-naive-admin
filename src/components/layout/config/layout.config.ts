@@ -15,7 +15,7 @@ import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta
+    timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -323,9 +323,13 @@ export const menuOption:menuOptions[]= ref([
                 children:[
                     {
                         label:"Params id=1",
-                        key: 'role',
+                        key: 'params1',
                         parendKey:"dynamicParams",
+                        component: params1,
                         isClose:true,
+                        params:{
+                            id:"1"
+                        }
                     },
                     {
                         label:"Query id=1",

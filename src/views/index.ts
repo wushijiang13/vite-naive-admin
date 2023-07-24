@@ -20,16 +20,17 @@ import timePicker from './components/form/timePicker.vue'
 import datePicker from './components/form/datePicker.vue'
 import dateTimePicker from './components/form/dateTimePicker.vue'
 import rate from './components/form/rate.vue'
-import workflow from './components/other/workflow.vue'
-import chart from './components/other/chart.vue'
-import print from './components/other/print.vue'
-import notice from './components/other/notice.vue'
-import timeline from './components/other/timeline.vue'
-import manyTab from './components/other/manyTab.vue'
-import watermark from './components/other/watermark.vue'
-import share from './components/other/share.vue'
-import dynamicAnchor from './components/other/dynamicAnchor.vue'
-import dynamicMeta from './components/other/dynamicMeta.vue'
+import workflow from './other/workflow.vue'
+import chart from './other/chart.vue'
+import print from './other/print.vue'
+import notice from './other/notice.vue'
+import timeline from './other/timeline.vue'
+import manyTab from './other/manyTab.vue'
+import watermark from './other/watermark.vue'
+import share from './other/share.vue'
+import dynamicAnchor from './other/dynamicAnchor.vue'
+import dynamicMeta from './other/dynamicMeta.vue'
+import params1 from './other/dynamicParams/params1.vue'
 
 export {
     likeIcon,
@@ -64,4 +65,5 @@ export {
     share,
     dynamicAnchor,
     dynamicMeta,
+    params1,
 }

@@ -22,7 +22,7 @@
                       :collapsed="isCollapsed"
                       :options="menuOption"
                       v-model:value="store.menuValue"
-                      @update:value="menuAction"
+                      @update:value="store.menuAction"
                       :render-label="labelRender"
                       :render-icon="renderIcon"
                       collapsed-icon-size="18"
@@ -111,16 +111,8 @@
     menuRef.value?.showOption(store.menuValue)
   }
 
-  const menuAction = (key:string,targetItem:menuOptions) => {
-    store.generateBread(key,targetItem);
-    store.$patch({
-      menuValue:key,
-    })
-    router.push({name:key})
-  }
-
   function findMenuAction(key:string){
-    menuAction(key,flatObject[key]);
+    store.menuAction(key,flatObject[key]);
     menuExpand();
   }
 

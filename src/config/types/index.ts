@@ -12,7 +12,8 @@ export interface menuOptions{
     expand?:any,
     disabled?:boolean,
     children?:menuOptions[],
-    isClose?:boolean
+    isClose?:boolean,
+    params?:any
 }
 
 export interface LayoutOption {

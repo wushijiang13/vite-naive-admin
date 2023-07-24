@@ -20,7 +20,7 @@
                             :collapsed="isCollapsed"
                             :options="menuOption"
                             v-model:value="store.menuValue"
-                            @update:value="menuAction"
+                            @update:value="store.menuAction"
                             :render-icon="renderIcon"
                             :render-label="labelRender"
                             collapsed-icon-size="18"
@@ -77,14 +77,6 @@
     }
 
     let isCollapsed = ref(false);
-
-    const menuAction = (key:string,targetItem:menuOptions) => {
-      store.generateBread(key,targetItem);
-      store.$patch({
-        menuValue:key,
-      })
-      router.push({name:key})
-    }
     /**
      * 控制menu是否抽屉展开
      */
@@ -106,7 +98,7 @@
       menuRef.value?.showOption(store.menuValue)
     }
     function findMenuAction(key:string){
-      menuAction(key,flatObject[key]);
+      store.menuAction(key,flatObject[key]);
       menuExpand();
     }
     /**

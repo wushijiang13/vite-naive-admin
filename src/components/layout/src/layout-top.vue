@@ -10,7 +10,7 @@
               :options="menuOption"
               v-model:value="store.menuValue"
               :default-expanded-keys="['projectsAndScree','system']"
-              @update:value="menuAction"
+              @update:value="store.menuAction"
               :render-icon="renderIcon"
               :render-label="labelRender"
               mode="horizontal"
@@ -37,14 +37,6 @@ import type { menuOptions } from '@types'
 const store = useStore();
 const router = useRouter();
 const route = useRoute();
-
-const menuAction = (key:string,targetItem:menuOptions) => {
-  store.generateBread(key,targetItem);
-  store.$patch({
-    menuValue:key,
-  })
-  router.push({name:key})
-}
 
 function renderIcon(option: MenuOption){
   return option["icon"] ? h(NIcon,{component:option["icon"],size:'18'}) : '';
@@ -73,7 +65,7 @@ function tabChange(){
 function init(){
   //不管从哪个页面进来概览都要排到第一个
   store.TabPageListInit();
-  menuAction((route.name as string),flatObject[(route.name as string)]);
+  store.menuAction((route.name as string),flatObject[(route.name as string)]);
 }
 
 onMounted(()=>{
