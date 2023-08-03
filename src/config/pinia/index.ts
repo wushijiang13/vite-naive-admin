@@ -207,7 +207,9 @@ export const useStore =  defineStore('store',{
       })
       if(targetItem["params"]){
         router.push({name:key,params:targetItem.params});
-      }else {
+      }else if(targetItem['query']){
+        router.push({name:key,query:targetItem.query})
+      }else{
         router.push({name:key})
       }
     }

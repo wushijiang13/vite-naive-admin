@@ -313,6 +313,15 @@ const routers:RouteRecordRaw[]=[
                                 },
                                 component:() => import('@/views/other/dynamicParams/params1.vue'),
                             },
+                            {
+                                path:'query',
+                                name:'query1',
+                                meta:{
+                                    code:'query1',
+                                    pageName:"Query id=1",
+                                },
+                                component:() => import('@/views/other/dynamicParams/query1.vue'),
+                            },
                         ],
                     },
                 ]
