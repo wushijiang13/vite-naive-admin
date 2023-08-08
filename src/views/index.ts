@@ -32,6 +32,7 @@ import dynamicAnchor from './other/dynamicAnchor.vue'
 import dynamicMeta from './other/dynamicMeta.vue'
 import params1 from './other/dynamicParams/params1.vue'
 import query1 from './other/dynamicParams/query1.vue'
+import modalDrag from './other/drag/modalDrag.vue'
 
 export {
     likeIcon,
@@ -67,5 +68,6 @@ export {
     dynamicAnchor,
     dynamicMeta,
     params1,
-    query1
+    query1,
+    modalDrag,
 }

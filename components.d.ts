@@ -13,6 +13,7 @@ declare module 'vue' {
     LayoutTabClose: typeof import('./src/components/layout-tab-close/layout-tab-close.vue')['default']
     LayoutTeambition: typeof import('./src/components/layout/src/layout-teambition.vue')['default']
     LayoutTop: typeof import('./src/components/layout/src/layout-top.vue')['default']
+    ModalDrag: typeof import('./src/components/modal-drag/modal-drag.vue')['default']
     Setting: typeof import('./src/components/setting/setting.vue')['default']
     Table: typeof import('./src/components/table/index.vue')['default']
   }

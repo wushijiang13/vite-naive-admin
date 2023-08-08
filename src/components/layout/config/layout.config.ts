@@ -15,7 +15,8 @@ import {likeIcon, overivew,  inline, synthesis,
     list, desc, calendar,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1
+    timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1,
+    modalDrag
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -311,7 +312,7 @@ export const menuOption:menuOptions[]= ref([
                 component: dynamicMeta,
                 renderCompoent:()=>{
                     const stroe = useStore();
-                    return h(NBadge,{value:stroe.badgeValue,offset:[20,0]},{})
+                    return h(NBadge,{value:stroe.badgeValue,offset:[20,0],max:99},{})
                 },
                 parendKey:"other",
                 isClose:true,
@@ -350,8 +351,9 @@ export const menuOption:menuOptions[]= ref([
                 children:[
                     {
                         label:"弹窗拖拽",
-                        key: 'role',
+                        key: 'modalDrag',
                         parendKey:"drag",
+                        component: modalDrag,
                         isClose:true,
                     },
                     {
