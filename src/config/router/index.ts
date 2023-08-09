@@ -337,9 +337,18 @@ const routers:RouteRecordRaw[]=[
                                 name:'modalDrag',
                                 meta:{
                                     code:'modalDrag',
-                                    pageName:"modalDrag",
+                                    pageName:"弹框拖拽",
                                 },
                                 component:() => import('@/views/other/drag/modalDrag.vue'),
+                            },
+                            {
+                                path:'cardDrag',
+                                name:'cardDrag',
+                                meta:{
+                                    code:'cardDrag',
+                                    pageName:"卡片拖拽",
+                                },
+                                component:() => import('@/views/other/drag/cardDrag.vue'),
                             },
                         ],
                     },

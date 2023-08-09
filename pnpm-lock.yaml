@@ -17,6 +17,7 @@ specifiers:
   css-vars-ponyfill: ^2.4.8
   echarts: ^5.4.1
   lodash: ^4.17.21
+  muuri: ^0.9.5
   naive-ui: ^2.34.3
   pinia: ^2.0.33
   print-js: ^1.6.0
@@ -28,7 +29,7 @@ specifiers:
   vue-qr: ^4.0.9
   vue-router: ^4.1.6
   vue-tsc: ^0.29.8
-  vuedraggable: ^4.1.0
+  web-animations-js: ^2.3.2
 
 dependencies:
   '@vicons/material': registry.npmmirror.com/@vicons/material/0.12.0
@@ -38,13 +39,14 @@ dependencies:
   css-vars-ponyfill: registry.npmmirror.com/css-vars-ponyfill/2.4.8
   echarts: registry.npmmirror.com/echarts/5.4.1
   lodash: registry.npmmirror.com/lodash/4.17.21
+  muuri: registry.npmmirror.com/muuri/0.9.5
   pinia: registry.npmmirror.com/pinia/2.0.33_hmuptsblhheur2tugfgucj7gc4
   print-js: registry.npmmirror.com/print-js/1.6.0
   vue: registry.npmmirror.com/vue/3.2.47
   vue-json-pretty: registry.npmmirror.com/vue-json-pretty/2.2.4_vue@3.2.47
   vue-qr: registry.npmmirror.com/vue-qr/4.0.9
   vue-router: registry.npmmirror.com/vue-router/4.1.6_vue@3.2.47
-  vuedraggable: registry.npmmirror.com/vuedraggable/4.1.0_vue@3.2.47
+  web-animations-js: registry.npmmirror.com/web-animations-js/2.3.2
 
 devDependencies:
   '@types/node': registry.npmmirror.com/@types/node/18.14.2
@@ -1388,6 +1390,12 @@ packages:
     version: 2.1.2
     dev: true
 
+  registry.npmmirror.com/muuri/0.9.5:
+    resolution: {integrity: sha512-nJL9/Pd5IaIXGAVunBs/LLQ+v6tPkvlqCYrlauWESgkVFr+F+CRf8HnayRh4AqiQ1S/PIEN39fhJSe4L5rLlxg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/muuri/-/muuri-0.9.5.tgz}
+    name: muuri
+    version: 0.9.5
+    dev: false
+
   registry.npmmirror.com/naive-ui/2.34.3_vue@3.2.47:
     resolution: {integrity: sha512-fUMr0dzb/iGsOTWgoblPVobY5X5dihQ1eam5dA+H74oyLYAvgX4pL96xQFPBLIYqvyRFBAsN85kHN5pLqdtpxA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/naive-ui/-/naive-ui-2.34.3.tgz}
     id: registry.npmmirror.com/naive-ui/2.34.3
@@ -1740,12 +1748,6 @@ packages:
       decompress-response: registry.npmmirror.com/decompress-response/6.0.0
       once: registry.npmmirror.com/once/1.4.0
       simple-concat: registry.npmmirror.com/simple-concat/1.0.1
-    dev: false
-
-  registry.npmmirror.com/sortablejs/1.14.0:
-    resolution: {integrity: sha512-pBXvQCs5/33fdN1/39pPL0NZF20LeRbLQ5jtnheIPN9JQAaufGjKdWduZn4U7wCtVuzKhmRkI0DFYHYRbB2H1w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sortablejs/-/sortablejs-1.14.0.tgz}
-    name: sortablejs
-    version: 1.14.0
     dev: false
 
   registry.npmmirror.com/source-map-js/1.0.2:
@@ -2165,18 +2167,6 @@ packages:
       '@vue/server-renderer': registry.npmmirror.com/@vue/server-renderer/3.2.47_vue@3.2.47
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.47
 
-  registry.npmmirror.com/vuedraggable/4.1.0_vue@3.2.47:
-    resolution: {integrity: sha512-FU5HCWBmsf20GpP3eudURW3WdWTKIbEIQxh9/8GE806hydR9qZqRRxRE3RjqX7PkuLuMQG/A7n3cfj9rCEchww==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vuedraggable/-/vuedraggable-4.1.0.tgz}
-    id: registry.npmmirror.com/vuedraggable/4.1.0
-    name: vuedraggable
-    version: 4.1.0
-    peerDependencies:
-      vue: ^3.0.1
-    dependencies:
-      sortablejs: registry.npmmirror.com/sortablejs/1.14.0
-      vue: registry.npmmirror.com/vue/3.2.47
-    dev: false
-
   registry.npmmirror.com/vueuc/0.4.51_vue@3.2.47:
     resolution: {integrity: sha512-pLiMChM4f+W8czlIClGvGBYo656lc2Y0/mXFSCydcSmnCR1izlKPGMgiYBGjbY9FDkFG8a2HEVz7t0DNzBWbDw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vueuc/-/vueuc-0.4.51.tgz}
     id: registry.npmmirror.com/vueuc/0.4.51
@@ -2194,6 +2184,12 @@ packages:
       vooks: registry.npmmirror.com/vooks/0.2.12_vue@3.2.47
       vue: registry.npmmirror.com/vue/3.2.47
     dev: true
+
+  registry.npmmirror.com/web-animations-js/2.3.2:
+    resolution: {integrity: sha512-TOMFWtQdxzjWp8qx4DAraTWTsdhxVSiWa6NkPFSaPtZ1diKUxTn4yTix73A1euG1WbSOMMPcY51cnjTIHrGtDA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/web-animations-js/-/web-animations-js-2.3.2.tgz}
+    name: web-animations-js
+    version: 2.3.2
+    dev: false
 
   registry.npmmirror.com/webpack-virtual-modules/0.4.6:
     resolution: {integrity: sha512-5tyDlKLqPfMqjT3Q9TAqf2YqjwmnUleZwzJi1A5qXnlBCdj2AtOJ6wAWdglTIDOPgOiOrXeBeFcsQ8+aGQ6QbA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/webpack-virtual-modules/-/webpack-virtual-modules-0.4.6.tgz}

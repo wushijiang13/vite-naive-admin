@@ -33,6 +33,7 @@ import dynamicMeta from './other/dynamicMeta.vue'
 import params1 from './other/dynamicParams/params1.vue'
 import query1 from './other/dynamicParams/query1.vue'
 import modalDrag from './other/drag/modalDrag.vue'
+import cardDrag from './other/drag/cardDrag.vue'
 
 export {
     likeIcon,
@@ -70,4 +71,5 @@ export {
     params1,
     query1,
     modalDrag,
+    cardDrag,
 }

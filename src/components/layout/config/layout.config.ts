@@ -16,7 +16,7 @@ import {likeIcon, overivew,  inline, synthesis,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
     timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1,
-    modalDrag
+    modalDrag,cardDrag
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -358,8 +358,9 @@ export const menuOption:menuOptions[]= ref([
                     },
                     {
                         label:"卡片拖拽",
-                        key: 'role',
+                        key: 'cardDrag',
                         parendKey:"drag",
+                        component: cardDrag,
                         isClose:true,
                     }
                 ]
