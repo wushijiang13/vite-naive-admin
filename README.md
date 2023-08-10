@@ -14,4 +14,4 @@
 
 
 ## 待开发
-拖拽排序  vuedraggable、主题切换  var css
+  上传、 多级路由缓存、错误日志模拟、CSS动画、第三方登录、外链、iframe、Execl
