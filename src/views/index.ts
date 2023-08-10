@@ -34,6 +34,7 @@ import params1 from './other/dynamicParams/params1.vue'
 import query1 from './other/dynamicParams/query1.vue'
 import modalDrag from './other/drag/modalDrag.vue'
 import cardDrag from './other/drag/cardDrag.vue'
+import noLayout from './other/noLayout.vue'
 
 export {
     likeIcon,
@@ -72,4 +73,5 @@ export {
     query1,
     modalDrag,
     cardDrag,
+    noLayout,
 }

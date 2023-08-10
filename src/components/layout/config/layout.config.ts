@@ -16,7 +16,7 @@ import {likeIcon, overivew,  inline, synthesis,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
     timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1,
-    modalDrag,cardDrag
+    modalDrag,cardDrag,noLayout
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -367,8 +367,8 @@ export const menuOption:menuOptions[]= ref([
             },
             {
                 label:"无框",
-                key: 'role',
-                parendKey:"other",
+                key: 'noLayout',
+                // component: noLayout,
                 isClose:true,
             },
             {

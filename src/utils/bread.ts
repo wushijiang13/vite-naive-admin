@@ -6,6 +6,7 @@ import type { menuOptions } from '@types'
  */
 export const recursionBread = (key: string, item: menuOptions,flatList:menuOptions[],bread:menuOptions[]) => {
     bread.unshift(item);
+    console.log(item);
     if (item.hasOwnProperty("parendKey")) {
         let parentItem:menuOptions | undefined =  flatList.find((findItem:menuOptions)=>{
             return item.parendKey == findItem.key;

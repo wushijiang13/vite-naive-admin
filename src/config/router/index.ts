@@ -361,6 +361,11 @@ const routers:RouteRecordRaw[]=[
         name:'login',
         component:() => import('@/views/login/login.vue')
     },
+    {
+        path:'/noLayout',
+        name:'noLayout',
+        component:() => import('@/views/other/noLayout.vue')
+    },
 ]
 
 export { routers };

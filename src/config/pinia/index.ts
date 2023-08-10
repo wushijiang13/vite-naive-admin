@@ -83,6 +83,7 @@ export const useStore =  defineStore('store',{
       let breads:[] = [];
       this.TabPageListPush(item);
       this.tabPageActive = item.key
+      console.log(key, item, flatList, breads);
       recursionBread(key,item,flatList,breads);
       this.bread = breads;
     },
