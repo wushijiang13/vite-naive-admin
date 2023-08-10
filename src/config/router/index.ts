@@ -75,6 +75,15 @@ const routers:RouteRecordRaw[]=[
                         component:() => import('@/views/components/calendar/calendar.vue'),
                     },
                     {
+                        path:'qqDoc',
+                        name:'qqDoc',
+                        meta:{
+                            code:'qqDoc',
+                            pageName:"腾讯文档",
+                        },
+                        component:() => import('@/views/components/editor/qqDoc.vue'),
+                    },
+                    {
                         path:'synthesizeFrom',
                         name:'synthesizeFrom',
                         meta:{

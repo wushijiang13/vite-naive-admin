@@ -6,6 +6,7 @@ import synthesis from './components/table/synthesis/synthesis.vue'
 import list from './components/list/list.vue'
 import desc from './components/desc/desc.vue'
 import calendar from './components/calendar/calendar.vue'
+import qqDoc from './components/editor/qqDoc.vue'
 import synthesizeFrom from './components/form/synthesizeFrom.vue'
 import distributionFrom from './components/form/distributionFrom.vue'
 import button from './components/form/button.vue'
@@ -45,6 +46,7 @@ export {
     list,
     desc,
     calendar,
+    qqDoc,
     synthesizeFrom,
     distributionFrom,
     button,

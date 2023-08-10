@@ -22,6 +22,9 @@
   const fullScreen = () => {
     isFull.value = !isFull.value
   }
+  const showDialog = () => {
+    showModal.value = true;
+  }
 </script>
 <style scoped>
   .icon-click{

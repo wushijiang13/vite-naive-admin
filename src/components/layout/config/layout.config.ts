@@ -8,11 +8,12 @@ import {
 import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
     TextDescription24Regular, CalendarRtl28Regular,Table24Regular,TextEditStyle24Regular,
     Textbox24Regular,Flowchart24Regular,ChartMultiple24Regular,Print24Regular,Chat24Regular,
-    History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,CalendarEmpty24Regular
+    History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,CalendarEmpty24Regular,
+    ArrowSwap24Regular,CursorHover24Regular,
 } from '@vicons/fluent'
 import { Anchor } from '@vicons/tabler';
 import {likeIcon, overivew,  inline, synthesis,
-    list, desc, calendar,synthesizeFrom,distributionFrom,
+    list, desc, calendar,qqDoc,synthesizeFrom,distributionFrom,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
     timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1,
@@ -108,8 +109,9 @@ export const menuOption:menuOptions[]= ref([
                 children:[
                     {
                         label:"腾讯文档",
-                        key: 'tencent',
+                        key: 'qqDoc',
                         parendKey:"editor",
+                        component:qqDoc,
                         isClose:true,
                     },
                 ],
@@ -321,6 +323,7 @@ export const menuOption:menuOptions[]= ref([
                 label:"动态路径参数",
                 key: 'dynamicParams',
                 parendKey:"other",
+                icon:ArrowSwap24Regular,
                 children:[
                     {
                         label:"Params id=1",
@@ -348,6 +351,7 @@ export const menuOption:menuOptions[]= ref([
                 label:"拖拽",
                 key: 'drag',
                 parendKey:"other",
+                icon:CursorHover24Regular,
                 children:[
                     {
                         label:"弹窗拖拽",
