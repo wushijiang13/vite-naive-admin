@@ -361,6 +361,15 @@ const routers:RouteRecordRaw[]=[
                             },
                         ],
                     },
+                    {
+                        path:'multiRouter1/multiRouter1-1/multiRouter1-1-1/multiRouter1-1-1-1',
+                        name:'multiRouter1-1-1-1',
+                        meta:{
+                            code:'multiRouter',
+                            pageName:"多级路由1-1-1-1",
+                        },
+                        component:()=> import('@/views/other/multiRouter.vue')
+                    }
                 ]
             },
         ]

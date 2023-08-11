@@ -17,7 +17,7 @@ import {likeIcon, overivew,  inline, synthesis,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
     timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1,
-    modalDrag,cardDrag,noLayout
+    modalDrag,cardDrag,noLayout,multiRouter
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -383,23 +383,24 @@ export const menuOption:menuOptions[]= ref([
             },
             {
                 label:"多级路由缓存",
-                key: 'multiLevelCaching',
+                key: 'multiRouter',
                 parendKey:"other",
                 children:[
                     {
                         label:"多级路由1-1",
-                        key: 'multiLevelCaching1-1',
-                        parendKey:"multiLevelCaching",
+                        key: 'multiRouter1-1',
+                        parendKey:"multiRouter",
                         children:[
                             {
                                 label:"多级路由1-1-1",
-                                key: 'multiLevelCaching1-1-1',
-                                parendKey:"multiLevelCaching1-1",
+                                key: 'multiRouter1-1-1',
+                                parendKey:"multiRouter1-1",
                                 children:[
                                     {
                                         label:"多级路由1-1-1-1",
-                                        key: 'multiLevelCaching1-1-1-1',
-                                        parendKey:"multiLevelCaching1-1-1",
+                                        key: 'multiRouter1-1-1-1',
+                                        parendKey:"multiRouter1-1-1",
+                                        component:multiRouter,
                                         isClose:true,
                                     }
                                 ]
