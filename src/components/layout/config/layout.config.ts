@@ -429,7 +429,8 @@ export const menuOption:menuOptions[]= ref([
             },
             {
                 label:"外链",
-                key: 'role',
+                key: 'jump',
+                jumpUrl:"https://github.com/wushijiang13",
                 parendKey:"other",
                 isClose:true,
             },

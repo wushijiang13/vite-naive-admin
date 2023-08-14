@@ -202,6 +202,10 @@ export const useStore =  defineStore('store',{
      * @param targetItem
      */
     menuAction(key:string,targetItem:menuOptions){
+      if(targetItem["jumpUrl"]){
+        window.open(targetItem["jumpUrl"]);
+        return;
+      }
       this.generateBread(key,targetItem);
       this.$patch({
         menuValue:key,

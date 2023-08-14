@@ -15,6 +15,7 @@ export interface menuOptions{
     isClose?:boolean,
     params?:any,
     query?:any,
+    jumpUrl?:string,
 }
 
 export interface LayoutOption {

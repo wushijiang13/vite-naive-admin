@@ -369,7 +369,7 @@ const routers:RouteRecordRaw[]=[
                             pageName:"多级路由1-1-1-1",
                         },
                         component:()=> import('@/views/other/multiRouter.vue')
-                    }
+                    },
                 ]
             },
         ]
