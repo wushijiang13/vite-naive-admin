@@ -17,7 +17,7 @@ import {likeIcon, overivew,  inline, synthesis,
     button,link,radio,input,inputNumber,select,switchs,slider,
     timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
     timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1,
-    modalDrag,cardDrag,noLayout,multiRouter
+    modalDrag,cardDrag,noLayout,multiRouter,search360,bilibili,customIframe
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -441,20 +441,23 @@ export const menuOption:menuOptions[]= ref([
                 children: [
                     {
                         label:"360搜索",
-                        key: 'role',
+                        key: 'search360',
                         parendKey:"iframe",
+                        component: search360,
                         isClose:true,
                     },
                     {
                         label:"哔哩哔哩",
-                        key: 'role',
+                        key: 'bilibili',
                         parendKey:"iframe",
+                        component: bilibili,
                         isClose:true,
                     },
                     {
                         label:"自定义iframe",
-                        key: 'role',
+                        key: 'customIframe',
                         parendKey:"iframe",
+                        component: customIframe,
                         isClose:true,
                     }
                 ]
@@ -487,24 +490,6 @@ export const menuOption:menuOptions[]= ref([
         ]
     },
 ]);
-
-export let flatList:menuOptions[] = [];
-export let flatObject:any = {};
-
-const flatMeun = ():void=>{
-    flatArray(menuOption.value);
-}
-function flatArray(arr:any){
-    // @ts-ignore
-    flatList.push(...arr);
-    arr.forEach((item:any)=>{
-        flatObject[item.key] = item;
-        if (item.hasOwnProperty("children")) {
-            flatArray(item.children);
-        }
-    })
-}
-flatMeun();
 
 export function updateExpandIcon(key:string,expand:Function){
     if(key == ''){

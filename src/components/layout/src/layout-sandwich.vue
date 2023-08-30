@@ -34,12 +34,14 @@
     import {h, onMounted, ref} from 'vue'
     import {MenuOption, NIcon, NMenu} from 'naive-ui'
     import { useStore } from '@pinia'
+    import { useRouterStore } from "@pinia/routerFlat";
     import { useRouter,useRoute } from "vue-router";
     import { LogoVue } from '@vicons/ionicons5'
-    import {menuOption, flatObject } from '../config/layout.config';
+    import {menuOption } from '../config/layout.config';
     import type { menuOptions } from '@types'
 
     const store = useStore();
+    const routerStore = useRouterStore();
     const router = useRouter();
     const route:any = useRoute();
     let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
@@ -63,7 +65,7 @@
     }
 
     function findMenuAction(key:string){
-      store.menuAction(key,flatObject[key]);
+      store.menuAction(key,routerStore.flatObject[key]);
       menuExpand();
     }
 

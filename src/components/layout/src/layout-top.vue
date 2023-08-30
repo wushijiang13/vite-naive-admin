@@ -26,15 +26,18 @@
 </template>
 
 <script setup lang="ts">
-import {flatObject, menuOption} from '../config/layout.config';
+import { menuOption} from '../config/layout.config';
 import { LogoVue } from '@vicons/ionicons5'
 import { useStore } from "@pinia";
+import {useRouterStore} from "@pinia/routerFlat";
 import {useRoute, useRouter} from "vue-router";
 import {MenuOption, NIcon} from "naive-ui";
 import {h, onMounted} from "vue";
 import type { menuOptions } from '@types'
 
+
 const store = useStore();
+const routerStore = useRouterStore();
 const router = useRouter();
 const route = useRoute();
 
@@ -56,7 +59,7 @@ function labelRender (option: MenuOption){
  */
 function tabChange(){
   //通知父级tab 已更新
-  store.generateBread(store.menuValue,flatObject[store.menuValue]);
+  store.generateBread(store.menuValue,routerStore.flatObject[store.menuValue]);
 }
 /**
  * 初始化，包含面包屑初始化
@@ -65,7 +68,7 @@ function tabChange(){
 function init(){
   //不管从哪个页面进来概览都要排到第一个
   store.TabPageListInit();
-  store.menuAction((route.name as string),flatObject[(route.name as string)]);
+  store.menuAction((route.name as string),routerStore.flatObject[(route.name as string)]);
 }
 
 onMounted(()=>{

@@ -7,6 +7,7 @@
         closable
         :animated="false"
         @close="handleClose"
+        :display-directive="'show:lazy'"
         :tabs-padding="props.tabsPadding">
       <n-tab-pane
           v-for="(page,index) in store.tabPageList"
@@ -83,6 +84,7 @@ watchEffect(()=>{
 
 const handleClose = (name: string | number) => {
   let tabPageList = store.tabPageList;
+  router.removeRoute((name as string));
   store.TabPageListDelete(name);
   store.$patch({
     tabPageActive:tabPageList[tabPageList.length-1].key

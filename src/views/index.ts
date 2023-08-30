@@ -37,6 +37,10 @@ import modalDrag from './other/drag/modalDrag.vue'
 import cardDrag from './other/drag/cardDrag.vue'
 import noLayout from './other/noLayout.vue'
 import multiRouter from './other/multiRouter.vue'
+import search360 from './other/iframe/search360.vue'
+import bilibili from './other/iframe/bilibili.vue'
+import customIframe from './other/iframe/customIframe.vue'
+import iframeView from './other/iframe/iframeView.vue'
 
 export {
     likeIcon,
@@ -78,4 +82,8 @@ export {
     cardDrag,
     noLayout,
     multiRouter,
+    search360,
+    bilibili,
+    customIframe,
+    iframeView
 }

@@ -59,11 +59,12 @@
 </template>
 
 <script setup lang="ts">
-  import { menuOption,flatList,flatObject } from '../config/layout.config';
+  import { menuOption } from '../config/layout.config';
   import { ref, h, onMounted } from 'vue';
   import { useRouter,useRoute} from "vue-router";
   import { zhCN, dateZhCN , NIcon, NMenu} from 'naive-ui'
   import type {MenuOption} from 'naive-ui'
+  import { useRouterStore } from "@pinia/routerFlat";
   import { useStore } from "@pinia";
   import type { menuOptions } from '@types'
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
@@ -73,6 +74,7 @@
   const router = useRouter();
   const route:any = useRoute();
   const store = useStore();
+  const routerStore = useRouterStore();
   let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
   let isCollapsed = ref(false);
 
@@ -102,7 +104,7 @@
   function tabChange(){
     //通知父级tab 已更新
     menuExpand();
-    store.generateBread(store.menuValue,flatObject[store.menuValue]);
+    store.generateBread(store.menuValue,routerStore.flatObject[store.menuValue]);
   }
   /**
    * 是否展开列表
@@ -112,7 +114,7 @@
   }
 
   function findMenuAction(key:string){
-    store.menuAction(key,flatObject[key]);
+    store.menuAction(key,routerStore.flatObject[key]);
     menuExpand();
   }
 

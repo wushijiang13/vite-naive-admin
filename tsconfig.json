@@ -6,6 +6,7 @@
       "@utils": ["src/utils"],
       "@utils/*": ["src/utils/*"],
       "@pinia": ["src/config/pinia"],
+      "@pinia/*": ["src/config/pinia/*"],
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
       "@views": ["src/views"],

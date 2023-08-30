@@ -53,12 +53,15 @@
     import {MenuOption, NIcon, NMenu} from 'naive-ui'
     import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
     import { LogoVue } from '@vicons/ionicons5'
-    import { menuOption,flatObject,updateExpandIcon } from '../config/layout.config';
+    import { menuOption,updateExpandIcon } from '../config/layout.config';
     import { useStore } from "@pinia";
+    import { useRouterStore } from "@pinia/routerFlat";
     import { useRoute,useRouter} from "vue-router";
     import {menuOptions} from "@types";
-
     const store = useStore();
+    const routerStore = useRouterStore();
+    console.log(routerStore.flatObject);
+    console.log(routerStore.flatList);
     const route = useRoute();
     const router = useRouter();
     let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
@@ -89,7 +92,7 @@
     function tabChange(){
       //通知父级tab 已更新
       menuExpand();
-      store.generateBread(store.menuValue,flatObject[store.menuValue]);
+      store.generateBread(store.menuValue,routerStore.flatObject[store.menuValue]);
     }
     /**
      * 是否展开列表
@@ -98,7 +101,7 @@
       menuRef.value?.showOption(store.menuValue)
     }
     function findMenuAction(key:string){
-      store.menuAction(key,flatObject[key]);
+      store.menuAction(key,routerStore.flatObject[key]);
       menuExpand();
     }
     /**

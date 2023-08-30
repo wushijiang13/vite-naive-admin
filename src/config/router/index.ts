@@ -370,6 +370,52 @@ const routers:RouteRecordRaw[]=[
                         },
                         component:()=> import('@/views/other/multiRouter.vue')
                     },
+                    {
+                        path:'iframe',
+                        name:'iframe',
+                        meta:{
+                            code:'iframe',
+                            pageName:"iframe",
+                        },
+                        children:[
+                            {
+                                path:'search360',
+                                name:'search360',
+                                meta:{
+                                    code:'search360',
+                                    pageName:"360搜索",
+                                },
+                                component:() => import('@/views/other/iframe/search360.vue'),
+                            },
+                            {
+                                path:'bilibili',
+                                name:'bilibili',
+                                meta:{
+                                    code:'bilibili',
+                                    pageName:"哔哩哔哩",
+                                },
+                                component:() => import('@/views/other/iframe/bilibili.vue'),
+                            },
+                            {
+                                path:'customIframe',
+                                name:'customIframe',
+                                meta:{
+                                    code:'customIframe',
+                                    pageName:"自定义iframe",
+                                },
+                                component:() => import('@/views/other/iframe/customIframe.vue'),
+                            },
+                            {
+                                path:'cardDrag',
+                                name:'cardDrag',
+                                meta:{
+                                    code:'cardDrag',
+                                    pageName:"卡片拖拽",
+                                },
+                                component:() => import('@/views/other/drag/cardDrag.vue'),
+                            },
+                        ],
+                    },
                 ]
             },
         ]

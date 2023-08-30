@@ -6,6 +6,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Bubble: typeof import('./src/components/bubble/bubble.vue')['default']
     BulkOperations: typeof import('./src/components/bulk-operations/index.vue')['default']
+    Iframe: typeof import('./src/components/iframe/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     LayoutConventional: typeof import('./src/components/layout/src/layout-conventional.vue')['default']
     LayoutSandwich: typeof import('./src/components/layout/src/layout-sandwich.vue')['default']
