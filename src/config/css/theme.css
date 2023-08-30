@@ -38,3 +38,7 @@ body{
 .inblock{
     display: inline-block;
 }
+.logo{
+    height: 70%;
+    margin-right: 10px;
+}

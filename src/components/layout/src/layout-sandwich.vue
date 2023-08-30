@@ -3,7 +3,7 @@
     <div class="layout-sandwich">
         <div class="layout-header">
             <div class="logo">
-              <n-icon size="30"><LogoVue/></n-icon>
+              <img class="logo" src="/src/assets/logo.png"/>
               <span>运营支撑平台</span>
             </div>
         </div>
@@ -36,7 +36,6 @@
     import { useStore } from '@pinia'
     import { useRouterStore } from "@pinia/routerFlat";
     import { useRouter,useRoute } from "vue-router";
-    import { LogoVue } from '@vicons/ionicons5'
     import {menuOption } from '../config/layout.config';
     import type { menuOptions } from '@types'
 

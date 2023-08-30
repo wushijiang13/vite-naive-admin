@@ -11,8 +11,8 @@
                   :collapsed-width="64"
                   :width="240"
                   :collapsed="isCollapsed">
-                <div class="logo">
-                  <n-icon size="30"><LogoVue/></n-icon>
+                <div class="logo-box">
+                  <img class="logo" src="/src/assets/logo.png"/>
                   <transition>
                     <span v-show="!isCollapsed">运营支撑平台</span>
                   </transition>
@@ -164,7 +164,7 @@
     .layout-stow{
       margin-left: 20px;
     }
-    .logo{
+    .logo-box{
       font-size: 20px;
       line-height: 60px;
       height: 60px;

@@ -2,7 +2,7 @@
 <template>
     <div class="layout-top">
         <div class="layout-header">
-            <n-icon size="30"><LogoVue/></n-icon>
+            <img class="logo" src="/src/assets/logo.png"/>
             <span>
                 运营支撑后台
             </span>

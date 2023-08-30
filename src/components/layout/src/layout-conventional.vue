@@ -2,7 +2,7 @@
 <template>
     <div class="layout-conventional">
         <div class="layout-header">
-          <n-icon size="30"><LogoVue/></n-icon>
+          <img class="logo" src="/src/assets/logo.png"/>
           <span>
                 运营支撑后台
             </span>
@@ -52,7 +52,6 @@
     import {h, onMounted, ref} from 'vue'
     import {MenuOption, NIcon, NMenu} from 'naive-ui'
     import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
-    import { LogoVue } from '@vicons/ionicons5'
     import { menuOption,updateExpandIcon } from '../config/layout.config';
     import { useStore } from "@pinia";
     import { useRouterStore } from "@pinia/routerFlat";
