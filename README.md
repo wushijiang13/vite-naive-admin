@@ -1,7 +1,12 @@
-# vite-naive-admin
-
-> 基于naive-ui风格的后台模板
-
+<p align="center">
+  <a href="https://github.com/wushijiang13/vite-naive-admin" target="_blank" rel="noopener noreferrer">
+    <img width="180" src="https://github.com/wushijiang13/vite-naive-admin/assets/38801556/55bcf359-c11d-4b1e-a57c-5e9c1ccafd5a" alt="logo">
+  </a>
+</p>
+<h1 align="center">
+  基于naive-ui风格的后台模板
+</p>
+  
 ## 项目截图
 ![image](https://github.com/wushijiang13/vite-naive-admin/assets/38801556/de4588ae-59f4-456f-b2b0-1bb8ac7a6fe9)
 ![image](https://github.com/wushijiang13/vite-naive-admin/assets/38801556/80080783-5fa8-410b-9c07-b1807ab5c334)
