@@ -4,7 +4,7 @@
         <div class="layout-header">
             <div class="logo">
               <img class="logo" src="/src/assets/logo.png"/>
-              <span>运营支撑平台</span>
+              <span>Vite-Naive-Admin</span>
             </div>
         </div>
         <div class="layout-main">
@@ -118,7 +118,8 @@
       display: flex;
       align-items: center;
       font-size: 20px;
-      font-weight: 600;
+      color: #474f62;
+      font-weight: 200;
       height: 60px;
     }
 </style>

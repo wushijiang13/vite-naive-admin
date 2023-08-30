@@ -4,7 +4,7 @@
         <div class="layout-header">
             <img class="logo" src="/src/assets/logo.png"/>
             <span>
-                运营支撑后台
+               Vite-Naive-Admin
             </span>
             <n-menu
               :options="menuOption"
@@ -91,7 +91,8 @@ onMounted(()=>{
         display: flex;
         align-items: center;
         font-size: 20px;
-        font-weight: 600;
+        color: #474f62;
+        font-weight: 200;
         background-color: #fff;
     }
     .layout-main{

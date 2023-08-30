@@ -5,8 +5,8 @@
         <n-descriptions bordered label-placement="top" class="desc-box">
           <n-descriptions-item label="动态标题">
             <n-space>
-              <n-button @click="updateTitle('vite-naive-admin')">标题更改为vite-naive-admin</n-button>
-              <n-button @click="updateTitle('运营支撑平台')">还原为默认标题</n-button>
+              <n-button @click="updateTitle('啊哈哈哈')">标题更改为啊哈哈哈</n-button>
+              <n-button @click="updateTitle('Vite-Naive-Admin')">还原为默认标题</n-button>
             </n-space>
           </n-descriptions-item>
         </n-descriptions>

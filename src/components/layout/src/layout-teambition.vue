@@ -14,7 +14,7 @@
                 <div class="logo-box">
                   <img class="logo" src="/src/assets/logo.png"/>
                   <transition>
-                    <span v-show="!isCollapsed">运营支撑平台</span>
+                    <span v-show="!isCollapsed">Vite-Naive-Admin</span>
                   </transition>
                 </div>
                 <div>
@@ -169,7 +169,8 @@
       line-height: 60px;
       height: 60px;
       text-align: center;
-      font-weight: 600;
+      color: #474f62;
+      font-weight: 200;
       display: flex;
       justify-content: center;
       align-items: center;
