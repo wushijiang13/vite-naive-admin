@@ -41,5 +41,6 @@
     "unplugin-vue-components": "^0.17.21",
     "vite": "^2.9.15",
     "vue-tsc": "^0.29.8"
-  }
+  },
+  "homepage": "https://wushijiang13.github.io/vite-naive-admin"
 }
