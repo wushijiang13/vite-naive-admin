@@ -17,7 +17,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm build --max_old_space_size=4096
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
