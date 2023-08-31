@@ -6,6 +6,12 @@ on:
       - dev
 
 jobs:
+  make-love:
+    steps:
+      - name: "Just do it"
+        run: |
+        export NODE_OPTIONS="--max_old_space_size=4096"
+        npm start
   deploy:
     runs-on: ubuntu-latest
     steps:
