@@ -36,6 +36,7 @@ import query1 from './other/dynamicParams/query1.vue'
 import modalDrag from './other/drag/modalDrag.vue'
 import cardDrag from './other/drag/cardDrag.vue'
 import noLayout from './other/noLayout.vue'
+import upload from './other/upload.vue'
 import multiRouter from './other/multiRouter.vue'
 import search360 from './other/iframe/search360.vue'
 import bilibili from './other/iframe/bilibili.vue'
@@ -81,6 +82,7 @@ export {
     modalDrag,
     cardDrag,
     noLayout,
+    upload,
     multiRouter,
     search360,
     bilibili,

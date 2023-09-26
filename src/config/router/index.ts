@@ -371,6 +371,15 @@ const routers:RouteRecordRaw[]=[
                         component:()=> import('@/views/other/multiRouter.vue')
                     },
                     {
+                        path:'upload',
+                        name:'upload',
+                        meta:{
+                            code:'upload',
+                            pageName:"上传",
+                        },
+                        component:()=> import('@/views/other/upload.vue')
+                    },
+                    {
                         path:'iframe',
                         name:'iframe',
                         meta:{

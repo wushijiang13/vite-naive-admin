@@ -11,13 +11,15 @@ import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
     History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,CalendarEmpty24Regular,
     ArrowSwap24Regular,CursorHover24Regular,
 } from '@vicons/fluent'
+import { DriveFolderUploadOutlined,AirplayRound } from '@vicons/material'
 import { Anchor } from '@vicons/tabler';
-import {likeIcon, overivew,  inline, synthesis,
-    list, desc, calendar,qqDoc,synthesizeFrom,distributionFrom,
-    button,link,radio,input,inputNumber,select,switchs,slider,
-    timePicker,datePicker,dateTimePicker,rate,workflow,chart,print,notice,
-    timeline,manyTab,watermark,share,dynamicAnchor,dynamicMeta,params1,query1,
-    modalDrag,cardDrag,noLayout,multiRouter,search360,bilibili,customIframe
+import {
+    likeIcon, overivew, inline, synthesis,
+    list, desc, calendar, qqDoc, synthesizeFrom, distributionFrom,
+    button, link, radio, input, inputNumber, select, switchs, slider,
+    timePicker, datePicker, dateTimePicker, rate, workflow, chart, print, notice,
+    timeline, manyTab, watermark, share, dynamicAnchor, dynamicMeta, params1, query1,
+    modalDrag, cardDrag, multiRouter, search360, bilibili, customIframe, upload
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -373,12 +375,15 @@ export const menuOption:menuOptions[]= ref([
                 label:"无框",
                 key: 'noLayout',
                 // component: noLayout,
+                icon:AirplayRound,
                 isClose:true,
             },
             {
                 label:"上传",
-                key: 'role',
+                key: 'upload',
                 parendKey:"other",
+                icon:DriveFolderUploadOutlined,
+                component: upload,
                 isClose:true,
             },
             {

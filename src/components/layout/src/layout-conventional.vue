@@ -59,8 +59,6 @@
     import {menuOptions} from "@types";
     const store = useStore();
     const routerStore = useRouterStore();
-    console.log(routerStore.flatObject);
-    console.log(routerStore.flatList);
     const route = useRoute();
     const router = useRouter();
     let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
