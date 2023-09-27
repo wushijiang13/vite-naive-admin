@@ -101,6 +101,7 @@
     }
     .laout-content{
         padding: 20px;
+        background-color: var(--theme-layout-background-coolr);
     }
     .layout-bottom{
         height: 60px;

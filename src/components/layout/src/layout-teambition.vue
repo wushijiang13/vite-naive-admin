@@ -50,7 +50,7 @@
                     </div>
                   </div>
               </div>
-              <div>
+              <div class="layout-content">
                 <layoutTab @tabChange='tabChange' :tabsPadding="20"/>
               </div>
           </div>
@@ -152,7 +152,10 @@
     .layout-main{
       flex: 1;
       flex-direction: column;
-      height: 100vh;
+      min-height: 100vh;
+    }
+    .layout-content{
+      background-color: var(--theme-layout-background-coolr);
     }
     .layout-header{
       flex:1;

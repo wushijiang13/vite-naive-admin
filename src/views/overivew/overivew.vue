@@ -48,7 +48,7 @@
               </span>
           </template>
           <div>
-            <div class="empower">
+            <div class="table-box">
               <n-data-table
                   size="small"
                   :single-line="false"
@@ -63,10 +63,11 @@
 
     <n-grid class="grid-2" x-gap="12" :cols="8">
       <n-grid-item v-for="item in matrixList" :span="1">
-        <n-card title="访问量">
-          <template #footer>
+        <n-card class="card-function">
+          <n-space vertical :align="'center'">
+            <n-icon :component="item.icon" size="40" :depth="1" />
             {{item.name}}
-          </template>
+          </n-space>
         </n-card>
       </n-grid-item>
     </n-grid>
@@ -85,6 +86,8 @@ import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import {ref, onMounted, nextTick, h} from 'vue';
 import { NButton } from 'naive-ui'
+import { CashOutline } from '@vicons/ionicons5'
+import { GlanceHorizontal20Filled } from '@vicons/fluent'
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
 let visits = ref<HTMLElement | null>(null);
@@ -94,7 +97,7 @@ let data = ref<Object[]>([]);
 let matrixList = [
   {
     name:'随机换肤',
-    icon:"",
+    icon:GlanceHorizontal20Filled,
   },
   {
     name:'主题配置',
@@ -281,6 +284,9 @@ onMounted(()=>{
 .visits,.empower{
   min-height: 170px;
 }
+.table-box{
+  height: 230px;
+}
 .card-footer{
   height: 40px;
   text-align: center;
@@ -298,5 +304,4 @@ onMounted(()=>{
 .dis-key {
   background-color: #f6f6f6 !important;
 }
-
 </style>

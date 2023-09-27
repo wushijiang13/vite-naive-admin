@@ -140,6 +140,9 @@
     .layout-main{
         margin-top: 3px;
     }
+    .laout-content{
+        background-color: var(--theme-layout-background-coolr);
+    }
     .layout-navigation{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
         padding-left: 5px;

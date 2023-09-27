@@ -130,6 +130,9 @@ const layoutContextMenu = (index:number) => {
 }
 </style>
 <style>
+.n-tabs-nav{
+  background-color: #fff;
+}
 .layout-tab .n-tabs-nav,.layout-tab .v-x-scroll, .layout-tab .n-tabs-nav-scroll-content{
   height: 60px;
 }

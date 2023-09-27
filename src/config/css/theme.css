@@ -2,6 +2,7 @@ body{
     --theme-color:#18a058; /*主题色*/
     --theme-box-shadow:0 6px 18px 0 rgb(38 38 38 / 14%);/*主题阴影*/
     --theme-top-spacing: 14px;/*外间距*/
+    --theme-layout-background-coolr: #f5f7f8; /*间隙颜色*/
 }
 ::-webkit-scrollbar {
     width: 6px;
