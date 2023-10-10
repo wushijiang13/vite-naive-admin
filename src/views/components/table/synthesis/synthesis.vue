@@ -57,7 +57,7 @@
 <script setup>
 import wTable from '@/components/table/index.vue'
 import bulkOperations from '@/components/bulk-operations/index.vue'
-import { Search } from '@vicons/carbon'
+import { Search } from '@icon-park/vue-next'
 import { ChevronUp,ChevronDown } from '@vicons/ionicons5'
 import {reactive, ref } from 'vue';
 import {

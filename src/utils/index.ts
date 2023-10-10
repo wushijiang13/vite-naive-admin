@@ -91,11 +91,25 @@ function mergeAssign(defaultInfo,propsInfo) {
     return propsInfo;
 }
 
+/**
+ * 随机生成16进制颜色
+ */
+function randomGenerateColor(){
+    let base16Map = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+    let base16Color = `#`;
+    for (let i = 0; i < 6; i++) {
+        let randIndex = Math.floor(Math.random()* 15);
+        base16Color += base16Map[randIndex];
+    }
+    return base16Color;
+}
+
 export {
     downLoadFile,
     isNullCheck,
     setLocalData,
     getLocalData,
     getKeyFindDelete,
-    mergeAssign
+    mergeAssign,
+    randomGenerateColor
 }

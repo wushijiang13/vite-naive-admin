@@ -65,7 +65,7 @@
       <n-grid-item v-for="item in matrixList" :span="1">
         <n-card class="card-function">
           <n-space vertical :align="'center'">
-            <n-icon :component="item.icon" size="40" :depth="1" />
+            <n-icon :component="item.icon" :color="item.color" size="50" :depth="1" />
             {{item.name}}
           </n-space>
         </n-card>
@@ -86,8 +86,11 @@ import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import {ref, onMounted, nextTick, h} from 'vue';
 import { NButton } from 'naive-ui'
-import { CashOutline } from '@vicons/ionicons5'
-import { GlanceHorizontal20Filled } from '@vicons/fluent'
+import { CashOutline,LogoChrome } from '@vicons/ionicons5'
+import { GlanceHorizontal20Filled,Classification20Regular,CloudArrowUp20Regular,VideoClip20Regular,
+  TableFreezeRow20Regular,Code20Filled,
+} from '@vicons/fluent'
+import {Bell } from '@vicons/tabler'
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
 let visits = ref<HTMLElement | null>(null);
@@ -98,34 +101,42 @@ let matrixList = [
   {
     name:'随机换肤',
     icon:GlanceHorizontal20Filled,
+    color:'#87dc64',
   },
   {
     name:'主题配置',
-    icon:'',
+    icon:Classification20Regular,
+    color:'#59b5fb',
   },
   {
     name:"网站升级",
-    icon:'',
+    icon:CloudArrowUp20Regular,
+    color:'#ffd367',
   },
   {
-    name:"百度一下",
-    icon:'',
+    name:"Google",
+    icon:LogoChrome,
+    color:'#ffd367',
   },
   {
     name:'视频播放器',
-    icon:''
+    icon:VideoClip20Regular,
+    color:'#ffba67'
   },
   {
     name:'表格',
-    icon:''
+    icon:TableFreezeRow20Regular,
+    color:'#48d6cd'
   },
   {
     name:'源码',
-    icon:''
+    icon:Code20Filled,
+    color:'#ab6ee3'
   },
   {
     name:"公告",
-    icon:''
+    icon:Bell,
+    color:'#ff78b6'
   }
 ]
 /**

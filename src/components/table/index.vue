@@ -28,7 +28,7 @@
             </n-button>
             <n-button class="btn" v-if="moduleColOptions.filter.isShow && moduleColOptions.filter.code" @click="openDrawer('filter')"  size="large" strong secondary circle>
               <template #icon>
-                <n-icon><FilterOutlined/></n-icon>
+                <n-icon><Filter/></n-icon>
               </template>
             </n-button>
             <n-button class="btn" v-if="moduleColOptions.custom.isShow && moduleColOptions.custom.code" @click="openDrawer('custom')" size="large" strong secondary circle>
@@ -182,7 +182,7 @@
 <script setup lang="ts">
   import { Search } from '@vicons/ionicons5'
   import { TextColumnTwoLeft24Filled, Add24Filled,ArrowReset24Filled} from '@vicons/fluent'
-  import { FilterOutlined } from '@vicons/antd'
+  import { Filter } from '@icon-park/vue-next';
   import { Download } from '@vicons/tabler'
   import { useConfig } from './config/config'
   import { ref,reactive,defineEmits,defineProps,watch,onMounted} from 'vue'
