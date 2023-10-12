@@ -8,9 +8,12 @@
         :placement="'bottom-end'"
         class="tab-drop"
         :options="options"
+        :show-arrow="true"
+        @mouseover="tabMouseOver"
+        @mouseout="tabMouseOut"
         @select="dropDownSelect">
       <slot name="content">
-        <n-icon  class="tab-operate-icon" :component="BorderAll" size="20"/>
+        <n-icon  :class="isActive ? 'tab-operate-icon tab-operate-icon-rotateZ' : 'tab-operate-icon'" :component="BorderAll" size="20"/>
       </slot>
     </n-dropdown>
   </div>
@@ -26,6 +29,7 @@ import {NIcon,DropdownOption} from "naive-ui";
 
 const store = useStore();
 const props = defineProps(['config','isShowContent']);
+const isActive = ref(false);
 const options:Ref<DropdownOption[]> = ref([
   {
     label:'刷新',
@@ -67,6 +71,13 @@ const renderIcon = (component:any) => {
   return h(NIcon,{component})
 }
 
+const tabMouseOver = () => {
+  isActive.value = true;
+}
+
+const tabMouseOut = () => {
+  isActive.value = false;
+}
 </script>
 <style>
 .tab-operate-icon{
@@ -74,6 +85,10 @@ const renderIcon = (component:any) => {
   transition: .3s linear;
 }
 .tab-operate-icon:hover{
+  color: #18a058;
+  transform: rotateZ(90deg);
+}
+.tab-operate-icon-rotateZ {
   color: #18a058;
   transform: rotateZ(90deg);
 }
