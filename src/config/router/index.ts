@@ -414,14 +414,24 @@ const routers:RouteRecordRaw[]=[
                                 },
                                 component:() => import('@/views/other/iframe/customIframe.vue'),
                             },
+                        ],
+                    },
+                    {
+                        path:'execl',
+                        name:'execl',
+                        meta:{
+                            code:'execl',
+                            pageName:"execl",
+                        },
+                        children:[
                             {
-                                path:'cardDrag',
-                                name:'cardDrag',
+                                path:'exportExecl',
+                                name:'exportExecl',
                                 meta:{
-                                    code:'cardDrag',
-                                    pageName:"卡片拖拽",
+                                    code:'exportExecl',
+                                    pageName:"导出Execl",
                                 },
-                                component:() => import('@/views/other/drag/cardDrag.vue'),
+                                component:() => import('@/views/other/execl/exportExecl.vue'),
                             },
                         ],
                     },

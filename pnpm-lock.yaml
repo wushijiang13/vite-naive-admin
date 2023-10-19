@@ -30,6 +30,7 @@ specifiers:
   vue-router: ^4.1.6
   vue-tsc: ^0.29.8
   web-animations-js: ^2.3.2
+  xlsx: https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz
 
 dependencies:
   '@icon-park/vue-next': registry.npmmirror.com/@icon-park/vue-next/1.4.2_vue@3.2.47
@@ -50,6 +51,7 @@ dependencies:
   vue-qr: registry.npmmirror.com/vue-qr/4.0.9
   vue-router: registry.npmmirror.com/vue-router/4.1.6_vue@3.2.47
   web-animations-js: registry.npmmirror.com/web-animations-js/2.3.2
+  xlsx: '@cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz'
 
 devDependencies:
   '@types/node': registry.npmmirror.com/@types/node/18.14.2
@@ -65,6 +67,14 @@ devDependencies:
   vue-tsc: registry.npmmirror.com/vue-tsc/0.29.8_typescript@4.9.5
 
 packages:
+
+  '@cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz':
+    resolution: {tarball: https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz}
+    name: xlsx
+    version: 0.20.0
+    engines: {node: '>=0.8'}
+    hasBin: true
+    dev: false
 
   registry.npmmirror.com/@antfu/utils/0.4.0:
     resolution: {integrity: sha512-gqkpvjkgFUu+s3kP+Ly33OKpo5zvVY3FDFhv5BIb98SncS3KD6DNxPfNDjwHIoyXbz1leWo1j8DtRLZ1D2Jv+Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@antfu/utils/-/utils-0.4.0.tgz}

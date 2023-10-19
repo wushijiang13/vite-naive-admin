@@ -25,7 +25,8 @@
     "vue-json-pretty": "^2.2.4",
     "vue-qr": "^4.0.9",
     "vue-router": "^4.1.6",
-    "web-animations-js": "^2.3.2"
+    "web-animations-js": "^2.3.2",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",

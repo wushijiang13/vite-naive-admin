@@ -42,6 +42,7 @@ import search360 from './other/iframe/search360.vue'
 import bilibili from './other/iframe/bilibili.vue'
 import customIframe from './other/iframe/customIframe.vue'
 import iframeView from './other/iframe/iframeView.vue'
+import exportExecl from './other/execl/exportExecl.vue'
 
 export {
     likeIcon,
@@ -87,5 +88,6 @@ export {
     search360,
     bilibili,
     customIframe,
-    iframeView
+    iframeView,
+    exportExecl,
 }
