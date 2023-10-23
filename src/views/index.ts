@@ -43,6 +43,7 @@ import bilibili from './other/iframe/bilibili.vue'
 import customIframe from './other/iframe/customIframe.vue'
 import iframeView from './other/iframe/iframeView.vue'
 import exportExecl from './other/execl/exportExecl.vue'
+import exportSelectColExecl from './other/execl/exportSelectColExecl.vue'
 
 export {
     likeIcon,
@@ -90,4 +91,5 @@ export {
     customIframe,
     iframeView,
     exportExecl,
+    exportSelectColExecl,
 }

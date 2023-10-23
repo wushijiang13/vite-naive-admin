@@ -19,7 +19,8 @@ import {
     button, link, radio, input, inputNumber, select, switchs, slider,
     timePicker, datePicker, dateTimePicker, rate, workflow, chart, print, notice,
     timeline, manyTab, watermark, share, dynamicAnchor, dynamicMeta, params1, query1,
-    modalDrag, cardDrag, multiRouter, search360, bilibili, customIframe, upload,exportExecl
+    modalDrag, cardDrag, multiRouter, search360, bilibili, customIframe, upload,exportExecl,
+    exportSelectColExecl
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -481,8 +482,9 @@ export const menuOption:menuOptions[]= ref([
                     },
                     {
                         label:"导出选中行Excel",
-                        key: 'role',
+                        key: 'exportSelectColExecl',
                         parendKey:"execl",
+                        component:exportSelectColExecl,
                         isClose:true,
                     },
                     {

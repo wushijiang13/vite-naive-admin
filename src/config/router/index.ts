@@ -433,6 +433,15 @@ const routers:RouteRecordRaw[]=[
                                 },
                                 component:() => import('@/views/other/execl/exportExecl.vue'),
                             },
+                            {
+                                path:'exportSelectColExecl',
+                                name:'exportSelectColExecl',
+                                meta:{
+                                    code:'exportSelectColExecl',
+                                    pageName:"导出选中行Execl",
+                                },
+                                component:() => import('@/views/other/execl/exportSelectColExecl.vue'),
+                            },
                         ],
                     },
                 ]
