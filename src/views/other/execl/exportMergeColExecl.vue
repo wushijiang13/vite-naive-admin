@@ -16,18 +16,16 @@
           :pagination="pagination"
           :bordered="true"
           :single-line="false"
-          @update:checked-row-keys="updateChecked"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import {ref} from "vue";
+  import {ref,onMounted} from "vue";
   import {utils, writeFile} from "xlsx";
   let fileName = ref('');
   let fileType = ref('xlsx');
-  let checkedRowKeys = ref([]);
   const fileTypeList = [{
     label:'xlsx',
     value:'xlsx'
@@ -41,28 +39,31 @@
 
   let tableHeaderData = ref([
     {
-      type: 'selection',
-      align:"center"
-    },
-    {
       title:"序号",
       key:'key',
       align:"center"
     },
     {
-      title:"标题",
-      key:'title',
-      align:"center"
-    },
-    {
-      title:"作者",
-      key:'author',
-      align:"center"
-    },
-    {
-      title:"访问量",
-      key:'visits',
-      align:"center"
+      title: '个人信息',
+      key: 'info',
+      align:"center",
+      children:[
+        {
+          title:"标题",
+          key:'title',
+          align:"center"
+        },
+        {
+          title:"作者",
+          key:'author',
+          align:"center"
+        },
+        {
+          title:"访问量",
+          key:'visits',
+          align:"center"
+        },
+      ]
     },
     {
       title:"时间",
@@ -82,22 +83,36 @@
     {key:"9",title:'uytdfgs',author:'崔生',visits:'9774',date:'2020-02-12 12:02:22'},
     {key:"10",title:'hgfdfdbv',author:'崔生',visits:'8645',date:'2020-02-12 12:02:22'},
   ])
+  let exportData  =  [
+    ['序号','个人信息',,,'时间'],
+    [,'标题','作者','访问量',],
+  ]
+  const merge = [
+    { s: { r: 0, c: 0 }, e: { r: 1, c: 0 } },
+    { s: { r: 0, c: 1 }, e: { r: 0, c: 3 } },
+    { s: { r: 0, c: 4 }, e: { r: 1, c: 4 } },
+  ];
+
+  onMounted(()=>{
+    tableData.value.forEach(item=>{
+      let dataItem = [];
+      for (const itemKey in item) {
+        dataItem.push(item[itemKey])
+      }
+      exportData.push(dataItem);
+    })
+  })
 
   let exportExecl = () => {
-    let selectData = tableData.value.filter((item:any)=>{
-      return checkedRowKeys.value.includes(item.key);
-    })
-    let worksheet =  utils.json_to_sheet(selectData);
+    let worksheet =  utils.aoa_to_sheet(exportData);
     let workbook = utils.book_new();
+    worksheet['!merges'] = merge;
     utils.book_append_sheet(workbook, worksheet, "Sheet1");
     let filename  = fileName.value == '' ? '导出数据测试' : fileName.value;
     //compression: true 对基于ZIP的格式使用ZIP压缩
-    writeFile(workbook,`${filename}.${fileType.value}`, { compression: true })
+    writeFile(workbook,`${filename}.${fileType.value}`, { compression: true ,header: 1})
   }
 
-  let updateChecked = (rowKey:any) => {
-    checkedRowKeys.value = rowKey;
-  }
 </script>
 
 <style scoped>

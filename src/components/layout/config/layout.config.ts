@@ -20,7 +20,7 @@ import {
     timePicker, datePicker, dateTimePicker, rate, workflow, chart, print, notice,
     timeline, manyTab, watermark, share, dynamicAnchor, dynamicMeta, params1, query1,
     modalDrag, cardDrag, multiRouter, search360, bilibili, customIframe, upload,exportExecl,
-    exportSelectColExecl
+    exportSelectColExecl,exportMergeColExecl
 } from '@views'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
@@ -489,8 +489,9 @@ export const menuOption:menuOptions[]= ref([
                     },
                     {
                         label:"导出合并Excel",
-                        key: 'role',
+                        key: 'exportMergeColExecl',
                         parendKey:"execl",
+                        component:exportMergeColExecl,
                         isClose:true,
                     }
                 ]

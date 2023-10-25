@@ -442,6 +442,15 @@ const routers:RouteRecordRaw[]=[
                                 },
                                 component:() => import('@/views/other/execl/exportSelectColExecl.vue'),
                             },
+                            {
+                                path:'exportMergeColExecl',
+                                name:'exportMergeColExecl',
+                                meta:{
+                                    code:'exportMergeColExecl',
+                                    pageName:"导出合并Execl",
+                                },
+                                component:() => import('@/views/other/execl/exportMergeColExecl.vue'),
+                            },
                         ],
                     },
                 ]
