@@ -2,12 +2,7 @@
 // 关于这里的key 既代表code 也代表 页面路由的code 这样跳转不加任何处理
 import { NIcon,NBadge } from 'naive-ui';
 import {h, ref} from 'vue'
-import {
-    FileTrayFullOutline
-} from '@vicons/ionicons5'
-import { Home12Regular,Code16Filled,Image24Regular,AppsListDetail24Regular,
-    TextDescription24Regular, CalendarRtl28Regular,Table24Regular,TextEditStyle24Regular,
-    Textbox24Regular,Flowchart24Regular,ChartMultiple24Regular,Print24Regular,Chat24Regular,
+import {Flowchart24Regular,ChartMultiple24Regular,Print24Regular,Chat24Regular,
     History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,CalendarEmpty24Regular,
     ArrowSwap24Regular,CursorHover24Regular,
 } from '@vicons/fluent'
@@ -22,6 +17,8 @@ import {
     modalDrag, cardDrag, multiRouter, search360, bilibili, customIframe, upload,exportExecl,
     exportSelectColExecl,exportMergeColExecl
 } from '@views'
+import {Home,FolderCode,Inbox,PictureOne,TableFile,ListTwo,Plan,
+    Blackboard,Edit,AlignTextLeftOne} from '@icon-park/vue-next'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
 
@@ -29,19 +26,19 @@ export const menuOption:menuOptions[]= ref([
     {
         label: '概览',
         key: 'overivew',
-        icon:Home12Regular,
+        icon:Home,
         component:overivew,
         isClose:false,
     },
     {
         label: '组件',
         key: 'subassembly',
-        icon:Code16Filled,
+        icon:FolderCode,
         children: [
             {
                 label: '图标',
                 key: 'likeIcon',
-                icon:Image24Regular,
+                icon:PictureOne,
                 parendKey:"subassembly",
                 component:likeIcon,
                 isClose:true,
@@ -49,7 +46,7 @@ export const menuOption:menuOptions[]= ref([
             {
                 label:"表格",
                 key: 'table',
-                icon:Table24Regular,
+                icon:TableFile,
                 parendKey:"subassembly",
                 children:[
                     {
@@ -85,7 +82,7 @@ export const menuOption:menuOptions[]= ref([
                 key: 'list',
                 parendKey:"subassembly",
                 component:list,
-                icon:AppsListDetail24Regular,
+                icon:ListTwo,
                 isClose:true,
             },
             {
@@ -93,7 +90,7 @@ export const menuOption:menuOptions[]= ref([
                 key: 'desc',
                 parendKey:"subassembly",
                 component:desc,
-                icon:TextDescription24Regular,
+                icon:Blackboard,
                 isClose:true,
             },
             {
@@ -101,13 +98,13 @@ export const menuOption:menuOptions[]= ref([
                 key: 'calendar',
                 parendKey:"subassembly",
                 component:calendar,
-                icon:CalendarRtl28Regular,
+                icon:Plan,
                 isClose:true,
             },
             {
                 label:"编辑器",
                 key: 'editor',
-                icon:TextEditStyle24Regular,
+                icon:Edit,
                 parendKey:"subassembly",
                 children:[
                     {
@@ -122,7 +119,7 @@ export const menuOption:menuOptions[]= ref([
             {
                 label:"表单",
                 key: 'form',
-                icon:Textbox24Regular,
+                icon:AlignTextLeftOne,
                 parendKey:"subassembly",
                 children:[
                     {
@@ -236,7 +233,7 @@ export const menuOption:menuOptions[]= ref([
     {
         label: '其他',
         key: 'other',
-        icon:FileTrayFullOutline,
+        icon:Inbox,
         children: [
             {
                 label: '工作流',

@@ -12,7 +12,7 @@
           查询
         </n-button>
         文字大小
-        <n-input-number v-model:value="iconNumber" style="width: 90px" button-placement="both" :max="30" :min="12"></n-input-number>px
+        <n-input-number v-model:value="iconNumber" style="width: 90px" button-placement="both" :max="40" :min="12"></n-input-number>px
         <n-checkbox v-model:checked="isColorIcon">多彩图标</n-checkbox>
       </n-space>
       <div class="icon-show-box">
@@ -59,7 +59,7 @@ import { useMessage } from 'naive-ui'
 
 const message = useMessage();
 
-let iconNumber = ref(20);
+let iconNumber = ref(28);
 let isColorIcon = ref(false);
 let searchValue = ref('');
 let page:Ref<Number> = ref(1);

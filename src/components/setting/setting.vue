@@ -10,7 +10,7 @@
                   :color="item.bgColor">
           <template #default>
             <n-space vertical>
-              <n-icon size="14" :color="item.color" :component="item.icon" />
+              <n-icon size="16" :color="item.color" :component="item.icon" />
               <div :style="{color:item.color}">{{item.title}}</div>
             </n-space>
           </template>
@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-    import { Settings,Copy } from '@vicons/ionicons5';
+    import { Theme,CopyOne } from '@icon-park/vue-next'
     import {reactive, ref, watch , defineEmits, defineProps} from 'vue'
     import { setLocalData } from '@utils'
     import { layoutList,layoutMap } from './config'
@@ -48,7 +48,7 @@
     const settingListData = [
       {
         title:"主题配置",
-        icon:Settings,
+        icon:Theme,
         color:'#18a058',
         bgColor:'#d6eee3',
         click:()=>{
@@ -57,7 +57,7 @@
       },
       {
         title:"拷贝源码",
-        icon:Copy,
+        icon:CopyOne,
         color:'#2080f0',
         bgColor:'#cbdffa',
         click:()=>{

@@ -86,11 +86,8 @@ import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import {ref, onMounted, nextTick, h} from 'vue';
 import { NButton } from 'naive-ui'
-import { CashOutline,LogoChrome } from '@vicons/ionicons5'
-import { GlanceHorizontal20Filled,Classification20Regular,CloudArrowUp20Regular,VideoClip20Regular,
-  TableFreezeRow20Regular,Code20Filled,
-} from '@vicons/fluent'
-import {Bell } from '@vicons/tabler'
+import { LogoChrome } from '@vicons/ionicons5'
+import { AllApplication, Theme, UploadTwo, PlayTwo, TableFile, FolderCode, Remind } from '@icon-park/vue-next'
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
 let visits = ref<HTMLElement | null>(null);
@@ -100,17 +97,17 @@ let data = ref<Object[]>([]);
 let matrixList = [
   {
     name:'随机换肤',
-    icon:GlanceHorizontal20Filled,
+    icon:AllApplication,
     color:'#87dc64',
   },
   {
     name:'主题配置',
-    icon:Classification20Regular,
+    icon:Theme,
     color:'#59b5fb',
   },
   {
     name:"网站升级",
-    icon:CloudArrowUp20Regular,
+    icon:UploadTwo,
     color:'#ffd367',
   },
   {
@@ -120,22 +117,22 @@ let matrixList = [
   },
   {
     name:'视频播放器',
-    icon:VideoClip20Regular,
+    icon:PlayTwo,
     color:'#ffba67'
   },
   {
     name:'表格',
-    icon:TableFreezeRow20Regular,
+    icon:TableFile,
     color:'#48d6cd'
   },
   {
     name:'源码',
-    icon:Code20Filled,
+    icon:FolderCode,
     color:'#ab6ee3'
   },
   {
     name:"公告",
-    icon:Bell,
+    icon:Remind,
     color:'#ff78b6'
   }
 ]
