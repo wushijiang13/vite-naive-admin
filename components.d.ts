@@ -9,6 +9,7 @@ declare module 'vue' {
     Iframe: typeof import('./src/components/iframe/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     LayoutConventional: typeof import('./src/components/layout/src/layout-conventional.vue')['default']
+    LayoutRightBtnGroup: typeof import('./src/components/layout-right-btn-group/index.vue')['default']
     LayoutSandwich: typeof import('./src/components/layout/src/layout-sandwich.vue')['default']
     LayoutTab: typeof import('./src/components/layout-tab/layout-tab.vue')['default']
     LayoutTabClose: typeof import('./src/components/layout-tab-close/layout-tab-close.vue')['default']

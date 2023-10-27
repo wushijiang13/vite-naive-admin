@@ -60,9 +60,8 @@
         </n-card>
       </n-grid-item>
     </n-grid>
-
-    <n-grid class="grid-2" x-gap="12" :cols="8">
-      <n-grid-item v-for="item in matrixList" :span="1">
+    <n-grid class="grid-box" x-gap="12" :cols="8">
+      <n-grid-item v-for="item in matrixList" :span="1" @click="matrixExecute(item.key)">
         <n-card class="card-function">
           <n-space vertical :align="'center'">
             <n-icon :component="item.icon" :color="item.color" size="50" :depth="1" />
@@ -85,56 +84,66 @@ import { LineChart,BarChart } from 'echarts/charts';
 import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import {ref, onMounted, nextTick, h} from 'vue';
-import { NButton } from 'naive-ui'
-import { LogoChrome } from '@vicons/ionicons5'
-import { AllApplication, Theme, UploadTwo, PlayTwo, TableFile, FolderCode, Remind } from '@icon-park/vue-next'
+import { NButton,useMessage } from 'naive-ui'
+import { AllApplication, Theme, UploadTwo, PlayTwo, TableFile, FolderCode, Remind, BrowserChrome } from '@icon-park/vue-next'
+import { useSettingStore } from '@pinia/setting'
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
+let message = useMessage();
 let visits = ref<HTMLElement | null>(null);
 let empower = ref<HTMLElement | null>(null);
 let columns = ref<Object[]>([]);
 let data = ref<Object[]>([]);
+let settingStore =  useSettingStore();
 let matrixList = [
   {
     name:'随机换肤',
+    key:'random',
     icon:AllApplication,
     color:'#87dc64',
   },
   {
     name:'主题配置',
+    key:'theme',
     icon:Theme,
     color:'#59b5fb',
   },
   {
     name:"网站升级",
+    key:'upgrade',
     icon:UploadTwo,
     color:'#ffd367',
   },
   {
     name:"Google",
-    icon:LogoChrome,
+    key:'google',
+    icon:BrowserChrome,
     color:'#ffd367',
   },
   {
     name:'视频播放器',
+    key:'video',
     icon:PlayTwo,
     color:'#ffba67'
   },
   {
     name:'表格',
+    key:'table',
     icon:TableFile,
     color:'#48d6cd'
   },
   {
     name:'源码',
+    key:'code',
     icon:FolderCode,
     color:'#ab6ee3'
   },
   {
     name:"公告",
+    key:'announcement',
     icon:Remind,
     color:'#ff78b6'
-  }
+  },
 ]
 /**
  * 访问量
@@ -257,6 +266,47 @@ function tableInit(){
     }
   ];
 }
+/**
+ * 矩阵模块执行
+ */
+function matrixExecute(key:String){
+  switch (key) {
+    case 'random':{
+
+      break;
+    }
+    case 'theme':{
+      settingStore.themeShowDrawer()
+      break;
+    }
+    case 'upgrade':{
+      break;
+    }
+    case 'google':{
+      window.open("https://www.baidu.com")
+      break;
+    }
+    case 'video':{
+      break;
+    }
+    case 'table':{
+      break;
+    }
+    case 'code':{
+      settingStore.copySourceCode()
+      break;
+    }
+    case 'announcement':{
+      message.info(
+          "敬请期待~",
+          {
+            keepAliveOnHover: true
+          }
+      )
+      break;
+    }
+  }
+}
 onMounted(()=>{
   visitsInit()
   empowerInit()
@@ -270,8 +320,11 @@ onMounted(()=>{
 <style scoped>
 .overivew{
 }
-.grid-2{
+.grid-box{
   margin-top: var(--theme-top-spacing);
+}
+.card-function{
+  cursor: pointer;
 }
 .day{
   background-color:#edf8e9 ;
@@ -311,5 +364,9 @@ onMounted(()=>{
 }
 .dis-key {
   background-color: #f6f6f6 !important;
+}
+.overivew .n-card > .n-card__content{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 </style>

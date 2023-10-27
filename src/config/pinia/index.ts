@@ -66,7 +66,7 @@ export const useStore =  defineStore('store',{
      */
     async refreshPageComponents() {
       this.refresh = false;
-      //移除缓存中在当前选中的组件
+      // 移除缓存中在当前选中的组件
       this.excludePage.push(this.tabPageActive);
       await nextTick(async () => {
         await setTimeout(() => {

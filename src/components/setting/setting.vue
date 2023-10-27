@@ -16,18 +16,25 @@
           </template>
         </n-button>
       </n-space>
-      <n-drawer v-model:show="active"  placement="right">
+      <n-drawer v-model:show="settingStore.active"  placement="right">
           <template #default>
             <div class="setting-drawer">
               <h3>主题更换</h3>
-              <h4>布局更换</h4>
-              <n-space vertical>
-                <n-select v-model:value="selectLayout" :value-field="'key'" :options="layoutList" />
-              </n-space>
-              <h4>主题色切换</h4>
-              <n-button @click="themeClick" strong secondary>
-                {{modelValue.themeColorValue == null ? "深色" : "浅色" }}
-              </n-button>
+              <n-form  label-placement="left">
+                <n-form-item label="布局更换">
+                  <n-select v-model:value="selectLayout" :value-field="'key'" :options="layoutList" />
+                </n-form-item>
+                <n-form-item label="主题色切换">
+                  <n-button @click="themeClick" strong secondary>
+                    {{modelValue.themeColorValue == null ? "深色" : "浅色" }}
+                  </n-button>
+                </n-form-item>
+                <n-form-item label="主题色切换">
+                  <n-button @click="themeClick" strong secondary>
+                    {{modelValue.themeColorValue == null ? "深色" : "浅色" }}
+                  </n-button>
+                </n-form-item>
+              </n-form>
             </div>
           </template>
         </n-drawer>
@@ -39,11 +46,12 @@
     import {reactive, ref, watch , defineEmits, defineProps} from 'vue'
     import { setLocalData } from '@utils'
     import { layoutList,layoutMap } from './config'
+    import { useSettingStore } from '@pinia/setting'
 
     const props = defineProps({
         modelValue : {} as any
     })
-    const active = ref(false)
+    const settingStore = useSettingStore();
     const emits = defineEmits(['update:modelValue'])
     const settingListData = [
       {
@@ -51,21 +59,16 @@
         icon:Theme,
         color:'#18a058',
         bgColor:'#d6eee3',
-        click:()=>{
-          active.value = !active.value
-        }
+        click:settingStore.themeShowDrawer
       },
       {
         title:"拷贝源码",
         icon:CopyOne,
         color:'#2080f0',
         bgColor:'#cbdffa',
-        click:()=>{
-          window.open('https://github.com/wushijiang13/vite-naive-admin')
-        }
+        click:settingStore.copySourceCode
       }
     ]
-
     let themeConfigs = reactive(props.modelValue);
     let selectLayout = ref(themeConfigs.layoutValue.key);
 
@@ -76,10 +79,12 @@
         themeConfigs.themeColorValue = themeConfigs.themeColorValue == "dark" ? "white" : "dark"
     }
 
+
     window.onbeforeunload = ()=>{
         setLocalData("themeLayoutKey",themeConfigs.layoutValue.key)
         setLocalData("themeColor",themeConfigs.themeColorValue)
     }
+
 
     watch(
         () => selectLayout.value,

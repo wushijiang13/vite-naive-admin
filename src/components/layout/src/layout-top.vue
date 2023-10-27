@@ -2,22 +2,25 @@
 <template>
     <div class="layout-top">
         <div class="layout-header">
+          <div class="layout-header-left-box">
             <img class="logo" src="/src/assets/logo.png"/>
             <span>
                Vite-Naive-Admin
             </span>
             <n-menu
-              :options="menuOption"
-              v-model:value="store.menuValue"
-              :default-expanded-keys="['projectsAndScree','system']"
-              @update:value="store.menuAction"
-              :render-icon="renderIcon"
-              :render-label="labelRender"
-              mode="horizontal"
-              collapsed-icon-size="18"
-              collapsed-width="60"
-              ref="menuRef"
-          />
+                :options="menuOption"
+                v-model:value="store.menuValue"
+                :default-expanded-keys="['projectsAndScree','system']"
+                @update:value="store.menuAction"
+                :render-icon="renderIcon"
+                :render-label="labelRender"
+                mode="horizontal"
+                collapsed-icon-size="18"
+                collapsed-width="60"
+                ref="menuRef"
+            />
+          </div>
+          <layoutRightBtnGroup/>
         </div>
         <div class="layout-main">
           <layoutTab  @tabChange='tabChange' :tabsPadding="70" :paneStyle="{padding:'0px 70px 70px 70px'}" :suffixStyle="{marginRight:'70px'}"/>
@@ -33,8 +36,7 @@ import {useRouterStore} from "@pinia/routerFlat";
 import {useRoute, useRouter} from "vue-router";
 import {MenuOption, NIcon} from "naive-ui";
 import {h, onMounted} from "vue";
-import type { menuOptions } from '@types'
-
+import layoutRightBtnGroup from '@components/layout-right-btn-group/index.vue'
 
 const store = useStore();
 const routerStore = useRouterStore();
@@ -90,10 +92,16 @@ onMounted(()=>{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
         display: flex;
         align-items: center;
+        justify-content: space-between;
         font-size: 20px;
         color: #474f62;
         font-weight: 200;
         background-color: #fff;
+    }
+    .layout-header-left-box{
+      height: 70px;
+      display: flex;
+      align-items: center;
     }
     .layout-main{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);

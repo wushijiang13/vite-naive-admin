@@ -6,10 +6,13 @@
               <img class="logo" src="/src/assets/logo.png"/>
               <span>Vite-Naive-Admin</span>
             </div>
+            <layoutRightBtnGroup/>
         </div>
         <div class="layout-main">
             <div class="laout-content">
-                <router-view/>
+              <keep-alive :exclude="store.excludePage" :max="10">
+                <router-view v-if=" store.refresh" />
+              </keep-alive>
             </div>
         </div>
         <div class="layout-bottom">
@@ -37,7 +40,7 @@
     import { useRouterStore } from "@pinia/routerFlat";
     import { useRouter,useRoute } from "vue-router";
     import {menuOption } from '../config/layout.config';
-    import type { menuOptions } from '@types'
+    import layoutRightBtnGroup from '@components/layout-right-btn-group/index.vue'
 
     const store = useStore();
     const routerStore = useRouterStore();
@@ -93,6 +96,9 @@
         height: 60px;
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
         padding: 0px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .layout-main{
         height: calc(100vh - 126px);
@@ -119,7 +125,6 @@
       display: flex;
       align-items: center;
       font-size: 20px;
-      color: #474f62;
       font-weight: 200;
       height: 60px;
     }

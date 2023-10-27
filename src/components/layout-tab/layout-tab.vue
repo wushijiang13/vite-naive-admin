@@ -16,7 +16,7 @@
           :name="page.key"
           display-directive="show:lazy"
           :closable="store.tabPageActive == page.key && page.isClose">
-        <n-scrollbar style="max-height: 750px">
+        <n-scrollbar class="max-scroll-height">
           <div class="tab-pane-box" :style="props.paneStyle" >
             <keep-alive :exclude="store.excludePage" :max="10">
               <component v-if=" store.refresh && store.tabPageActive == page.key" :is="page.component"></component>
@@ -150,5 +150,8 @@ const layoutContextMenu = (index:number) => {
 .suffix-box{
   margin-right: 20px;
   line-height: 46px;
+}
+.max-scroll-height{
+  height: calc(100vh - 138px);
 }
 </style>

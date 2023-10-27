@@ -2,10 +2,13 @@
 <template>
     <div class="layout-conventional">
         <div class="layout-header">
-          <img class="logo" src="/src/assets/logo.png"/>
-          <span>
-                Vite-Naive-Admin
-            </span>
+          <div class="layout-left-box">
+            <img class="logo" src="/src/assets/logo.png"/>
+            <span>
+             Vite-Naive-Admin
+          </span>
+          </div>
+          <layoutRightBtnGroup/>
         </div>
         <div class="layout-main">
             <div class="layout-navigation">
@@ -56,7 +59,7 @@
     import { useStore } from "@pinia";
     import { useRouterStore } from "@pinia/routerFlat";
     import { useRoute,useRouter} from "vue-router";
-    import {menuOptions} from "@types";
+    import layoutRightBtnGroup from '@components/layout-right-btn-group/index.vue'
     const store = useStore();
     const routerStore = useRouterStore();
     const route = useRoute();
@@ -128,14 +131,19 @@
         flex-direction: column;
     }
     .layout-header{
-        height: 60px;
-        box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
-        display: flex;
-        align-items: center;
-        font-size: 20px;
-        color: #474f62;
-        font-weight: 200;
-        padding: 0px 20px;
+      height: 60px;
+      box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 20px;
+    }
+    .layout-left-box{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 200;
     }
     .layout-main{
         margin-top: 3px;

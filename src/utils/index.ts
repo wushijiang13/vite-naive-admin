@@ -1,4 +1,6 @@
 import { cloneDeep } from 'lodash'
+import {Component, h} from "vue";
+import {NIcon} from "naive-ui";
 /**
  * 此工具类 为了方便以后使用，只写一次，整体项目如有需要 所有工具或简化函数添加此处
  * 用处：将融合进loadsh 和 自定义函数导出新的loadsh 对象以供使用
@@ -104,6 +106,17 @@ function randomGenerateColor(){
     return base16Color;
 }
 
+/**
+ *
+ */
+function renderIcon(icon: Component) {
+    return () => {
+        return h(NIcon, null, {
+            default: () => h(icon)
+        })
+    }
+}
+
 export {
     downLoadFile,
     isNullCheck,
@@ -111,5 +124,6 @@ export {
     getLocalData,
     getKeyFindDelete,
     mergeAssign,
-    randomGenerateColor
+    randomGenerateColor,
+    renderIcon
 }

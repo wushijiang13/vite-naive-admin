@@ -37,16 +37,19 @@
         <div class="layout-main">
               <div class="layout-inherit-flex-box">
                   <div class="layout-header">
-                    <n-button text class="layout-stow" @click="menuStow">
-                      <n-icon size="18" :component="
-                        isCollapsed ? LayoutSidebarLeftExpand : LayoutSidebarLeftCollapse"/>
-                    </n-button>
                     <div class="bread-crumb">
+                      <n-button text class="layout-stow" @click="menuStow">
+                        <n-icon size="18" :component="
+                        isCollapsed ? LayoutSidebarLeftExpand : LayoutSidebarLeftCollapse"/>
+                      </n-button>
                       <n-breadcrumb separator=">">
                         <n-breadcrumb-item v-for="item in store.bread">
                           {{item.label}}
                         </n-breadcrumb-item>
                       </n-breadcrumb>
+                    </div>
+                    <div class="user-box">
+                      <layoutRightBtnGroup/>
                     </div>
                   </div>
               </div>
@@ -66,10 +69,9 @@
   import type {MenuOption} from 'naive-ui'
   import { useRouterStore } from "@pinia/routerFlat";
   import { useStore } from "@pinia";
-  import type { menuOptions } from '@types'
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
-  import { LogoVue } from '@vicons/ionicons5'
   import layoutTab from '@components/layout-tab/layout-tab.vue'
+  import layoutRightBtnGroup from '@components/layout-right-btn-group/index.vue'
 
   const router = useRouter();
   const route:any = useRoute();
@@ -97,6 +99,15 @@
   function menuStow(){
     isCollapsed.value = !isCollapsed.value;
   }
+
+  /**
+   * 点击用户信息操作icon
+   */
+  function userOperateClick(){
+    isCollapsed.value = !isCollapsed.value;
+  }
+
+
 
   /**
    * tab 选中页反正改变
@@ -163,6 +174,7 @@
       line-height: 60px;
       box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
       display: inline-flex;
+      justify-content: space-between;
     }
     .layout-stow{
       margin-left: 20px;
@@ -182,6 +194,9 @@
       margin-left: 12px;
       display: flex;
       align-items: center;
+    }
+    .user-box{
+      margin-right: 20px;
     }
     .v-enter-active{
       transition-delay: 0.1s;
