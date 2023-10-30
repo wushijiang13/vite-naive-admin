@@ -5,7 +5,7 @@ import path from "node:path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base:'//',
+  base:'./',
   resolve:{
     alias: {
         "@": path.resolve(__dirname, "src/"),
@@ -18,7 +18,8 @@ export default defineConfig({
     extensions: ['.js', '.json', '.ts']
   },
   build:{
-      outDir:"docs"
+      outDir:"docs",
+      assetsDir:'static'
   },
   plugins: [
       vue(),
