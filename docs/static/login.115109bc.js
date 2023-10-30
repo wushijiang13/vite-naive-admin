@@ -1,0 +1,1 @@
+import{_ as c,o as e,c as o}from"./index.46a80c4c.js";const a={},n={class:"login"};function s(t,_){return e(),o("div",n," \u8FD9\u662Flogin ")}var i=c(a,[["render",s],["__scopeId","data-v-c5387a34"]]);export{i as default};
