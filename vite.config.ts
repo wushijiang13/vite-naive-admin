@@ -19,7 +19,6 @@ export default defineConfig({
   },
   build:{
       outDir:"docs",
-      assetsDir:'static'
   },
   plugins: [
       vue(),
