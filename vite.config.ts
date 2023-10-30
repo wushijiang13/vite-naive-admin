@@ -17,6 +17,9 @@ export default defineConfig({
     },
     extensions: ['.js', '.json', '.ts']
   },
+  build:{
+      outDir:"docs"
+  },
   plugins: [
       vue(),
       Components({ /* options */ }),
