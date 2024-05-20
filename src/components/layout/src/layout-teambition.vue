@@ -184,7 +184,6 @@
       line-height: 60px;
       height: 60px;
       text-align: center;
-      color: #474f62;
       font-weight: 200;
       display: flex;
       justify-content: center;

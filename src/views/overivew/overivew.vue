@@ -70,6 +70,59 @@
         </n-card>
       </n-grid-item>
     </n-grid>
+    <n-grid class="grid-box" x-gap="12" :cols="8">
+      <n-grid-item :span="4">
+        <n-card>
+          <template #header>
+            信息
+          </template>
+          <template #header-extra>
+              <span class="info">
+                当前版本：V10.5.0   部署时间：2023-02-22 18:47:26
+              </span>
+          </template>
+          <div>
+            <div class="table-box">
+              <n-data-table
+                  size="small"
+                  :single-line="false"
+                  :columns="columns"
+                  :data="data"
+              />
+            </div>
+          </div>
+        </n-card>
+      </n-grid-item>
+      <n-grid-item :span="4">
+        <n-card>
+          <template #header>
+            开源信息
+          </template>
+          <template #header-extra>
+              <span class="info">
+                爱我别走~
+              </span>
+          </template>
+          <div>
+            <div class="table-box">
+              <n-grid x-gap="12" :cols="1">
+                <n-gi v-for="item in codeFrameList">
+                  <div class="open-code-box" >
+                    <div class="open-code-box-left" @click="jumpUrl(item.url)">
+                      <p>{{item.name}}</p>
+                      <p>{{item.content}}</p>
+                    </div>
+                    <div class="open-code-box-right">
+                      <img :src="item.src"/>
+                    </div>
+                  </div>
+                </n-gi>
+              </n-grid>
+            </div>
+          </div>
+        </n-card>
+      </n-grid-item>
+    </n-grid>
   </div>
 </template>
 
@@ -84,7 +137,7 @@ import { LineChart,BarChart } from 'echarts/charts';
 import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import {ref, onMounted, nextTick, h} from 'vue';
-import { NButton,useMessage } from 'naive-ui'
+import { NButton,NSpace,useMessage } from 'naive-ui'
 import { AllApplication, Theme, UploadTwo, PlayTwo, TableFile, FolderCode, Remind, BrowserChrome } from '@icon-park/vue-next'
 import { useSettingStore } from '@pinia/setting'
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
@@ -144,6 +197,9 @@ let matrixList = [
     icon:Remind,
     color:'#ff78b6'
   },
+]
+let codeFrameList = [
+  {name:"vue-naive-admin",content:"一款绝佳的中后台前端开发管理框架",src:"/src/assets/logo.png",url:"https://github.com/wushijiang13/vite-naive-admin"},
 ]
 /**
  * 访问量
@@ -223,8 +279,10 @@ function tableInit(){
       colSpan: (rowData:object, rowIndex:number) => (rowIndex === 3 ? 3 : 1),
       render:(rowData:{version:string}, rowIndex: number)=>{
         if(rowIndex === 3){
-          return [h(NButton,{type:"info",class:'btn',size:"small"},{default:()=> "免费开源"}),
-            h(NButton,{type:"warning", class:'btn',size:"small"},{default:()=>"持续维护"})]
+          return h(NSpace,{},{default:()=>[
+              h(NButton,{type:"info",size:"small"},{default:()=> "免费开源"}),
+              h(NButton,{type:"warning", size:"small"},{default:()=>"持续维护"})
+            ]})
         }
         return `${rowData.version}`
       },
@@ -307,6 +365,9 @@ function matrixExecute(key:String){
     }
   }
 }
+function jumpUrl(url:string){
+  window.open(url);
+}
 onMounted(()=>{
   visitsInit()
   empowerInit()
@@ -319,6 +380,7 @@ onMounted(()=>{
 
 <style scoped>
 .overivew{
+  color: var(--theme-color);
 }
 .grid-box{
   margin-top: var(--theme-top-spacing);
@@ -346,6 +408,8 @@ onMounted(()=>{
   min-height: 170px;
 }
 .table-box{
+  width: 90%;
+  margin: 0px auto;
   height: 230px;
 }
 .card-footer{
@@ -356,6 +420,23 @@ onMounted(()=>{
   font-size: 14px;
   border-top: 1px solid #000000;
 }
+.open-code-box{
+  background: linear-gradient(50deg, #1890ff, #77e19d);
+  height: 100px;
+  display: inline-flex;
+  align-items: center;
+  color:#fff;
+  border-radius: 5px;
+  padding: 0px 20px;
+  cursor: pointer;
+  transition: 0.6s;
+}
+.open-code-box:hover{
+  transform: scale(1.05);
+}
+.open-code-box-right img{
+  height: 60px;
+}
 </style>
 <style>
 .btn{
@@ -363,7 +444,7 @@ onMounted(()=>{
   margin-left: 10px !important;
 }
 .dis-key {
-  background-color: #f6f6f6 !important;
+  background-color: var(--theme-back-color) !important;
 }
 .overivew .n-card > .n-card__content{
   padding-left: 0px !important;

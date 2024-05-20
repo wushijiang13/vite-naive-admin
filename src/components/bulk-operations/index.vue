@@ -100,7 +100,7 @@
     color: #000000;
   }
   .bluk-count{
-    color: var(--theme-color);
+    color: var(--theme-active-color);
     font-weight: 600;
     font-size: 15px;
   }

@@ -94,9 +94,7 @@ onMounted(()=>{
         align-items: center;
         justify-content: space-between;
         font-size: 20px;
-        color: #474f62;
         font-weight: 200;
-        background-color: #fff;
     }
     .layout-header-left-box{
       height: 70px;

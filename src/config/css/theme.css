@@ -1,8 +1,17 @@
 body{
-    --theme-color:#18a058; /*主题色*/
+    --theme-active-color:#18a058; /*主题选中色*/
     --theme-box-shadow:0 6px 18px 0 rgb(38 38 38 / 14%);/*主题阴影*/
     --theme-top-spacing: 14px;/*外间距*/
-    --theme-layout-background-coolr: #f5f7f8; /*间隙颜色*/
+    .dark{
+        --theme-color:#fff; /*主题色*/
+        --theme-back-color:#000; /*主题背景色*/
+        --theme-layout-background-coolr: #212121; /*间隙颜色*/
+    }
+    .white{
+        --theme-color:#000; /*主题色*/
+        --theme-back-color:#fff; /*主题背景色*/
+        --theme-layout-background-coolr: #f5f7f8; /*间隙颜色*/
+    }
 }
 ::-webkit-scrollbar {
     width: 6px;
@@ -43,7 +52,6 @@ body{
     height: 70%;
     margin-right: 10px;
 }
-
 .card-box-border{
     border:1px solid #e0e3ea;
 }

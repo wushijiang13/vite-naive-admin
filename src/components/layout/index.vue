@@ -29,9 +29,9 @@
   }
 </script>
 <template>
-  <n-config-provider  :theme="themeColorMap[store.themeConfigs.themeColorValue]" :locale="zhCN" :date-locale="dateZhCN">
+  <n-config-provider :class="store.themeConfigs.themeColorValue === 'dark' ? 'dark' : 'white'" :theme="themeColorMap[store.themeConfigs.themeColorValue]" :locale="zhCN" :date-locale="dateZhCN">
     <n-message-provider>
-          <component :is="store.themeConfigs.layoutValue.value"></component>
+          <component  :is="store.themeConfigs.layoutValue.value"></component>
     </n-message-provider>
     <setting v-model="store.themeConfigs"/>
     <n-global-style />

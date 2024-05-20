@@ -148,7 +148,7 @@
     .layout-main{
         margin-top: 3px;
     }
-    .laout-content{
+    .laout-content{      
         background-color: var(--theme-layout-background-coolr);
     }
     .layout-navigation{

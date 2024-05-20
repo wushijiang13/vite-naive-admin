@@ -102,7 +102,7 @@
 }
 .title::before{
   content: "";
-  background-color: var(--theme-color);
+  background-color: var(--theme-active-color);
   width: 6px;
   height: 20px;
   display: inline-flex;

@@ -21,17 +21,17 @@
         <!--  等到写完的时候再加 用于是否展示原有筛选功能  v-if="isReserveFilter"-->
         <div class="table-select-box">
           <!--  等到写完的时候再加 用于外部判断权限  v-if="$permissions(downCode) && 是否需要这个功能"-->
-            <n-button class="btn" v-if="moduleColOptions.down.isShow && moduleColOptions.down.code" size="large" @click="moduleClick('down')" strong secondary circle>
+            <n-button v-if="moduleColOptions.down.isShow && moduleColOptions.down.code" size="large" @click="moduleClick('down')" strong secondary circle>
               <template #icon>
                 <n-icon><Download/></n-icon>
               </template>
             </n-button>
-            <n-button class="btn" v-if="moduleColOptions.filter.isShow && moduleColOptions.filter.code" @click="openDrawer('filter')"  size="large" strong secondary circle>
+            <n-button v-if="moduleColOptions.filter.isShow && moduleColOptions.filter.code" @click="openDrawer('filter')"  size="large" strong secondary circle>
               <template #icon>
                 <n-icon><Filter/></n-icon>
               </template>
             </n-button>
-            <n-button class="btn" v-if="moduleColOptions.custom.isShow && moduleColOptions.custom.code" @click="openDrawer('custom')" size="large" strong secondary circle>
+            <n-button v-if="moduleColOptions.custom.isShow && moduleColOptions.custom.code" @click="openDrawer('custom')" size="large" strong secondary circle>
             <template #icon>
               <n-icon><TextColumnTwoLeft24Filled/></n-icon>
             </template>
@@ -90,7 +90,6 @@
             </template>
           </n-pagination>
           <n-button
-              class="btn"
               v-if="moduleColOptions.add.isShow && moduleColOptions.add.code"
               @click="moduleClick('add')"
               size="large" strong secondary circle>
@@ -454,10 +453,6 @@
   justify-content: space-between;
   align-content: center;
   padding: 10px 0px;
-}
-.btn{
-
-  background-color: #fff;
 }
 .table-btn,.table-select,.table-select-slot,.table-select-box{
   display: inline-flex;

@@ -135,7 +135,7 @@ const layoutContextMenu = (index:number) => {
 </style>
 <style>
 .n-tabs-nav{
-  background-color: #fff;
+  background-color: var(--theme-back-color);
 }
 .layout-tab .n-tabs-nav,.layout-tab .v-x-scroll, .layout-tab .n-tabs-nav-scroll-content{
   height: 60px;
@@ -150,6 +150,7 @@ const layoutContextMenu = (index:number) => {
 .suffix-box{
   margin-right: 20px;
   line-height: 46px;
+  color:var(--theme-color);
 }
 .max-scroll-height{
   height: calc(100vh - 138px);

@@ -105,7 +105,7 @@ let searchIcon = () => {
 }
 
 let getColor = () => {
- return  isColorIcon.value ?  randomGenerateColor() : '#000'
+ return  isColorIcon.value ?  randomGenerateColor() : '';
 }
 
 let copyCode = (item:any) => {
@@ -134,7 +134,8 @@ init();
 
 <style scoped>
 .like-icon{
-  background-color: #ffffff;
+  background-color: var(--theme-back-color);
+  color:var(--theme-color);
   padding: 20px;
 }
 .icon-show-box{
@@ -168,7 +169,7 @@ init();
   bottom: -20px;
   width: 100%;
   color:#fff;
-  background-color: var(--theme-color);
+  background-color: var(--theme-active-color);
 }
 .border-gi:hover .icon-copy{
   bottom: 0px;

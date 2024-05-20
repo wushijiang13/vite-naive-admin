@@ -103,12 +103,12 @@
       right: 0;
       top: 0;
       bottom: 0;
-      background-color: #fff;
+      background-color: var(--theme-back-color);
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
-      border-left: 1px solid #dcdfe6;
-      border-bottom: 1px solid #dcdfe6;
-      border-top: 1px solid #dcdfe6;
+      border-left: 1px solid var(--theme-layout-background-coolr);
+      border-bottom: 1px solid var(--theme-layout-background-coolr);
+      border-top: 1px solid var(--theme-layout-background-coolr);
       display: flex;
       align-items: center;
       justify-content: center;
