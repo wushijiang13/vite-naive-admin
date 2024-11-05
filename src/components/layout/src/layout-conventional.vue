@@ -131,7 +131,7 @@
         flex-direction: column;
     }
     .layout-header{
-      height: 60px;
+      height: 60px; 
       box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
       display: flex;
       align-items: center;

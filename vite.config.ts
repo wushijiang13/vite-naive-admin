@@ -5,7 +5,7 @@ import path from "node:path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base:'./',
+  base:'/vite-naive-admin/',
   resolve:{
     alias: {
         "@": path.resolve(__dirname, "src/"),
@@ -20,5 +20,8 @@ export default defineConfig({
   plugins: [
       vue(),
       Components({ /* options */ }),
-  ]
+  ],
+  build:{
+    // sourcemap:true,
+  }
 })
