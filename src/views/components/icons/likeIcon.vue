@@ -16,7 +16,7 @@
         <n-checkbox v-model:checked="isColorIcon">多彩图标</n-checkbox>
       </n-space>
       <div class="icon-show-box">
-        <n-grid x-gap="12" y-gap="12" :cols="12">
+        <n-grid x-gap="40" y-gap="12" :cols="12">
           <n-gi v-for="(item,index) in iconList" :key="item">
             <div class="icon-gi-item">
               <div class="border-gi card-box-border" @click="copyCode(item)">
@@ -149,7 +149,7 @@ init();
   text-overflow: ellipsis;
 }
 .border-gi{
-  height: 70px;
+  height: 60px;
   cursor: pointer;
   position: relative;
   display: flex;
@@ -157,6 +157,7 @@ init();
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-radius: 6px;
 }
 .icon-copy-box{
   height: 0px;
