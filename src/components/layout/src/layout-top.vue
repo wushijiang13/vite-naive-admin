@@ -101,6 +101,10 @@ onMounted(()=>{
       display: flex;
       align-items: center;
     }
+    .layout-header-left-box span{
+      display: inline-block;
+      width: 250px;
+    }
     .layout-main{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
         min-height: 100vh;
