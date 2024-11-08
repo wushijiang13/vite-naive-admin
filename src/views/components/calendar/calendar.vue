@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { isYesterday, getDate } from 'date-fns/esm'
+import { isYesterday, getDate } from 'date-fns'
 import {ref} from "vue";
 const value = ref(getDate(new Date()).valueOf());
 const  isDateDisabled = (timestamp: number) => {

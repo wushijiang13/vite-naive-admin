@@ -30,7 +30,7 @@ export interface LayoutMap {
 
 export interface ThemeConfig {
     layoutValue:LayoutOption,
-    themeColorValue:string,
+    themeColorValue:boolean,
 }
 
 /**

@@ -7,9 +7,9 @@
   import {useStore} from '@pinia'
   import type {ThemeConfig} from '@types'
   import { useLoadingBar } from "naive-ui";
-
+  import { computed } from 'vue'
   const store = useStore();
-  const loadingBar = useLoadingBar();
+  const loadingBar:any = useLoadingBar();
   store.$patch({
     loadingBar:loadingBar,
   })
@@ -23,13 +23,20 @@
     setLocalData("themeLayoutKey",store.themeConfigs.layoutValue.key)
     setLocalData("themeColor",store.themeConfigs.themeColorValue)
   }
-  const themeColorMap ={
+  const themeColorMap:any ={
     "dark":darkTheme,
     "white":null
   }
+
+  const getTheme =  computed(()=>{
+    let theme =store.themeConfigs.themeColorValue ? 'dark' : 'white'
+    return themeColorMap[theme];
+  })
+
+  
 </script>
 <template>
-  <n-config-provider :class="store.themeConfigs.themeColorValue === 'dark' ? 'dark' : 'white'" :theme="themeColorMap[store.themeConfigs.themeColorValue]" :locale="zhCN" :date-locale="dateZhCN">
+  <n-config-provider :class="store.themeConfigs.themeColorValue ? 'dark' : 'white'" :theme="getTheme" :locale="zhCN" :date-locale="dateZhCN">
     <n-message-provider>
           <component  :is="store.themeConfigs.layoutValue.value"></component>
     </n-message-provider>

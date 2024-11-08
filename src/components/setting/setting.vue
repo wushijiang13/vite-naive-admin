@@ -16,25 +16,41 @@
           </template>
         </n-button>
       </n-space>
-      <n-drawer v-model:show="settingStore.active"  placement="right">
+      <n-drawer :default-width="302" resizable v-model:show="settingStore.active"  placement="right">
           <template #default>
             <div class="setting-drawer">
               <h3>主题更换</h3>
-              <n-form  label-placement="left">
-                <n-form-item label="布局更换">
-                  <n-select v-model:value="selectLayout" :value-field="'key'" :options="layoutList" />
-                </n-form-item>
-                <n-form-item label="主题色切换">
-                  <n-button @click="themeClick" strong secondary>
-                    {{modelValue.themeColorValue == null ? "深色" : "浅色" }}
-                  </n-button>
-                </n-form-item>
-                <n-form-item label="主题色切换">
-                  <n-button @click="themeClick" strong secondary>
-                    {{modelValue.themeColorValue == null ? "深色" : "浅色" }}
-                  </n-button>
-                </n-form-item>
-              </n-form>
+              <ul class="setting-fun-box">
+                <li>
+                  <p>布局更换</p>
+                  <div>
+                    <n-select v-model:value="selectLayout" :value-field="'key'" :options="layoutList" />
+                  </div>
+                </li>
+                <li>
+                  <p>主题色切换</p>
+                  <div>
+                    <n-switch v-model:value="modelValue.themeColorValue" :rail-style="railStyle">
+                      <template #checked-icon>
+                        <SunOne theme="filled" size="14" fill="#ffe538"/>
+                        <!-- <sun-one  size="28" /> -->
+                      </template>
+                      <template #unchecked-icon>
+                        <moon theme="outline" size="14" />
+                      </template>
+                      <template #checked>
+                        太阳
+                      </template>
+                      <template #unchecked>
+                        月亮
+                      </template>
+                    </n-switch> 
+                  </div>
+                </li>
+              </ul>
+              <div>
+                
+              </div>
             </div>
           </template>
         </n-drawer>
@@ -43,12 +59,13 @@
 
 <script setup lang="ts">
     import { Theme,CopyOne } from '@icon-park/vue-next'
-    import {reactive, ref, watch , defineEmits, defineProps} from 'vue'
+    import {reactive, ref, watch , defineEmits, defineProps, CSSProperties} from 'vue'
     import { setLocalData } from '@utils'
     import { layoutList,layoutMap } from './config'
     import { useSettingStore } from '@pinia/setting'
+    import { SunOne,Moon } from '@icon-park/vue-next'
 
-    const props = defineProps({
+    const props:any = defineProps({
         modelValue : {} as any
     })
     const settingStore = useSettingStore();
@@ -69,22 +86,23 @@
         click:settingStore.copySourceCode
       }
     ]
-    let themeConfigs = reactive(props.modelValue);
+    let themeConfigs:any = reactive(props.modelValue);
     let selectLayout = ref(themeConfigs.layoutValue.key);
-
-    /**
-     * 主题切换
-     */
-    const themeClick =  () => {
-        themeConfigs.themeColorValue = themeConfigs.themeColorValue == "dark" ? "white" : "dark"
-    }
-
 
     window.onbeforeunload = ()=>{
         setLocalData("themeLayoutKey",themeConfigs.layoutValue.key)
         setLocalData("themeColor",themeConfigs.themeColorValue)
     }
 
+    const railStyle = ({focused,checked}: { focused: boolean, checked: boolean }) => {
+      let style: CSSProperties = {};
+      if(checked){
+        style.background = '#ffe538';
+      }else{
+        style.background = '#f5f5f5';
+      }
+      return style
+    }
 
     watch(
         () => selectLayout.value,
@@ -125,5 +143,15 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+    }
+    .setting-fun-box{
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+    .setting-fun-box li{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 </style>

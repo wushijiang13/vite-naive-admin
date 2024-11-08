@@ -16,8 +16,10 @@
       <n-gi>
         <n-table>
           <thead>
-            <th>key</th>
-            <th>value</th>
+            <tr>
+              <th>key</th>
+              <th>value</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
