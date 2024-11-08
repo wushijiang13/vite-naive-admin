@@ -1,10 +1,10 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import {createRouter, createWebHashHistory, RouteRecordRaw} from "vue-router";
 import {routers} from './index';
 import {useStore} from '@pinia'
 function initRouter(routes:RouteRecordRaw[]=routers){
      return  createRouter(
         {
-            history:createWebHistory(),
+            history:createWebHashHistory(),
             routes,
     })
 }
