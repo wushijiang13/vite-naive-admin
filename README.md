@@ -1,15 +1,17 @@
 <p align="center">
-  <a href="https://github.com/wushijiang13/vite-naive-admin" target="_blank" rel="noopener noreferrer">
+  <a href="https://wushijiang13.github.io/vite-naive-admin/" target="_blank" rel="noopener noreferrer">
     <img width="180" src="https://github.com/wushijiang13/vite-naive-admin/assets/38801556/55bcf359-c11d-4b1e-a57c-5e9c1ccafd5a" alt="logo">
   </a>
 </p>
 <h1 align="center">
-  基于naive-ui风格的后台模板
+  基于naive-ui风格功能比较全的后台管理系统
 </p>
+
+希望能帮到你~
   
-## 项目截图
-![image](https://github.com/wushijiang13/vite-naive-admin/assets/38801556/de4588ae-59f4-456f-b2b0-1bb8ac7a6fe9)
-![image](https://github.com/wushijiang13/vite-naive-admin/assets/38801556/80080783-5fa8-410b-9c07-b1807ab5c334)
+## 项目预览
+
+[传送门](https://wushijiang13.github.io/vite-naive-admin/)
 
 
 ## 现在支持的功能是：  
@@ -18,7 +20,6 @@
   多标签、水印、分享、动态锚点、动态meta、动态路径参数-params、动态路径参数-query、弹框拖拽、卡片拖拽、无框、多级路由、外链、自定义外链、上传、
   Execl-导出Execl、Execl-导出选中行Execl、Execl-导出合并Execl
 
-
 ## 待开发
-   错误日志模拟、CSS动画、第三方登录
+   错误日志模拟、CSS动画、第三方登录、兼容移动端操作
 
