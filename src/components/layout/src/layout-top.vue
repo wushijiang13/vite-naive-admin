@@ -5,7 +5,7 @@
           <div class="layout-header-left-box">
             <img class="logo" src="/src/assets/logo.png"/>
             <span>
-               Vite-Naive-Admin
+               ite-Naive-Admin
             </span>
             <n-menu
                 :options="menuOption"
@@ -30,7 +30,6 @@
 
 <script setup lang="ts">
 import { menuOption} from '../config/layout.config';
-import { LogoVue } from '@vicons/ionicons5'
 import { useStore } from "@pinia";
 import {useRouterStore} from "@pinia/routerFlat";
 import {useRoute, useRouter} from "vue-router";
@@ -85,6 +84,7 @@ onMounted(()=>{
     .layout-top{
         display: flex;
         flex-direction: column;
+        overflow: hidden;
     }
     .layout-header{
         height: 70px;
@@ -107,7 +107,8 @@ onMounted(()=>{
     }
     .layout-main{
         box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
-        min-height: 100vh;
+        /* min-height: 100vh; */
+        overflow: hidden;
         background-color: var(--theme-layout-background-coolr);
     }
 </style>

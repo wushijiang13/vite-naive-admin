@@ -5,7 +5,7 @@
           <div class="layout-left-box">
             <img class="logo" src="/src/assets/logo.png"/>
             <span>
-             Vite-Naive-Admin
+             ite-Naive-Admin
           </span>
           </div>
           <layoutRightBtnGroup/>
@@ -159,7 +159,7 @@
     }
     .tab-prefix-box{
       line-height: 46px;
-      height: 46px;
+      height: 36px;
       display: flex;
       align-items: center;
       margin-left: 14px;

@@ -145,11 +145,11 @@ const layoutContextMenu = (index:number) => {
   align-items: end;
 }
 .layout-tab .n-tabs-wrapper{
-  height: 46px;
+  height: 38px;
 }
 .suffix-box{
   margin-right: 20px;
-  line-height: 46px;
+  line-height: 28px;
   color:var(--theme-color);
 }
 .max-scroll-height{

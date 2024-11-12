@@ -99,7 +99,7 @@
       if(checked){
         style.background = '#ffe538';
       }else{
-        style.background = '#f5f5f5';
+        style.background = '#ada4a4';
       }
       return style
     }

@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, h, Ref,defineProps,defineEmits} from 'vue';
+import {ref, h, Ref,defineProps} from 'vue';
 import { useStore } from "@pinia";
 import { BorderAll,Refresh } from '@vicons/tabler'
 import { CloseSharp } from '@vicons/ionicons5'

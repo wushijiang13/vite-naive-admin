@@ -4,7 +4,7 @@
         <div class="layout-header">
             <div class="logo">
               <img class="logo" src="/src/assets/logo.png"/>
-              <span>Vite-Naive-Admin</span>
+              <span>ite-Naive-Admin</span>
             </div>
             <layoutRightBtnGroup/>
         </div>
@@ -126,6 +126,6 @@
       align-items: center;
       font-size: 20px;
       font-weight: 200;
-      height: 60px;
+      height: 30px;
     }
 </style>

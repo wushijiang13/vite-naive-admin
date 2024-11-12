@@ -44,7 +44,7 @@
           </template>
           <template #header-extra>
               <span class="info">
-                当前版本：V10.5.0   部署时间：2023-02-22 18:47:26
+                当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
               </span>
           </template>
           <div>
@@ -78,7 +78,7 @@
           </template>
           <template #header-extra>
               <span class="info">
-                当前版本：V10.5.0   部署时间：2023-02-22 18:47:26
+                当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
               </span>
           </template>
           <div>
@@ -272,7 +272,7 @@ function tableInit(){
       key: 'name',
       className:'dis-key',
       align:'right',
-      width:170,
+      minWidth:100,
     },
     {
       key: 'version',
@@ -286,17 +286,17 @@ function tableInit(){
         }
         return `${rowData.version}`
       },
-      width:170,
+      minWidth:100,
     },
     {
       key:'name2',
       className:'dis-key',
       align:'right',
-      width:170,
+      minWidth:100,
     },
     {
       key:"version2",
-      width:170,
+      minWidth:100,
     }
   ]
   data.value = [

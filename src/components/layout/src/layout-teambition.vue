@@ -14,7 +14,7 @@
                 <div class="logo-box">
                   <img class="logo" src="/src/assets/logo.png"/>
                   <transition>
-                    <span v-show="!isCollapsed">Vite-Naive-Admin</span>
+                    <span v-show="!isCollapsed">ite-Naive-Admin</span>
                   </transition>
                 </div>
                 <div>
@@ -151,6 +151,7 @@
     }
     .layout-inherit-flex-box,.layout-teambition{
       display: flex;
+      overflow: hidden;
     }
     .layout-navigation{
       box-shadow: 0 0px 5px 1px rgb(57 66 60 / 20%);
@@ -175,6 +176,7 @@
       box-shadow: 0 1px 5px 0 rgb(57 66 60 / 20%);
       display: inline-flex;
       justify-content: space-between;
+      margin-bottom: 2px
     }
     .layout-stow{
       margin-left: 20px;
