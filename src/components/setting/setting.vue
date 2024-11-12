@@ -135,6 +135,7 @@
     }
     onMounted(()=>{
       themeColor.value = themeConfigs.themeOverrides.common.primaryColor;
+      document.body.style.setProperty('--theme-active-color', themeConfigs.themeOverrides.common.primaryColor);
     })
     watch(
         () => selectLayout.value,
