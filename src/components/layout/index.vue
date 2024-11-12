@@ -8,14 +8,20 @@
   import type {ThemeConfig} from '@types'
   import { useLoadingBar } from "naive-ui";
   import { computed } from 'vue'
-  const store = useStore();
+  const store:any = useStore();
   const loadingBar:any = useLoadingBar();
   store.$patch({
     loadingBar:loadingBar,
   })
 
-  const themeData:ThemeConfig = !getLocalData('themeLayoutKey') ?  _.cloneDeep(themeConfigDeep) :
-      {layoutValue:layoutMap[getLocalData('themeLayoutKey')],themeColorValue:getLocalData('themeColor')};
+  let sourceConfig = _.cloneDeep(themeConfigDeep);
+  let themeData:ThemeConfig = {
+        layoutValue:layoutMap[(getLocalData('themeLayoutKey') ? getLocalData('themeLayoutKey') : sourceConfig.layoutValue)],
+        themeColorValue:getLocalData('themeColor') ? getLocalData('themeColor') : sourceConfig.themeColorValue,
+        themeLocale:getLocalData('themeLocale') ? getLocalData('themeLocale') : sourceConfig.themeLocale,
+        themeDateLocale:getLocalData('themeDateLocale') ? getLocalData('themeDateLocale') : sourceConfig.themeDateLocale,
+        themeOverrides:getLocalData('themeOverrides') ? getLocalData('themeOverrides') : sourceConfig.themeOverrides,
+  }
   store.$patch({
     themeConfigs:themeData,
   })
@@ -28,17 +34,18 @@
     "white":null
   }
 
-  const getTheme =  computed(()=>{
-    let theme =store.themeConfigs.themeColorValue ? 'dark' : 'white'
+  const getTheme = computed(()=>{
+    let theme = store.themeConfigs.themeColorValue ? 'dark' : 'white'
     return themeColorMap[theme];
   })
 
   
 </script>
 <template>
-  <n-config-provider :class="store.themeConfigs.themeColorValue ? 'dark' : 'white'" :theme="getTheme" :locale="zhCN" :date-locale="dateZhCN">
+  <n-config-provider :class="store.themeConfigs.themeColorValue ? 'dark' : 'white'" :theme="getTheme" 
+  :locale="store.themeConfigs.themeLocale" :date-locale="store.themeConfigs.themeDateLocale" :theme-overrides="store.themeConfigs.themeOverrides">
     <n-message-provider>
-          <component  :is="store.themeConfigs.layoutValue.value"></component>
+          <component :is="store.themeConfigs.layoutValue.value"></component>
     </n-message-provider>
     <setting v-model="store.themeConfigs"/>
     <n-global-style />

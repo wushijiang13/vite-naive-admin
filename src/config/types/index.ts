@@ -31,6 +31,9 @@ export interface LayoutMap {
 export interface ThemeConfig {
     layoutValue:LayoutOption,
     themeColorValue:boolean,
+    themeLocale:Object|null,
+    themeDateLocale:Object|null,
+    themeOverrides:Object|undefined,
 }
 
 /**

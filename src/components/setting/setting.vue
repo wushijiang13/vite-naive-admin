@@ -46,6 +46,18 @@
                       </template>
                     </n-switch> 
                   </div>
+                </li> 
+                <li>
+                  <p>配色</p>
+                  <div>
+                    <n-color-picker class="color-picker-box" size="small" :swatches="swatchesList"
+                    v-model:value="themeColor"
+                    @update:value="themeColorUpdate"  >
+                      <template #label>
+                        <down theme="outline" size="12" />
+                      </template>
+                    </n-color-picker>
+                  </div>
                 </li>
               </ul>
               <div>
@@ -58,12 +70,11 @@
 </template>
 
 <script setup lang="ts">
-    import { Theme,CopyOne } from '@icon-park/vue-next'
-    import {reactive, ref, watch , defineEmits, defineProps, CSSProperties} from 'vue'
+    import { Theme,CopyOne,SunOne,Moon,Down } from '@icon-park/vue-next'
+    import {reactive, ref, watch , defineEmits, defineProps, CSSProperties, onMounted} from 'vue'
     import { setLocalData } from '@utils'
     import { layoutList,layoutMap } from './config'
     import { useSettingStore } from '@pinia/setting'
-    import { SunOne,Moon } from '@icon-park/vue-next'
 
     const props:any = defineProps({
         modelValue : {} as any
@@ -88,7 +99,13 @@
     ]
     let themeConfigs:any = reactive(props.modelValue);
     let selectLayout = ref(themeConfigs.layoutValue.key);
-
+    let themeColor = ref('#18a058');
+    let swatchesList = ref([
+      '#18A058',
+      '#2080F0',
+      '#F0A020',
+      'rgba(208, 48, 80, 1)',
+    ])
     window.onbeforeunload = ()=>{
         setLocalData("themeLayoutKey",themeConfigs.layoutValue.key)
         setLocalData("themeColor",themeConfigs.themeColorValue)
@@ -104,10 +121,26 @@
       return style
     }
 
+    const themeColorUpdate = (value:string) => {
+      themeConfigs.themeOverrides = {
+        common: {
+          primaryColor: value,
+          primaryColorHover: value,
+          primaryColorSuppl: value,
+        },
+      }
+      //设置主题色变量
+      document.body.style.setProperty('--theme-active-color', value);
+      setLocalData('themeOverrides', themeConfigs.themeOverrides)
+    }
+    onMounted(()=>{
+      themeColor.value = themeConfigs.themeOverrides.common.primaryColor;
+    })
     watch(
         () => selectLayout.value,
         (newValue) => {
             themeConfigs.layoutValue = layoutMap[newValue];
+            
         }
     )
 </script>
@@ -153,5 +186,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+    .color-picker-box{
+      width: 30px;
     }
 </style>

@@ -5,7 +5,8 @@ import layoutTeambition from '@/components/layout/src/layout-teambition.vue'
 import layoutTop from '@/components/layout/src/layout-top.vue'
 import layoutConventional from '@/components/layout/src/layout-conventional.vue'
 import layoutSandwich from '@/components/layout/src/layout-sandwich.vue'
-import type { LayoutOption,LayoutMap } from '@types'
+import type { LayoutOption,LayoutMap,ThemeConfig } from '@types'
+import { zhCN, dateZhCN } from 'naive-ui'
 
 export const layoutList: LayoutOption[] = [
     {
@@ -37,9 +38,12 @@ layoutList.forEach(item=>{
 })
 
 console.log("当前主题:"+layoutMap['top'].label);
-export const themeConfigDeep = {
+export const themeConfigDeep:ThemeConfig = {
     layoutValue:layoutMap['top'],//布局值
-    themeColorValue:"dark",//全局深浅主题是否启动 dark 为深色 white 为白色
+    themeColorValue:true,//全局深浅主题是否启动 true 为深色 false 为白色
+    themeLocale:zhCN,//全局语言包
+    themeDateLocale:dateZhCN,//全局日期语言包
+    themeOverrides:undefined,
 }
 
 
