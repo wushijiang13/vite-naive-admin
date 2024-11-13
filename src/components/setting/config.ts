@@ -43,7 +43,11 @@ export const themeConfigDeep:ThemeConfig = {
     themeColorValue:true,//全局深浅主题是否启动 true 为深色 false 为白色
     themeLocale:zhCN,//全局语言包
     themeDateLocale:dateZhCN,//全局日期语言包
-    themeOverrides:undefined,
+    themeOverrides:{
+        common:{
+            primaryColor:"#18A058"//全局主色
+        }
+    },
 }
 
 

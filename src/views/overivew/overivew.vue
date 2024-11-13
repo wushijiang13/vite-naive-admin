@@ -89,7 +89,7 @@
             <div class="table-box">
               <n-data-table
                   size="small"
-                  :single-line="false"
+                  :single-line="true"
                   :columns="columns"
                   :data="data"
               />
@@ -103,9 +103,9 @@
             开源信息
           </template>
           <template #header-extra>
-              <span class="info">
-                爱我别走~
-              </span>
+            <n-tag :bordered="false" type="primary">
+              爱我别走~
+            </n-tag>
           </template>
           <div>
             <div class="table-box">
