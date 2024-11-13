@@ -140,7 +140,7 @@
     watch(
         () => selectLayout.value,
         (newValue) => {
-            themeConfigs.layoutValue = layoutMap[newValue];  
+          themeConfigs.layoutValue = layoutMap[newValue];  
         }
     )
     watch(

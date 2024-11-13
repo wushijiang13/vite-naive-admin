@@ -1,7 +1,7 @@
 <template>
   <div>
     <n-space class="nolayout-box" align="center">
-      <n-button text @click="goHome">
+      <n-button type='primary' text @click="goHome">
         <template #icon>
           <n-icon>
             <ArrowLeft24Regular />

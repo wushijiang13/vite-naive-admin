@@ -7,6 +7,7 @@ import layoutConventional from '@/components/layout/src/layout-conventional.vue'
 import layoutSandwich from '@/components/layout/src/layout-sandwich.vue'
 import type { LayoutOption,LayoutMap,ThemeConfig } from '@types'
 import { zhCN, dateZhCN } from 'naive-ui'
+import { cloneDeep } from 'lodash'
 
 export const layoutList: LayoutOption[] = [
     {
@@ -33,8 +34,9 @@ export const layoutList: LayoutOption[] = [
 
 export let layoutMap:LayoutMap = {};
 
+//解决浅拷贝污染layoutList问题
 layoutList.forEach(item=>{
-    layoutMap[item.key] = item;
+    layoutMap[item.key] = cloneDeep(item);
 })
 
 console.log("当前主题:"+layoutMap['top'].label);

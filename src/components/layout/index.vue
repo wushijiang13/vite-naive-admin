@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import setting from '../setting/setting.vue'
-  import { darkTheme ,  zhCN, dateZhCN } from 'naive-ui'
+  import { darkTheme } from 'naive-ui'
   import _ from 'lodash'
   import {themeConfigDeep,layoutMap} from '@/components/setting/config';
   import { setLocalData, getLocalData} from '@utils'
