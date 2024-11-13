@@ -7,7 +7,9 @@
             访问量
           </template>
           <template #header-extra>
-            <span class="day">日</span>
+            <n-tag :bordered="false" type="primary">
+              日
+            </n-tag>
           </template>
           <div>
             <div class="visits" ref="visits"></div>
@@ -25,7 +27,9 @@
             授权树
           </template>
           <template #header-extra>
-            <span class="week">周</span>
+            <n-tag :bordered="false" type="primary">
+              周
+            </n-tag>
           </template>
           <div>
             <div class="empower" ref="empower"></div>
@@ -43,9 +47,9 @@
             信息
           </template>
           <template #header-extra>
-              <span class="info">
-                当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
-              </span>
+            <n-tag :bordered="false" type="primary">
+              当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
+            </n-tag>
           </template>
           <div>
             <div class="table-box">
@@ -77,9 +81,9 @@
             信息
           </template>
           <template #header-extra>
-              <span class="info">
-                当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
-              </span>
+            <n-tag :bordered="false" type="primary">
+              当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
+            </n-tag>
           </template>
           <div>
             <div class="table-box">
@@ -140,6 +144,8 @@ import {ref, onMounted, nextTick, h} from 'vue';
 import { NButton,NSpace,useMessage } from 'naive-ui'
 import { AllApplication, Theme, UploadTwo, PlayTwo, TableFile, FolderCode, Remind, BrowserChrome } from '@icon-park/vue-next'
 import { useSettingStore } from '@pinia/setting'
+import { useStore } from '@pinia'
+import { watch } from 'vue';
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
 let message = useMessage();
@@ -148,6 +154,7 @@ let empower = ref<HTMLElement | null>(null);
 let columns = ref<Object[]>([]);
 let data = ref<Object[]>([]);
 let settingStore =  useSettingStore();
+let store:any = useStore();
 let matrixList = [
   {
     name:'随机换肤',
@@ -228,7 +235,10 @@ function visitsInit(){
         data: [820, 932, 901, 934, 1290, 1330, 1320],
         type: 'line',
         smooth: true,
-        areaStyle: {}
+        areaStyle: {},
+        itemStyle: {
+          color: store.themeConfigs.themeOverrides.common.primaryColor,
+        },
       }
     ]
   };
@@ -256,7 +266,10 @@ function empowerInit(){
     series: [
       {
         data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar'
+        type: 'bar',
+        itemStyle: {
+          color: store.themeConfigs.themeOverrides.common.primaryColor,
+        },
       }
     ]
   };
@@ -280,7 +293,7 @@ function tableInit(){
       render:(rowData:{version:string}, rowIndex: number)=>{
         if(rowIndex === 3){
           return h(NSpace,{},{default:()=>[
-              h(NButton,{type:"info",size:"small"},{default:()=> "免费开源"}),
+              h(NButton,{type:"primary",size:"small"},{default:()=> "免费开源"}),
               h(NButton,{type:"warning", size:"small"},{default:()=>"持续维护"})
             ]})
         }
@@ -330,7 +343,13 @@ function tableInit(){
 function matrixExecute(key:String){
   switch (key) {
     case 'random':{
-
+      store.randomReplacement();
+      message.success(
+          "切换成功!",
+          {
+            keepAliveOnHover: true
+          }
+      )
       break;
     }
     case 'theme':{
@@ -368,6 +387,12 @@ function matrixExecute(key:String){
 function jumpUrl(url:string){
   window.open(url);
 }
+watch(
+  ()=>store.themeConfigs.themeOverrides,
+  ()=>{
+    visitsInit();
+    empowerInit()
+})
 onMounted(()=>{
   visitsInit()
   empowerInit()
@@ -387,22 +412,6 @@ onMounted(()=>{
 }
 .card-function{
   cursor: pointer;
-}
-.day{
-  background-color:#edf8e9 ;
-  color: #29d27a;
-  padding: 2px 10px;
-}
-.week{
-  background-color:#fdf5ea;
-  color: #feca70;
-  padding: 2px 10px;
-}
-.info{
-  background-color:#d1e9ff;
-  color: #1890ff;
-  padding: 2px 10px;
-  font-size: 13px;
 }
 .visits,.empower{
   min-height: 170px;

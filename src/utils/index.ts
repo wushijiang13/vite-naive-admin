@@ -18,7 +18,7 @@ const isNullCheck = (value:any) => {
     return true;
 }
 
-const setLocalData = (name="",value="") => {
+const setLocalData = (name:string="",value:any="") => {
     localStorage.setItem(name, JSON.stringify(value));
 }
 

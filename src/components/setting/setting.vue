@@ -33,7 +33,6 @@
                     <n-switch v-model:value="modelValue.themeColorValue" :rail-style="railStyle">
                       <template #checked-icon>
                         <SunOne theme="filled" size="14" fill="#ffe538"/>
-                        <!-- <sun-one  size="28" /> -->
                       </template>
                       <template #unchecked-icon>
                         <moon theme="outline" size="14" />
@@ -105,6 +104,7 @@
       '#2080F0',
       '#F0A020',
       'rgba(208, 48, 80, 1)',
+      '#CF0EF1',
     ])
     window.onbeforeunload = ()=>{
         setLocalData("themeLayoutKey",themeConfigs.layoutValue.key)
@@ -140,8 +140,14 @@
     watch(
         () => selectLayout.value,
         (newValue) => {
-            themeConfigs.layoutValue = layoutMap[newValue];
-            
+            themeConfigs.layoutValue = layoutMap[newValue];  
+        }
+    )
+    watch(
+        () => themeConfigs.themeOverrides,
+        () => {
+          //同步设置主题色
+          themeColor.value = themeConfigs.themeOverrides.common.primaryColor;
         }
     )
 </script>

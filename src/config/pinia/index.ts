@@ -5,7 +5,8 @@ import { useRouterStore } from "@pinia/routerFlat";
 import type { menuOptions,ThemeConfig } from '@types'
 import {nextTick } from 'vue';
 import {router} from "@/config/router/router";
-import {customIframe,iframeView} from "@views";
+import {iframeView} from "@views";
+import { layoutList,layoutMap } from '@/components/setting/config'
 
 const INIT_USERS = {
   email: "",
@@ -242,7 +243,26 @@ export const useStore =  defineStore('store',{
         url:info.url,
       }
       this.menuAction(info.key,info);
-    }
+    },
+    /**
+     * 随机换肤
+     */
+    randomReplacement() {
+      let layoutRandom = Math.floor(Math.random() * 3) + 1;
+      let layoutActiveName = layoutList[layoutRandom].key
+      let value = ['#18A058','#2080F0','#F0A020','rgba(208, 48, 80, 1)']
+      this.themeConfigs.layoutValue = layoutMap[layoutActiveName];
+      this.themeConfigs.themeColorValue = !this.themeConfigs.themeColorValue;
+      this.themeConfigs.themeOverrides = {
+        common: {
+          primaryColor: value[layoutRandom],
+          primaryColorHover: value[layoutRandom],
+          primaryColorSuppl: value[layoutRandom],
+        },
+      };
+      setLocalData('layoutValue', this.themeConfigs.layoutValue);
+      setLocalData('themeOverrides', this.themeConfigs.themeOverrides);
+    },
   },
   getters: {
     getPower: (state: any) => (id: string[] | string) => {
