@@ -8,8 +8,11 @@
   import type {ThemeConfig} from '@types'
   import { useLoadingBar } from "naive-ui";
   import { computed } from 'vue'
+  import { useI18n } from 'vue-i18n'
+
   const store:any = useStore();
   const loadingBar:any = useLoadingBar();
+  const { locale } = useI18n();
   store.$patch({
     loadingBar:loadingBar,
   })
@@ -22,6 +25,8 @@
         themeDateLocale:getLocalData('themeDateLocale') ? getLocalData('themeDateLocale') : sourceConfig.themeDateLocale,
         themeOverrides:getLocalData('themeOverrides') ? getLocalData('themeOverrides') : sourceConfig.themeOverrides,
   }
+  locale.value = getLocalData('locale') ? getLocalData('locale') : locale.value;
+  
   store.$patch({
     themeConfigs:themeData,
   })

@@ -27,6 +27,7 @@ specifiers:
   unplugin-vue-components: ^0.17.21
   vite: ^2.9.18
   vue: ^3.5.12
+  vue-i18n: '10'
   vue-json-pretty: ^2.4.0
   vue-qr: ^4.0.9
   vue-router: ^4.4.5
@@ -50,6 +51,7 @@ dependencies:
   pinia: 2.2.6_awdmolo2l5bapwtpkpjztownx4
   print-js: 1.6.0
   vue: 3.5.12_typescript@4.9.5
+  vue-i18n: 10.0.4_vue@3.5.12
   vue-json-pretty: 2.4.0_vue@3.5.12
   vue-qr: 4.0.9
   vue-router: 4.4.5_vue@3.5.12
@@ -164,6 +166,27 @@ packages:
       vue: 3.x
     dependencies:
       vue: 3.5.12_typescript@4.9.5
+    dev: false
+
+  /@intlify/core-base/10.0.4:
+    resolution: {integrity: sha512-GG428DkrrWCMhxRMRQZjuS7zmSUzarYcaHJqG9VB8dXAxw4iQDoKVQ7ChJRB6ZtsCsX3Jse1PEUlHrJiyQrOTg==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@intlify/message-compiler': 10.0.4
+      '@intlify/shared': 10.0.4
+    dev: false
+
+  /@intlify/message-compiler/10.0.4:
+    resolution: {integrity: sha512-AFbhEo10DP095/45EauinQJ5hJ3rJUmuuqltGguvc3WsvezZN+g8qNHLGWKu60FHQVizMrQY7VJ+zVlBXlQQkQ==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@intlify/shared': 10.0.4
+      source-map-js: 1.2.1
+    dev: false
+
+  /@intlify/shared/10.0.4:
+    resolution: {integrity: sha512-ukFn0I01HsSgr3VYhYcvkTCLS7rGa0gw4A4AMpcy/A9xx/zRJy7PS2BElMXLwUazVFMAr5zuiTk3MQeoeGXaJg==}
+    engines: {node: '>= 16'}
     dev: false
 
   /@jridgewell/sourcemap-codec/1.5.0:
@@ -2185,6 +2208,18 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
+      vue: 3.5.12_typescript@4.9.5
+    dev: false
+
+  /vue-i18n/10.0.4_vue@3.5.12:
+    resolution: {integrity: sha512-1xkzVxqBLk2ZFOmeI+B5r1J7aD/WtNJ4j9k2mcFcQo5BnOmHBmD7z4/oZohh96AAaRZ4Q7mNQvxc9h+aT+Md3w==}
+    engines: {node: '>= 16'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@intlify/core-base': 10.0.4
+      '@intlify/shared': 10.0.4
+      '@vue/devtools-api': 6.6.4
       vue: 3.5.12_typescript@4.9.5
     dev: false
 

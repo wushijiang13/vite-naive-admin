@@ -8,6 +8,7 @@
         :animated="false"
         @close="handleClose"
         :display-directive="'show:lazy'"
+        :name="'123'"
         :tabs-padding="props.tabsPadding">
       <n-tab-pane
           v-for="(page,index) in store.tabPageList"
@@ -31,7 +32,7 @@
               <template #external>
                 <div class="tab-box" @contextmenu="layoutContextMenu(index)">
                   <n-icon v-if="page.icon" size="16" :component="page.icon"/>
-                  <span class="tab-span">{{page.label}}</span>
+                  <span class="tab-span">{{ $t(`message.${page.key}`)}}</span>
                 </div>
               </template>
             </layoutTabClose>

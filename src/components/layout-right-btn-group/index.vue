@@ -4,9 +4,12 @@ import { defineProps }  from 'vue'
 import { renderIcon } from '@utils'
 import { useSettingStore } from '@pinia/setting'
 import { useStore } from '@pinia'
+import { useI18n } from 'vue-i18n'
+import { setLocalData } from '@utils'
 
 const settingStore = useSettingStore();
 const store = useStore();
+const { locale } = useI18n() 
 let props = defineProps({
   selectOptions:{
       type:Array,
@@ -50,6 +53,8 @@ const userOperateClick = (key:String)=> {
       break;
     }
     case "translate":{
+      locale.value = locale.value == "zh" ? "en" : "zh";
+      setLocalData('locale',locale.value)
       break;
     }
     case "theme":{

@@ -55,15 +55,17 @@
     import {h, onMounted, ref} from 'vue'
     import {MenuOption, NIcon, NMenu} from 'naive-ui'
     import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
-    import { menuOption,updateExpandIcon } from '../config/layout.config';
+    import { menuOption } from '../config/layout.config';
     import { useStore } from "@pinia";
     import { useRouterStore } from "@pinia/routerFlat";
-    import { useRoute,useRouter} from "vue-router";
+    import { useRoute} from "vue-router";
     import layoutRightBtnGroup from '@components/layout-right-btn-group/index.vue'
+    import { useI18n } from 'vue-i18n';
+
     const store = useStore();
     const routerStore = useRouterStore();
     const route = useRoute();
-    const router = useRouter();
+    const { t } = useI18n();
     let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
 
     function renderIcon(option: MenuOption){
@@ -73,7 +75,7 @@
     function labelRender (option: MenuOption){
       return h('div',{class:'.inblock'},{default:()=>{
           return [
-            h('span',{},{default:()=>option.label}),
+            h('span',{},{default:()=> t(`message.${option.key}`)}),
             option['renderCompoent'] ?  h(NIcon,{component:option["renderCompoent"],size:'18'}) : undefined
           ]
         }})

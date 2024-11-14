@@ -11,6 +11,8 @@
       "@components/*": ["src/components/*"],
       "@views": ["src/views"],
       "@views/*": ["src/views/*"],
+      "@config": ["src/config"],
+      "@config/*": ["src/config/*"],
       "@types": ["src/config/types"]
     },
     "target": "esnext",

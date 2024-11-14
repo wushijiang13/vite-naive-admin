@@ -44,7 +44,7 @@
                       </n-button>
                       <n-breadcrumb separator=">">
                         <n-breadcrumb-item v-for="item in store.bread">
-                          {{item.label}}
+                          {{ $t(`message.${item.key}`)}}
                         </n-breadcrumb-item>
                       </n-breadcrumb>
                     </div>
@@ -64,19 +64,20 @@
 <script setup lang="ts">
   import { menuOption } from '../config/layout.config';
   import { ref, h, onMounted } from 'vue';
-  import { useRouter,useRoute} from "vue-router";
+  import { useRoute} from "vue-router";
   import { zhCN, dateZhCN , NIcon, NMenu} from 'naive-ui'
   import type {MenuOption} from 'naive-ui'
   import { useRouterStore } from "@pinia/routerFlat";
   import { useStore } from "@pinia";
+  import { useI18n } from 'vue-i18n';
   import { LayoutSidebarLeftCollapse,LayoutSidebarLeftExpand } from '@vicons/tabler'
   import layoutTab from '@components/layout-tab/layout-tab.vue'
   import layoutRightBtnGroup from '@components/layout-right-btn-group/index.vue'
 
-  const router = useRouter();
   const route:any = useRoute();
   const store = useStore();
   const routerStore = useRouterStore();
+  const { t } = useI18n();
   let menuRef = ref<InstanceType<typeof NMenu> | null>(null);
   let isCollapsed = ref(false);
 
@@ -87,7 +88,7 @@
   function labelRender (option: MenuOption){
     return h('div',{class:'.inblock'},{default:()=>{
         return [
-          h('span',{},{default:()=>option.label}),
+          h('span',{},{default:()=> t(`message.${option.key}`)}),
           option['renderCompoent'] ?  h(NIcon,{component:option["renderCompoent"],size:'18'}) : undefined
         ]
       }})

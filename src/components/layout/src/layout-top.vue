@@ -32,15 +32,16 @@
 import { menuOption} from '../config/layout.config';
 import { useStore } from "@pinia";
 import {useRouterStore} from "@pinia/routerFlat";
-import {useRoute, useRouter} from "vue-router";
+import {useRoute} from "vue-router";
 import {MenuOption, NIcon} from "naive-ui";
 import {h, onMounted} from "vue";
 import layoutRightBtnGroup from '@components/layout-right-btn-group/index.vue'
+import { useI18n } from 'vue-i18n';
 
 const store = useStore();
 const routerStore = useRouterStore();
-const router = useRouter();
 const route = useRoute();
+const { t } = useI18n();
 
 function renderIcon(option: MenuOption){
   return option["icon"] ? h(NIcon,{component:option["icon"],size:'18'}) : '';
@@ -49,7 +50,7 @@ function renderIcon(option: MenuOption){
 function labelRender (option: MenuOption){
   return h('div',{class:'.inblock'},{default:()=>{
       return [
-        h('span',{},{default:()=>option.label}),
+        h('span',{},{default:()=> t(`message.${option.key}`)}),
         option['renderCompoent'] ?  h(NIcon,{component:option["renderCompoent"],size:'18'}) : undefined
       ]
     }})

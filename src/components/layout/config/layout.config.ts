@@ -1,7 +1,7 @@
 /*暂定设计*/
 // 关于这里的key 既代表code 也代表 页面路由的code 这样跳转不加任何处理
-import { NIcon,NBadge } from 'naive-ui';
-import {h, ref} from 'vue'
+import { NBadge } from 'naive-ui';
+import {h, ref, computed} from 'vue'
 import {Flowchart24Regular,ChartMultiple24Regular,Print24Regular,Chat24Regular,
     History24Regular,TabDesktopCopy20Regular,Drop24Regular,ShareAndroid24Regular,CalendarEmpty24Regular,
     ArrowSwap24Regular,CursorHover24Regular,
@@ -24,7 +24,7 @@ import { useStore } from "@pinia";
 
 export const menuOption:menuOptions[]= ref([
     {
-        label: '概览',
+        label: "概览",
         key: 'overivew',
         icon:Home,
         component:overivew,
@@ -496,6 +496,7 @@ export const menuOption:menuOptions[]= ref([
         ]
     },
 ]);
+
 
 export function updateExpandIcon(key:string,expand:Function){
     if(key == ''){
