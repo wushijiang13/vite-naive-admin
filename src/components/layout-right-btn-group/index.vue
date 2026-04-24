@@ -6,9 +6,11 @@ import { useSettingStore } from '@pinia/setting'
 import { useStore } from '@pinia'
 import { useI18n } from 'vue-i18n'
 import { setLocalData } from '@utils'
+import { useRouter } from 'vue-router'
 
 const settingStore = useSettingStore();
 const store = useStore();
+const router = useRouter();
 const { locale } = useI18n() 
 let props = defineProps({
   selectOptions:{
@@ -68,8 +70,10 @@ const userOperateClick = (key:String)=> {
   }
 }
 
-const handleSelectOption = () => {
-
+const handleSelectOption = (key:string) => {
+  if (key === 'editProfile') {
+    store.loginOut();
+  }
 }
 
 </script>

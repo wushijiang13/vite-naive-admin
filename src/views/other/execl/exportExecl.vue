@@ -2,15 +2,16 @@
   <div class="export-execl">
     <div class="export-head-box">
       <n-space align="center">
-        文件名：
-        <n-input v-model:value="fileName" placeholder="请输出要导出文件的名称"/>
-        文件类型：
-        <n-select v-model:value="fileType" style="width: 150px"  :options="fileTypeList"/>
-        <n-button type="primary" @click="exportExecl">导出Execl</n-button>
+        <n-upload
+          @before-upload="handleBeforeUpload"
+          :default-upload="false"
+        >
+          <n-button type="primary">打开execl</n-button>
+        </n-upload>
       </n-space>
     </div>
     <div class="export-table">
-      <n-table :single-line="false">
+      <!-- <n-table :single-line="false">
         <thead>
           <tr>
             <th v-for="item in tableHeaderData" style="text-align: center">{{item.label}}</th>
@@ -23,14 +24,19 @@
             </td>
           </tr>
         </tbody>
-      </n-table>
+      </n-table> -->
+      <div id="luckysheet" style="width:100%;height: 500px;">
+
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import {ref} from "vue";
+  import {ref,onMounted} from "vue";
   import {utils, writeFile} from "xlsx";
+  import Luckysheet from 'luckysheet';
+  import LuckyExcel from 'luckyexcel';
   let fileName = ref('');
   let fileType = ref('xlsx');
   const fileTypeList = [{
@@ -64,6 +70,7 @@
     {id:"10",title:'hgfdfdbv',author:'崔生',visits:'8645',date:'2020-02-12 12:02:22'},
   ])
 
+  
   let exportExecl = () => {
     let worksheet =  utils.json_to_sheet(tableData.value);
     let workbook = utils.book_new();
@@ -72,11 +79,41 @@
     //compression: true 对基于ZIP的格式使用ZIP压缩
     writeFile(workbook,`${filename}.${fileType.value}`, { compression: true })
   }
+  let handleBeforeUpload = (options:any) => {
+    let file = options.file.file;
+    LuckyExcel.transformExcelToLucky(file, 
+    (exportJson:any, luckysheetfile:any) => {
+        // exportJson就是转换后的数据
+        Luckysheet.create({
+          container: 'luckysheet', //luckysheet为容器id
+          lang: 'zh', // 设定表格语言
+          showinfobar:false,
+          allowEdit:false,
+          data:exportJson.sheets,
+          title:exportJson.info.name,
+        });
+    },
+    function(error){
+        // handle error if any thrown
+    })
+    console.log(file)
+  }
+
+  onMounted(() => {
+     //配置项
+    // var options = {
+    //   container: 'luckysheet', //luckysheet为容器id
+    //   lang: 'zh', // 设定表格语言
+    //   showinfobar:false,
+    // }
+    // // let wind:any = window;
+    // Luckysheet.create(options);
+  })
 </script>
 
 <style scoped>
 .export-execl{
-  background-color: #fff;
+  background-color: var(theme-color);
 }
 .export-head-box{
   padding-top: 14px;

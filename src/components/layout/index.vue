@@ -18,8 +18,10 @@
   })
 
   let sourceConfig = _.cloneDeep(themeConfigDeep);
+  const storedLayoutKey = getLocalData('themeLayoutKey');
+  const layoutValue = storedLayoutKey && layoutMap[storedLayoutKey] ? layoutMap[storedLayoutKey] : sourceConfig.layoutValue;
   let themeData:ThemeConfig = {
-        layoutValue:layoutMap[(getLocalData('themeLayoutKey') ? getLocalData('themeLayoutKey') : sourceConfig.layoutValue)],
+        layoutValue,
         themeColorValue:getLocalData('themeColor') ? getLocalData('themeColor') : sourceConfig.themeColorValue,
         themeLocale:getLocalData('themeLocale') ? getLocalData('themeLocale') : sourceConfig.themeLocale,
         themeDateLocale:getLocalData('themeDateLocale') ? getLocalData('themeDateLocale') : sourceConfig.themeDateLocale,
@@ -31,7 +33,7 @@
     themeConfigs:themeData,
   })
   if (!getLocalData('themeLayoutKey')) {
-    setLocalData("themeLayoutKey",store.themeConfigs.layoutValue.key)
+    setLocalData("themeLayoutKey",store.themeConfigs.layoutValue?.key)
     setLocalData("themeColor",store.themeConfigs.themeColorValue)
   }
   const themeColorMap:any ={

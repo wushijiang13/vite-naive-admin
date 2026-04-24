@@ -13,9 +13,20 @@ const router = initRouter(routers);
 
 router.beforeEach((to, from, next) => {
     const store = useStore();
-    const { isLogin } = store.users || {};
+    const isLogin = store.users?.isLogin;
     const { path ,query } = to;
-    if(path == '/view' && router.getRoutes().findIndex(item=> item.path == path) == -1){
+
+    // 如果访问登录页且已登录，重定向到概览
+    if (path === '/login' && isLogin) {
+      return next({ name: 'overivew' });
+    }
+
+    // 如果访问需要登录的页面且未登录，重定向到登录页
+    if (path !== '/login' && !isLogin) {
+      return next({ name: 'login' });
+    }
+
+    if (path == '/view' && router.getRoutes().findIndex(item=> item.path == path) == -1) {
         let store = useStore();
         let info = {
             key:"view",
@@ -23,9 +34,6 @@ router.beforeEach((to, from, next) => {
             ...query,
             parendKey:"iframe",
         }
-        console.log("测试一下");
-        console.log(info);
-
         store.tabPushUrl(info);
     }
     next();

@@ -5,9 +5,11 @@
 <template>
   <n-loading-bar-provider>
     <n-notification-provider>
-      <div>
-          <router-view/>
-      </div>
+      <n-message-provider>
+        <div>
+            <router-view/>
+        </div>
+      </n-message-provider>
     </n-notification-provider>
   </n-loading-bar-provider>
 </template>

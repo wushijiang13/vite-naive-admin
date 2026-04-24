@@ -37,19 +37,19 @@ const INIT_STATE = {
 export const useStore =  defineStore('store',{
   state: ()=> INIT_STATE,
   actions: {
-    login: ({commit}, params) => {
-      commit("setUsers", {
+    login(params: any) {
+      this.setUsers({
         ...params,
         isLogin: true
       });
     },
-    loginOut: ({commit}) => {
-      commit("setUsers", {
+    loginOut() {
+      this.setUsers({
         isLogin: false
       });
-      window.location.href = "/login";
+      router.push({ name: 'login' });
     },
-    setUsers(payload) {
+    setUsers(payload: any) {
       this.users = Object.assign({}, this.users, payload);
       setLocalData("USERS", this.users);
     },
