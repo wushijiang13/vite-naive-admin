@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "dev:wsj": "cross-env VITE_API_HOST=http://xxx.xxx.xxx.xxx:80/api vite",
-    "build": "cross-env VITE_API_HOST=http://xxx.xxx.xxx.xxx:80/api  vite build",
+    "build": "cross-env VITE_API_HOST=http://xxx.xxx.xxx.xxx:80/api  node --max-old-space-size=4096 ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview"
   },
   "dependencies": {
