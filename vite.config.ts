@@ -26,5 +26,30 @@ export default defineConfig({
   ],
   build:{
     // sourcemap:true,
+    chunkSizeWarningLimit: 2000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('echarts')) {
+              return 'vendor-echarts'
+            }
+            if (id.includes('naive-ui')) {
+              return 'vendor-naive-ui'
+            }
+            if (id.includes('luckysheet') || id.includes('luckyexcel')) {
+              return 'vendor-luckysheet'
+            }
+            if (id.includes('xlsx') || id.includes('sheetjs')) {
+              return 'vendor-xlsx'
+            }
+            if (id.includes('@wangeditor')) {
+              return 'vendor-wangeditor'
+            }
+            return 'vendor'
+          }
+        }
+      }
+    }
   }
 })
