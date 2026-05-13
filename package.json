@@ -7,7 +7,7 @@
     "dev:wsj": "cross-env VITE_API_HOST=http://xxx.xxx.xxx.xxx:80/api vite",
     "build": "cross-env VITE_API_HOST=http://xxx.xxx.xxx.xxx:80/api  node --max-old-space-size=8192 ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview",
-    "version:bump": "node scripts/bump-version.js"
+    "version:bump": "node scripts/bump-version.cjs"
   },
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",
