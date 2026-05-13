@@ -41,6 +41,14 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
+      - name: Bump version
+        run: |
+          node scripts/bump-version.js
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add version.json
+          git commit -m "chore: bump version"
+          git push
       - name: Build
         run: pnpm run build
       - name: Setup Pages
