@@ -20,7 +20,10 @@ import {
 import {Home,FolderCode,Inbox,PictureOne,TableFile,ListTwo,Plan,
     Blackboard,Edit,AlignTextLeftOne,Table,GridTwo,Copy,Refresh,
     DocDetail,FormOne,Click,LinkOne,Radio,CheckOne,ExpandTextInput,
-    SortAmountDown,SwitchButton,Slide,Time,CalendarThirty,Star} from '@icon-park/vue-next'
+    SortAmountDown,SwitchButton,Slide,Time,CalendarThirty,Star,
+    HashtagKey,RouterOne,Move,Drag,Layers,Error,Magic,Login,LinkOut,
+    Browser,Search,Video,WebPage,Excel,Export,Download,MergeCells,
+    StackLight} from '@icon-park/vue-next'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
 
@@ -350,6 +353,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"Params id=1",
                         key: 'params1',
+                        icon:HashtagKey,
                         parendKey:"dynamicParams",
                         component: params1,
                         isClose:true,
@@ -360,6 +364,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"Query id=1",
                         key: 'query1',
+                        icon:RouterOne,
                         parendKey:"dynamicParams",
                         component: query1,
                         isClose:true,
@@ -409,21 +414,25 @@ export const menuOption:menuOptions[]= ref([
             {
                 label:"多级路由缓存",
                 key: 'multiRouter',
+                icon:Layers,
                 parendKey:"other",
                 children:[
                     {
                         label:"多级路由1-1",
                         key: 'multiRouter1-1',
+                        icon:Layers,
                         parendKey:"multiRouter",
                         children:[
                             {
                                 label:"多级路由1-1-1",
                                 key: 'multiRouter1-1-1',
+                                icon:Layers,
                                 parendKey:"multiRouter1-1",
                                 children:[
                                     {
                                         label:"多级路由1-1-1-1",
                                         key: 'multiRouter1-1-1-1',
+                                        icon:Layers,
                                         parendKey:"multiRouter1-1-1",
                                         component:multiRouter,
                                         isClose:true,
@@ -437,24 +446,28 @@ export const menuOption:menuOptions[]= ref([
             {
                 label:"错误日志模拟",
                 key: 'role',
+                icon:Error,
                 parendKey:"other",
                 isClose:true,
             },
             {
                 label:"Css动画",
                 key: 'role',
+                icon:Magic,
                 parendKey:"other",
                 isClose:true,
             },
             {
                 label:"第三方登录",
                 key: 'role',
+                icon:Login,
                 parendKey:"other",
                 isClose:true,
             },
             {
                 label:"外链",
                 key: 'jump',
+                icon:LinkOut,
                 jumpUrl:"https://github.com/wushijiang13",
                 parendKey:"other",
                 isClose:true,
@@ -462,11 +475,13 @@ export const menuOption:menuOptions[]= ref([
             {
                 label:"iframe",
                 key: 'iframe',
+                icon:Browser,
                 parendKey:"other",
                 children: [
                     {
                         label:"360搜索",
                         key: 'search360',
+                        icon:Search,
                         parendKey:"iframe",
                         component: search360,
                         isClose:true,
@@ -474,6 +489,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"哔哩哔哩",
                         key: 'bilibili',
+                        icon:Video,
                         parendKey:"iframe",
                         component: bilibili,
                         isClose:true,
@@ -481,6 +497,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"自定义iframe",
                         key: 'customIframe',
+                        icon:WebPage,
                         parendKey:"iframe",
                         component: customIframe,
                         isClose:true,
@@ -490,11 +507,13 @@ export const menuOption:menuOptions[]= ref([
             {
                 label:"Execl",
                 key: 'execl',
+                icon:Excel,
                 parendKey:"other",
                 children: [
                     {
                         label:"导出Execl",
                         key: 'exportExecl',
+                        icon:Export,
                         parendKey:"execl",
                         component:exportExecl,
                         isClose:true,
@@ -502,6 +521,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"导出选中行Excel",
                         key: 'exportSelectColExecl',
+                        icon:Download,
                         parendKey:"execl",
                         component:exportSelectColExecl,
                         isClose:true,
@@ -509,6 +529,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"导出合并Excel",
                         key: 'exportMergeColExecl',
+                        icon:MergeCells,
                         parendKey:"execl",
                         component:exportMergeColExecl,
                         isClose:true,
