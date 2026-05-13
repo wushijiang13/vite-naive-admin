@@ -18,7 +18,9 @@ import {
     exportSelectColExecl,exportMergeColExecl
 } from '@views'
 import {Home,FolderCode,Inbox,PictureOne,TableFile,ListTwo,Plan,
-    Blackboard,Edit,AlignTextLeftOne} from '@icon-park/vue-next'
+    Blackboard,Edit,AlignTextLeftOne,Table,GridTwo,Copy,Refresh,
+    DocDetail,FormOne,Click,LinkOne,Radio,CheckOne,ExpandTextInput,
+    SortAmountDown,SwitchButton,Slide,Time,CalendarThirty,Star} from '@icon-park/vue-next'
 import type { menuOptions } from '@types'
 import { useStore } from "@pinia";
 
@@ -52,6 +54,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"综合表格",
                         key: 'synthesis',
+                        icon:Table,
                         parendKey:"table",
                         component:synthesis,
                         isClose:true,
@@ -59,6 +62,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"行内编辑表格",
                         key: 'inline',
+                        icon:Edit,
                         parendKey:"table",
                         component:inline,
                         isClose:true,
@@ -66,12 +70,14 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"自定义表格",
                         key: 'custom',
+                        icon:Copy,
                         parendKey:"table",
                         isClose:true,
                     },
                     {
                         label:"动态表格",
                         key: 'dynamic',
+                        icon:Refresh,
                         parendKey:"table",
                         isClose:true,
                     },
@@ -110,6 +116,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"腾讯文档",
                         key: 'qqDoc',
+                        icon:DocDetail,
                         parendKey:"editor",
                         component:qqDoc,
                         isClose:true,
@@ -125,6 +132,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"综合表单",
                         key: 'synthesizeFrom',
+                        icon:FormOne,
                         parendKey:"form",
                         component:synthesizeFrom,
                         isClose:true,
@@ -132,6 +140,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"分布表单",
                         key: 'distributionFrom',
+                        icon:FormOne,
                         parendKey:"form",
                         component:distributionFrom,
                         isClose:true,
@@ -139,6 +148,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"按钮",
                         key: 'button',
+                        icon:Click,
                         parendKey:"form",
                         component:button,
                         isClose:true,
@@ -146,6 +156,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"文字链接",
                         key: 'link',
+                        icon:LinkOne,
                         parendKey:"form",
                         component:link,
                         isClose:true,
@@ -153,6 +164,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"单选框",
                         key: 'radio',
+                        icon:Radio,
                         parendKey:"form",
                         component:radio,
                         isClose:true,
@@ -160,12 +172,14 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"多选框",
                         key: 'screen',
+                        icon:CheckOne,
                         parendKey:"form",
                         isClose:true,
                     },
                     {
                         label:"输入框",
                         key: 'input',
+                        icon:ExpandTextInput,
                         parendKey:"form",
                         component:input,
                         isClose:true,
@@ -173,6 +187,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"计数器",
                         key: 'inputNumber',
+                        icon:SortAmountDown,
                         component:inputNumber,
                         parendKey:"form",
                         isClose:true,
@@ -180,6 +195,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"选择器",
                         key: 'select',
+                        icon:GridTwo,
                         component:select,
                         parendKey:"form",
                         isClose:true,
@@ -187,6 +203,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"开关",
                         key: 'switchs',
+                        icon:SwitchButton,
                         component:switchs,
                         parendKey:"form",
                         isClose:true,
@@ -194,6 +211,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"滑块",
                         key: 'slider',
+                        icon:Slide,
                         component: slider,
                         parendKey:"form",
                         isClose:true,
@@ -201,6 +219,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"时间选择器",
                         key: 'timePicker',
+                        icon:Time,
                         parendKey:"form",
                         component:timePicker,
                         isClose:true,
@@ -208,6 +227,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"日期选择器",
                         key: 'datePicker',
+                        icon:CalendarThirty,
                         component:datePicker,
                         parendKey:"form",
                         isClose:true,
@@ -215,6 +235,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"日期时间选择器",
                         key: 'dateTimePicker',
+                        icon:CalendarThirty,
                         component:dateTimePicker,
                         parendKey:"form",
                         isClose:true,
@@ -222,6 +243,7 @@ export const menuOption:menuOptions[]= ref([
                     {
                         label:"评分",
                         key: 'rate',
+                        icon:Star,
                         parendKey:"form",
                         component:rate,
                         isClose:true,

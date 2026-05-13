@@ -48,7 +48,7 @@
           </template>
           <template #header-extra>
             <n-tag :bordered="false" type="primary">
-              当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
+              当前版本：{{ appVersion }}   部署时间：{{ deployTime }}
             </n-tag>
           </template>
           <div>
@@ -82,7 +82,7 @@
           </template>
           <template #header-extra>
             <n-tag :bordered="false" type="primary">
-              当前版本：V10.5.0   部署时间：2024-11-12 18:47:26
+              当前版本：{{ appVersion }}   部署时间：{{ deployTime }}
             </n-tag>
           </template>
           <div>
@@ -146,6 +146,11 @@ import { AllApplication, Theme, UploadTwo, PlayTwo, TableFile, FolderCode, Remin
 import { useSettingStore } from '@pinia/setting'
 import { useStore } from '@pinia'
 import { watch } from 'vue';
+
+declare const __GIT_COMMIT_DATE__: string
+declare const __APP_VERSION__: string
+const deployTime = __GIT_COMMIT_DATE__
+const appVersion = __APP_VERSION__
 echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, TitleComponent,
   TooltipComponent,BarChart]);
 let message = useMessage();

@@ -1,5 +1,7 @@
 <script setup lang="ts">
   import setting from '../setting/setting.vue'
+  import globalSearch from '../global-search/index.vue'
+  import lockScreen from '../lock-screen/index.vue'
   import { darkTheme } from 'naive-ui'
   import _ from 'lodash'
   import {themeConfigDeep,layoutMap} from '@/components/setting/config';
@@ -7,7 +9,7 @@
   import {useStore} from '@pinia'
   import type {ThemeConfig} from '@types'
   import { useLoadingBar } from "naive-ui";
-  import { computed } from 'vue'
+  import { computed, ref, provide } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   const store:any = useStore();
@@ -46,6 +48,15 @@
     return themeColorMap[theme];
   })
 
+  const globalSearchRef = ref<any>(null)
+  provide('openGlobalSearch', () => globalSearchRef.value?.openSearch())
+
+  const lockScreenRef = ref<any>(null)
+  provide('lockScreen', () => {
+    setLocalData('isLocked', true)
+    lockScreenRef.value?.lock()
+  })
+
   
 </script>
 <template>
@@ -55,6 +66,8 @@
           <component :is="store.themeConfigs.layoutValue.value"></component>
     </n-message-provider>
     <setting v-model="store.themeConfigs"/>
+    <globalSearch ref="globalSearchRef"/>
+    <lockScreen ref="lockScreenRef"/>
     <n-global-style />
     <n-theme-editor/>
   </n-config-provider>

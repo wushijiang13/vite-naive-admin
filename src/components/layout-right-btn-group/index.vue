@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {FullScreen, Lock, Refresh, Remind, Search, Theme, Translate, User, Logout} from "@icon-park/vue-next";
-import { defineProps }  from 'vue'
+import { defineProps, inject }  from 'vue'
 import { renderIcon } from '@utils'
 import { useSettingStore } from '@pinia/setting'
 import { useStore } from '@pinia'
@@ -11,7 +11,9 @@ import { useRouter } from 'vue-router'
 const settingStore = useSettingStore();
 const store = useStore();
 const router = useRouter();
-const { locale } = useI18n() 
+const { locale } = useI18n()
+const openGlobalSearch = inject<() => void>('openGlobalSearch', () => {})
+const lockScreen = inject<() => void>('lockScreen', () => {})
 let props = defineProps({
   selectOptions:{
       type:Array,
@@ -43,9 +45,11 @@ const userOperate = [
 const userOperateClick = (key:String)=> {
   switch (key) {
     case "lock":{
+      lockScreen()
       break;
     }
     case "search":{
+      openGlobalSearch()
       break;
     }
     case "remind":{

@@ -15,7 +15,7 @@
 <script setup lang="ts">
   import {ref,Ref} from "vue";
   import logo from '@/assets/logo.png'
-  import vueQr from "vue-qr/src/packages/vue-qr.vue";
+  import vueQr from "vue-qr";
   import copy from 'copy-text-to-clipboard';
   import { useMessage } from 'naive-ui'
   const urlValue:Ref<string> = ref('https://wushijiang.cn/vite-naive-admin');
