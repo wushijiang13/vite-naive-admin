@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {FullScreen, Lock, Refresh, Remind, Search, Theme, Translate, User, Logout} from "@icon-park/vue-next";
-import { defineProps, inject }  from 'vue'
+import {FullScreen, Lock, Refresh, Remind, Search, Theme, Translate, User, Logout, OffScreen} from "@icon-park/vue-next";
+import { defineProps, inject, ref }  from 'vue'
 import { renderIcon } from '@utils'
 import { useSettingStore } from '@pinia/setting'
 import { useStore } from '@pinia'
@@ -14,6 +14,23 @@ const router = useRouter();
 const { locale } = useI18n()
 const openGlobalSearch = inject<() => void>('openGlobalSearch', () => {})
 const lockScreen = inject<() => void>('lockScreen', () => {})
+const isFullscreen = ref(false)
+
+const toggleFullscreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen()
+    isFullscreen.value = true
+  } else {
+    document.exitFullscreen()
+    isFullscreen.value = false
+  }
+}
+
+// 监听 fullscreenchange 事件，同步状态（用户按 ESC 退出时也能正确更新）
+document.addEventListener('fullscreenchange', () => {
+  isFullscreen.value = !!document.fullscreenElement
+})
+
 let props = defineProps({
   selectOptions:{
       type:Array,
@@ -56,6 +73,7 @@ const userOperateClick = (key:String)=> {
       break;
     }
     case "full-screen":{
+      toggleFullscreen()
       break;
     }
     case "translate":{
@@ -85,7 +103,7 @@ const handleSelectOption = (key:string) => {
   <div>
     <n-space :size="[20,0]" align="center">
       <n-button text v-for="item in userOperate" @click="userOperateClick(item.key)">
-        <n-icon size="16" :component="item.icon"/>
+        <n-icon size="16" :component="item.key === 'full-screen' ? (isFullscreen ? OffScreen : FullScreen) : item.icon"/>
       </n-button>
       <n-dropdown trigger="hover" :options="props.selectOptions" @select="handleSelectOption">
         <div class="user-info-box">
